@@ -46,11 +46,11 @@ for (const requiredId of ["home", "categories", "collections", "rate-chart", "st
   assert.ok(idSet.has(requiredId), "Missing required page element: " + requiredId);
 }
 
-for (const asset of ["styles.css", "app.js", "favicon.svg", "assets/brand/official-logo.jpg"]) {
+for (const asset of ["styles.css", "app.js", "favicon.svg"]) {
   assert.ok(html.includes(asset), "HTML must link local asset " + asset);
 }
 assert.doesNotMatch(html, /images\.unsplash\.com/, "Product pages should use the shop's real photos");
-assert.match(html, /assets\/brand\/official-logo\.jpg/, "The supplied shop logo should be used");
+assert.equal(html.split(officialLogoUrl).length - 1, 2, "The supplied flyer logo must be used in header and footer");
 
 const categoryLinks = new Set([...html.matchAll(/data-category-link="([^"]+)"/g)].map((m) => m[1]));
 const filters = new Set([...html.matchAll(/data-filter="([^"]+)"/g)].map((m) => m[1]));
