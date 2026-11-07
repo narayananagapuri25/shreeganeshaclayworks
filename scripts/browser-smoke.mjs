@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
-import { readFile, stat } from "node:fs/promises";
+import { mkdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -49,11 +49,13 @@ try {
   const pageErrors = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
 
+  await mkdir(path.join(root, "artifacts"), { recursive: true });
   const response = await page.goto(baseUrl, { waitUntil: "networkidle" });
   assert.equal(response.status(), 200, "Home page must load");
   assert.match(await page.title(), /Shree Ganesha Clay Works/);
   assert.equal(await page.locator(".category-card").count(), 6, "All six shop categories should render");
   assert.equal(await page.locator("#product-grid .product-card").count(), 6, "Six real catalogue categories should render");
+  await page.screenshot({ path: path.join(root, "artifacts/site-desktop.png"), fullPage: true });
 
   await page.locator('[data-filter="agul"]').click();
   assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Agul filter should show its collection");
@@ -88,6 +90,7 @@ try {
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(baseUrl, { waitUntil: "networkidle" });
+  await page.screenshot({ path: path.join(root, "artifacts/site-mobile.png"), fullPage: true });
   const toggle = page.locator(".menu-toggle");
   await toggle.click();
   assert.equal(await toggle.getAttribute("aria-expanded"), "true", "Mobile menu should open");
