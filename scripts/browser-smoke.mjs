@@ -11,7 +11,7 @@ const mime = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".svg": "image/svg+xml",
-  ".jpg": "image/jpeg",
+  ".webp": "image/webp",
   ".jpeg": "image/jpeg",
   ".png": "image/png",
   ".txt": "text/plain; charset=utf-8"
@@ -93,13 +93,13 @@ try {
     const rect = element.getBoundingClientRect();
     return { width: rect.width, height: rect.height, left: rect.left, columns: getComputedStyle(element).gridTemplateColumns.split(" ").length };
   });
-  assert.equal(await heroGallery.locator("img").count(), 4, "Hero should show four original shop product photographs");
+  assert.equal(await heroGallery.locator("img").count(), 4, "Hero should show four approved representative product images");
   const heroSources = await heroGallery.locator("img").evaluateAll((images) => images.map((image) => image.getAttribute("src")));
   assert.deepEqual(heroSources, [
-    "assets/products/cooking-vessels.jpg",
-    "assets/products/plain-agul.jpg",
-    "assets/products/stand-agul.jpg",
-    "assets/products/simini.jpg"
+    "assets/products/cooking-vessels.webp",
+    "assets/products/plain-agul.webp",
+    "assets/products/stand-agul.webp",
+    "assets/products/simini.webp"
   ], "Hero must use four valid, version-controlled shop product photographs, not remote placeholder files or sprite sheets");
   assert.ok(heroGalleryLayout.width > 250 && heroGalleryLayout.height > 200, "Hero product gallery should have a substantial visible area");
   assert.equal(heroGalleryLayout.columns, 2, "Hero product photographs should use a balanced two-column gallery");
@@ -113,7 +113,7 @@ try {
     const zoom = open >= 0 ? Number(style.transform.slice(open + 1).split(",")[0]) : 1;
     return { zoom, clipPath: style.clipPath, objectFit: style.objectFit };
   });
-  assert.equal(diyaImageStyle.zoom, 1, "The original heart-diya photo must not be artificially zoomed");
+  assert.equal(diyaImageStyle.zoom, 1, "The generated heart-diya image must not be artificially zoomed");
   assert.equal(diyaImageStyle.clipPath, "none", "Do not reshape the original heart-diya photograph with an artificial mask");
   assert.equal(diyaImageStyle.objectFit, "contain", "The complete diya and its full source photograph must remain visible");
   const siminiImageFit = await page.locator('.category-card[data-category-link="simini"] img').evaluate((element) => getComputedStyle(element).objectFit);
@@ -368,7 +368,7 @@ try {
   await page.locator('[data-filter="idols"]').click();
   assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Clay idol enquiry collection should be filterable");
   assert.match(await page.locator("#product-grid h3").first().innerText(), /Pooja & other clay items/);
-  assert.match(await page.locator("#product-grid .product-card p").first().innerText(), /view of the shop.*clay products/i);
+  assert.match(await page.locator("#product-grid .product-card p").first().innerText(), /Representative image of terracotta pooja pedestal pieces/i);
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
   console.log("Browser checks passed: desktop, mobile, image detail, search, filters, English/Telugu, rate enquiries, store address/directions, primary and alternate call/WhatsApp links, menu Escape/outside-click and floating WhatsApp.");

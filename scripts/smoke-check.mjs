@@ -13,13 +13,13 @@ const [html, app, css] = await Promise.all([
 
 const requiredFiles = [
   "favicon.svg", "404.html", "_headers", "robots.txt",
-  "assets/products/heart-diya.jpg",
-  "assets/products/plain-agul.jpg",
-  "assets/products/stand-agul.jpg",
-  "assets/products/store-stock.jpg",
-  "assets/products/simini.jpg",
-  "assets/products/cooking-vessels.jpg",
-  "assets/products/water-pots.jpg",
+  "assets/products/heart-diya.webp",
+  "assets/products/plain-agul.webp",
+  "assets/products/stand-agul.webp",
+  "assets/products/pooja-items.webp",
+  "assets/products/simini.webp",
+  "assets/products/cooking-vessels.webp",
+  "assets/products/water-pots.webp",
 ];
 for (const file of requiredFiles) await access(path.join(root, file));
 
@@ -52,25 +52,25 @@ assert.match(html, /Mancherial–Chennur Highway, Naspur/, "The complete flyer s
 assert.match(html, /504208/, "The flyer PIN code must remain on the page");
 assert.match(html, /class="[^"]*store-facts[^"]*"/, "The quick store information bar must appear after the hero");
 assert.match(html, /href="tel:\+919493404602"/, "The quick store facts must include a working call action");
-assert.match(html, /class="hero-gallery"/, "The hero should show real shop product photographs");
+assert.match(html, /class="hero-gallery"/, "The hero should show approved representative product images");
 assert.equal((html.match(/class="hero-product-photo"/g) || []).length, 4, "Hero must have four standalone product photos");
 assert.equal((html.match(/class="category-photo"/g) || []).length, 7, "Every category must have one standalone product photo");
 assert.doesNotMatch(html, /sprite-window|sprite-sheet/, "HTML must not contain sprite crop windows");
 assert.doesNotMatch(app, /spriteClass|sprite-window|sprite-sheet/, "Catalogue data and renderer must not use sprite crops");
 for (const imagePath of [
-  "assets/products/heart-diya.jpg",
-  "assets/products/store-stock.jpg",
-  "assets/products/plain-agul.jpg",
-  "assets/products/stand-agul.jpg",
-  "assets/products/simini.jpg",
-  "assets/products/cooking-vessels.jpg",
-  "assets/products/water-pots.jpg"
+  "assets/products/heart-diya.webp",
+  "assets/products/pooja-items.webp",
+  "assets/products/plain-agul.webp",
+  "assets/products/stand-agul.webp",
+  "assets/products/simini.webp",
+  "assets/products/cooking-vessels.webp",
+  "assets/products/water-pots.webp"
 ]) {
   assert.ok(html.includes(imagePath), "Missing local product image in hero/category layout: " + imagePath);
   assert.ok(app.includes(imagePath), "Missing local product image in catalogue: " + imagePath);
 }
-assert.doesNotMatch(html, /cloudfront\.net\/[^"]+\.jpg/, "Do not reference broken external product photo files");
-assert.doesNotMatch(app, /cloudfront\.net\/[^"]+\.jpg/, "Catalogue images must be served from checked-in local files");
+assert.doesNotMatch(html, /cloudfront\.net\/[^"]+\.webp/, "Do not reference broken external product photo files");
+assert.doesNotMatch(app, /cloudfront\.net\/[^"]+\.webp/, "Catalogue images must be served from checked-in local files");
 assert.equal((html.match(/class="how-to-step"/g) || []).length, 3, "The page should have three practical shopping steps");
 assert.match(app, /searchTerms: \["diya"/, "Diyas should be discoverable through common search terms");
 assert.match(app, /searchTerms: \["water pot", "matka"/, "Water pots should be discoverable through common search terms");
@@ -150,7 +150,7 @@ assert.match(html, /\+91 85558 96577/, "Alternate contact must be displayed in t
 assert.doesNotMatch(html, /85555896577/, "The old misprinted alternate number must not remain");
 
 console.log("Site smoke checks passed.");
-console.log("- Required site files and checked-in shop reference photographs exist");
+console.log("- Required site files and approved generated product photographs exist");
 console.log("- In-page links and category filters are connected");
 console.log("- English/Telugu translation coverage is complete");
 console.log("- Product catalogue and WhatsApp enquiry generation are present");

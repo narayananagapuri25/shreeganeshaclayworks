@@ -42,7 +42,7 @@ img { display: block; max-width: 100%; }
 .menu-toggle { display: none; border: 0; background: transparent; width: 42px; height: 42px; padding: 11px 8px; }
 .menu-toggle span { display: block; height: 2px; margin: 6px 0; width: 24px; background: var(--ink); transition: transform .2s; }
 .hero { min-height: min(690px, 78vh); min-height: min(690px, 78svh); position: relative; display: flex; align-items: center; overflow: hidden; background: #47392d; color: #fff9ed; }
-.hero-photo { position: absolute; inset: 0; background-image: url("assets/products/store-stock.jpg"); background-size: cover; background-position: center 54%; transform: scale(1.015); }
+.hero-photo { position: absolute; inset: 0; background-image: url("assets/products/pooja-items.webp"); background-size: cover; background-position: center 54%; transform: scale(1.015); }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(24,27,20,.84) 0%, rgba(31,30,23,.69) 39%, rgba(35,29,22,.19) 75%, rgba(35,29,22,.04) 100%), linear-gradient(0deg, rgba(28,25,20,.24), transparent 45%); }
 .hero-content { position: relative; z-index: 1; width: min(var(--max), 89.6%); margin: 0 auto; padding: 100px 0 115px; max-width: 1240px; }
 .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 19px; color: var(--clay); font-size: 9px; font-weight: 700; letter-spacing: .2em; line-height: 1.6; }
@@ -516,7 +516,7 @@ main [id] { scroll-margin-top: 96px; }
   bottom: 36px;
   width: min(47%, 620px);
   border-radius: 5px;
-  background-image: url("assets/products/cooking-vessels.jpg");
+  background-image: url("assets/products/cooking-vessels.webp");
   background-size: cover;
   background-position: center 52%;
   transform: none;
@@ -561,16 +561,16 @@ main [id] { scroll-margin-top: 96px; }
   gap: 14px;
 }
 .category-featured { grid-row: auto; grid-column: auto; }
-.category-card img[src*="heart-diya.jpg"] {
+.category-card img[src*="heart-diya.webp"] {
   object-position: 52% 57%;
   transform: scale(1.42);
 }
-.category-card:hover img[src*="heart-diya.jpg"] { transform: scale(1.48); }
-.product-image-wrap img[src*="heart-diya.jpg"] {
+.category-card:hover img[src*="heart-diya.webp"] { transform: scale(1.48); }
+.product-image-wrap img[src*="heart-diya.webp"] {
   object-position: 52% 57%;
   transform: scale(1.2);
 }
-.product-card:hover .product-image-wrap img[src*="heart-diya.jpg"] { transform: scale(1.25); }
+.product-card:hover .product-image-wrap img[src*="heart-diya.webp"] { transform: scale(1.25); }
 
 @media (max-width: 980px) {
   .hero { min-height: 520px; }
@@ -644,16 +644,16 @@ main [id] { scroll-margin-top: 96px; }
 }
 
 /* Preserve the diya's real silhouette without masking the photograph itself. */
-.category-card img[src*="heart-diya.jpg"],
-.product-image-wrap img[src*="heart-diya.jpg"] {
+.category-card img[src*="heart-diya.webp"],
+.product-image-wrap img[src*="heart-diya.webp"] {
   clip-path: none;
   filter: none;
   object-fit: cover;
   object-position: 52% 48%;
   transform: scale(1.26);
 }
-.category-card:hover img[src*="heart-diya.jpg"],
-.product-card:hover .product-image-wrap img[src*="heart-diya.jpg"] {
+.category-card:hover img[src*="heart-diya.webp"],
+.product-card:hover .product-image-wrap img[src*="heart-diya.webp"] {
   transform: scale(1.3);
 }
 
@@ -774,15 +774,15 @@ main [id] { scroll-margin-top: 96px; }
   object-fit: cover;
   background: #eee6dc;
 }
-.hero-gallery img[src*="simini.jpg"] {
+.hero-gallery img[src*="simini.webp"] {
   object-fit: contain;
   background: #e6ddd0;
 }
-.hero-gallery img[src*="heart-diya.jpg"] {
+.hero-gallery img[src*="heart-diya.webp"] {
   object-fit: cover;
   object-position: center 50%;
 }
-.hero-gallery img[src*="water-pots.jpg"] { object-position: center; }
+.hero-gallery img[src*="water-pots.webp"] { object-position: center; }
 .hero-content { z-index: 2; }
 @media (max-width: 980px) {
   .hero-gallery { right: 5%; width: 44%; top: 32px; bottom: 32px; gap: 8px; padding: 7px; }
@@ -805,24 +805,24 @@ main [id] { scroll-margin-top: 96px; }
 }
 
 /* Never zoom the owner-supplied product photographs to manufacture detail. */
-.category-card img[src*="heart-diya.jpg"],
-.product-image-wrap img[src*="heart-diya.jpg"] {
+.category-card img[src*="heart-diya.webp"],
+.product-image-wrap img[src*="heart-diya.webp"] {
   object-fit: cover;
   object-position: center 50%;
   transform: none;
   background: #e8dfd2;
 }
-.category-card img[src*="simini.jpg"],
-.product-image-wrap img[src*="simini.jpg"] {
+.category-card img[src*="simini.webp"],
+.product-image-wrap img[src*="simini.webp"] {
   object-fit: contain;
   object-position: center;
   transform: none;
   background: #e8dfd2;
 }
-.category-card:hover img[src*="heart-diya.jpg"],
-.product-card:hover .product-image-wrap img[src*="heart-diya.jpg"],
-.category-card:hover img[src*="simini.jpg"],
-.product-card:hover .product-image-wrap img[src*="simini.jpg"] {
+.category-card:hover img[src*="heart-diya.webp"],
+.product-card:hover .product-image-wrap img[src*="heart-diya.webp"],
+.category-card:hover img[src*="simini.webp"],
+.product-card:hover .product-image-wrap img[src*="simini.webp"] {
   transform: none;
 }
 
@@ -925,8 +925,8 @@ main [id] { scroll-margin-top: 96px; }
   padding: 10px;
   background: #f1eadf;
 }
-.hero-gallery img[src*="simini.jpg"] { padding: 4px; }
-.hero-gallery img[src*="stand-agul.jpg"] { padding: 13px; }
+.hero-gallery img[src*="simini.webp"] { padding: 4px; }
+.hero-gallery img[src*="stand-agul.webp"] { padding: 13px; }
 
 .product-image-wrap {
   background: #eee6da;
@@ -936,32 +936,32 @@ main [id] { scroll-margin-top: 96px; }
   object-position: center;
   padding: 10px;
 }
-.product-image-wrap img[src*="heart-diya.jpg"] {
+.product-image-wrap img[src*="heart-diya.webp"] {
   object-fit: cover;
   object-position: center 85%;
   padding: 0;
   background: #e6ddd1;
 }
-.product-image-wrap img[src*="store-stock.jpg"] {
+.product-image-wrap img[src*="pooja-items.webp"] {
   object-fit: cover;
   padding: 0;
 }
-.product-image-wrap img[src*="simini.jpg"] { padding: 6px; }
-.product-card:hover .product-image-wrap img[src*="heart-diya.jpg"],
-.product-card:hover .product-image-wrap img[src*="simini.jpg"] {
+.product-image-wrap img[src*="simini.webp"] { padding: 6px; }
+.product-card:hover .product-image-wrap img[src*="heart-diya.webp"],
+.product-card:hover .product-image-wrap img[src*="simini.webp"] {
   transform: none;
 }
-.category-card img[src*="heart-diya.jpg"] {
+.category-card img[src*="heart-diya.webp"] {
   object-fit: cover;
   object-position: center 85%;
   transform: none;
 }
-.category-card:hover img[src*="heart-diya.jpg"] { transform: none; }
-.category-card img[src*="simini.jpg"] {
+.category-card:hover img[src*="heart-diya.webp"] { transform: none; }
+.category-card img[src*="simini.webp"] {
   object-fit: contain;
   background: #e8dfd2;
 }
-.category-card:hover img[src*="simini.jpg"] { transform: none; }
+.category-card:hover img[src*="simini.webp"] { transform: none; }
 
 /* Keep the real photos crisp at native size; never use browser zoom to fake detail. */
 .hero-gallery img, .category-card img, .product-image-wrap img, .story-image-wrap img {
@@ -1364,4 +1364,123 @@ main [id] { scroll-margin-top: 96px; }
   .category-card > .category-label { padding: 3px 10px 11px; }
   .product-image-wrap > img { padding: 9px; }
   .story-image-wrap > img { padding: 11px; }
+}
+
+
+/* Responsive presentation refinement — keep the product story first on phones. */
+@media (min-width: 701px) {
+  .hero { isolation: isolate; }
+  .hero-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    align-content: stretch;
+    border-color: rgba(86, 69, 49, .1);
+    box-shadow: 0 18px 42px rgba(36, 27, 19, .09);
+  }
+  .hero-gallery img {
+    padding: clamp(8px, 1vw, 13px);
+    background: #f2ece2;
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 28px 5% 28px;
+  }
+  .hero-content {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .hero-gallery {
+    order: 2;
+    width: 100%;
+    aspect-ratio: 1.42 / 1;
+    margin: 0;
+    padding: 6px;
+    gap: 6px;
+    border-radius: 6px;
+    background: #e9e0d4;
+    box-shadow: 0 8px 22px rgba(36, 27, 19, .07);
+  }
+  .hero-gallery img {
+    min-width: 0;
+    min-height: 0;
+    padding: 8px;
+    border-radius: 3px;
+    background: #f2ece2;
+  }
+  .hero-eyebrow { margin-bottom: 12px; }
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(39px, 9.8vw, 54px);
+    line-height: 1.04;
+  }
+  .hero-lede {
+    max-width: 54ch;
+    margin: 15px 0 19px;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+  .hero-actions { gap: 12px 17px; }
+  .hero-actions .button { min-height: 48px; }
+  .intro-strip.store-facts { padding-left: 4%; padding-right: 4%; }
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: 205px;
+    gap: 10px;
+  }
+  .category-featured { grid-column: auto; grid-row: auto; }
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+  }
+  .product-card-body { padding: 13px 11px 12px; }
+  .product-card h3 { font-size: clamp(16px, 4.5vw, 19px); }
+  .product-card p { font-size: 10px; line-height: 1.6; }
+  .product-card-action { min-height: 38px; }
+  .story-section { gap: 28px; }
+  .visit-card { border-radius: 3px; }
+}
+@media (max-width: 380px) {
+  .hero { padding-top: 23px; }
+  .hero h1 { font-size: 39px; }
+  .hero-gallery { aspect-ratio: 1.28 / 1; }
+  .category-grid { grid-auto-rows: 185px; }
+  .category-label strong { font-size: 15px; }
+  .product-card-body { padding: 11px 9px; }
+  .product-card h3 { font-size: 15px; }
+  .product-card p { font-size: 9px; }
+  .product-card-action { font-size: 8px; }
+}
+
+
+/* Square generated catalogue images — one consistent photo stage across desktop and mobile. */
+.hero-gallery img,
+.category-image-frame > img,
+.product-image-wrap > img,
+.story-image-wrap > img {
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #efe8dd;
+}
+.hero-gallery,
+.category-image-frame,
+.product-image-wrap,
+.story-image-wrap {
+  background: #efe8dd;
+}
+@media (max-width: 700px) {
+  .hero-gallery {
+    aspect-ratio: 1.42 / 1;
+    border-radius: 7px;
+  }
+  .category-grid { grid-auto-rows: 205px; }
+  .product-image-wrap { aspect-ratio: 1 / 1; }
 }
