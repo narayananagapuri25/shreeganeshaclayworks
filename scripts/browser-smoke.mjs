@@ -72,12 +72,8 @@ try {
       assert.equal(details.objectFit, "contain", "Every item must be shown in full, not cropped: " + details.src);
       assert.equal(details.transform, "none", "Product photos must not zoom or crop on hover: " + details.src);
       assert.equal(details.clipPath, "none", "Product photos must not be masked: " + details.src);
-      if (!details.src.includes("store-stock.jpg")) {
-        assert.ok(details.naturalWidth >= 900 && details.naturalHeight >= 900,
-          "Standalone product assets must use the full-resolution square export: " + JSON.stringify(details));
-        assert.ok(Math.abs(details.naturalWidth - details.naturalHeight) <= 2,
-          "Every generated product asset must have a consistent square canvas: " + details.src);
-      }
+      assert.match(details.src, /^assets\/products\//,
+        "Product and store photographs must load from version-controlled local assets, not empty external image URLs: " + details.src);
     }
   }
 
@@ -100,11 +96,11 @@ try {
   assert.equal(await heroGallery.locator("img").count(), 4, "Hero should show four original shop product photographs");
   const heroSources = await heroGallery.locator("img").evaluateAll((images) => images.map((image) => image.getAttribute("src")));
   assert.deepEqual(heroSources, [
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/be725b00-f545-46e8-96ac-d51db6bffa7b.jpg",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/6daa1d27-f77c-4dd9-9bb4-6c3d96082e20.jpg",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/056d4476-fd70-4486-8ea9-38df4d853518.jpg",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/9bbe014c-1df6-4d90-8bc3-5cf73e166c43.jpg"
-  ], "Hero must use four standalone square product assets, not sprite sheets");
+    "assets/products/cooking-vessels.jpg",
+    "assets/products/plain-agul.jpg",
+    "assets/products/stand-agul.jpg",
+    "assets/products/simini.jpg"
+  ], "Hero must use four valid, version-controlled shop product photographs, not remote placeholder files or sprite sheets");
   assert.ok(heroGalleryLayout.width > 250 && heroGalleryLayout.height > 200, "Hero product gallery should have a substantial visible area");
   assert.equal(heroGalleryLayout.columns, 2, "Hero product photographs should use a balanced two-column gallery");
   assert.ok(heroGalleryLayout.left > (await page.evaluate(() => window.innerWidth)) * 0.45, "Desktop product gallery should sit to the right of the copy");
