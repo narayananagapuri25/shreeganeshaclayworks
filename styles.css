@@ -42,7 +42,7 @@ img { display: block; max-width: 100%; }
 .menu-toggle { display: none; border: 0; background: transparent; width: 42px; height: 42px; padding: 11px 8px; }
 .menu-toggle span { display: block; height: 2px; margin: 6px 0; width: 24px; background: var(--ink); transition: transform .2s; }
 .hero { min-height: min(690px, 78vh); min-height: min(690px, 78svh); position: relative; display: flex; align-items: center; overflow: hidden; background: #47392d; color: #fff9ed; }
-.hero-photo { position: absolute; inset: 0; background-image: url("https://images.unsplash.com/photo-1708368951853-3f33c050e687?auto=format&fit=crop&w=2200&q=88"); background-size: cover; background-position: center 54%; transform: scale(1.015); }
+.hero-photo { position: absolute; inset: 0; background-image: url("assets/products/store-stock.jpg"); background-size: cover; background-position: center 54%; transform: scale(1.015); }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(24,27,20,.84) 0%, rgba(31,30,23,.69) 39%, rgba(35,29,22,.19) 75%, rgba(35,29,22,.04) 100%), linear-gradient(0deg, rgba(28,25,20,.24), transparent 45%); }
 .hero-content { position: relative; z-index: 1; width: min(var(--max), 89.6%); margin: 0 auto; padding: 100px 0 115px; max-width: 1240px; }
 .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 19px; color: var(--clay); font-size: 9px; font-weight: 700; letter-spacing: .2em; line-height: 1.6; }
@@ -282,3 +282,115 @@ img { display: block; max-width: 100%; }
 .contact-number { font-size: 15px; font-weight: 600; letter-spacing: .02em; }
 
 :focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
+
+/* Product catalogue prices and shop-published rate guide */
+.product-price {
+  margin-top: 12px;
+  color: #496345;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.rate-section {
+  padding: 100px 0 105px;
+  background: #eee6d9;
+}
+.rate-inner { width: min(var(--max), 89.6%); }
+.rate-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 37px;
+}
+.rate-heading h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(39px, 5vw, 59px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+.rate-heading h2 em { color: var(--clay); }
+.rate-intro {
+  max-width: 365px;
+  margin: 0 0 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+.rate-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 17px;
+}
+.rate-card {
+  min-width: 0;
+  background: var(--white);
+  border: 1px solid rgba(87, 62, 43, .14);
+  box-shadow: 0 8px 24px rgba(58, 41, 27, .045);
+}
+.rate-card h3 {
+  margin: 0;
+  padding: 16px 18px;
+  color: #fff8ed;
+  background: #41513a;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.rate-table-wrap { overflow-x: auto; }
+.rate-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.rate-table th, .rate-table td {
+  padding: 10px 13px;
+  border-bottom: 1px solid rgba(41, 40, 32, .1);
+  text-align: right;
+  white-space: nowrap;
+}
+.rate-table thead th {
+  color: #6d3a27;
+  background: #f4ecdf;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.rate-table th:first-child, .rate-table td:first-child {
+  text-align: left;
+}
+.rate-table tbody th {
+  color: #474438;
+  font-weight: 600;
+}
+.rate-table tbody td {
+  color: #8a3d27;
+  font-weight: 700;
+}
+.rate-table tbody tr:last-child th, .rate-table tbody tr:last-child td { border-bottom: 0; }
+.rate-disclaimer {
+  max-width: 900px;
+  margin: 22px 0 0;
+  color: #716c60;
+  font-size: 10px;
+  line-height: 1.8;
+}
+.image-failed { background: linear-gradient(135deg, #e7d6c4, #c68b65); }
+.image-failed img { display: none; }
+
+@media (max-width: 700px) {
+  .rate-section { padding: 76px 0 78px; }
+  .rate-heading { display: block; margin-bottom: 27px; }
+  .rate-heading h2 { font-size: clamp(38px, 9vw, 53px); }
+  .rate-intro { max-width: 460px; margin-top: 14px; font-size: 11px; }
+  .rate-groups { grid-template-columns: 1fr; gap: 13px; }
+  .rate-card h3 { padding: 14px 15px; font-size: 18px; }
+  .rate-table { font-size: 10px; }
+  .rate-table th, .rate-table td { padding: 9px 10px; }
+  .rate-disclaimer { font-size: 9px; }
+}
