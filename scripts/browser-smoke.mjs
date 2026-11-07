@@ -119,6 +119,7 @@ try {
   await page.locator('[data-lang="en"]').click();
 
   assert.equal(await page.locator('a[href="tel:+919493404602"]').count(), 1, "Primary number should have a call link");
+  assert.equal(await page.locator('a[href="https://wa.me/919493404602"]').count(), 1, "Primary number should have a direct WhatsApp link");
   assert.equal(await page.getByText("+91 85558 96577", { exact: true }).count(), 1, "Alternate number should remain visible");
   assert.equal(await page.locator('a[href="tel:+918555896577"]').count(), 1, "Alternate number should have a direct phone link");
   assert.equal(await page.locator('a[href="https://wa.me/918555896577"]').count(), 1, "Alternate number should have a direct WhatsApp link");
@@ -145,6 +146,41 @@ try {
   assert.equal(await page.locator("#empty-state").isVisible(), true, "No-results state should be visible");
   await page.locator("#product-search").clear();
   assert.equal(await page.locator("#product-grid .product-card").count(), 7);
+
+  // Sweep common phone, compact-phone, tablet, and desktop widths for hidden overflow and header overlap.
+  for (const width of [320, 360, 390, 430, 700, 701, 768, 820, 860, 861, 900, 980, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    const layout = await page.evaluate(() => {
+      const header = document.querySelector(".site-header");
+      const logo = document.querySelector(".site-header .brand-logo");
+      const toggle = document.querySelector(".menu-toggle");
+      const nav = document.querySelector(".primary-nav");
+      const rect = (element) => {
+        const box = element.getBoundingClientRect();
+        return { left: box.left, right: box.right, top: box.top, bottom: box.bottom };
+      };
+      return {
+        scrollWidth: document.documentElement.scrollWidth,
+        viewportWidth: window.innerWidth,
+        header: rect(header),
+        logo: rect(logo),
+        toggle: rect(toggle),
+        nav: rect(nav),
+        toggleDisplay: getComputedStyle(toggle).display,
+        navDisplay: getComputedStyle(nav).display
+      };
+    });
+    assert.ok(layout.scrollWidth <= layout.viewportWidth, "Horizontal overflow at viewport width " + width + ": " + JSON.stringify(layout));
+    assert.ok(layout.logo.left >= layout.header.left && layout.logo.right <= layout.header.right, "Logo escapes header at viewport width " + width);
+    if (width <= 860) {
+      assert.notEqual(layout.toggleDisplay, "none", "Mobile/tablet menu button should be visible at width " + width);
+      assert.equal(layout.navDisplay, "none", "Mobile/tablet navigation should be collapsed initially at width " + width);
+    } else {
+      assert.equal(layout.toggleDisplay, "none", "Desktop menu button should be hidden at width " + width);
+      assert.notEqual(layout.navDisplay, "none", "Desktop navigation should be visible at width " + width);
+      assert.ok(layout.nav.left >= layout.logo.right, "Desktop navigation must not overlap the logo at width " + width);
+    }
+  }
 
   await page.locator('[data-filter="idols"]').click();
   assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Clay idol enquiry collection should be filterable");
