@@ -1274,3 +1274,23 @@ main [id] { scroll-margin-top: 96px; }
   .category-image-frame > .sprite-window { width: 100%; }
   .product-image-wrap { aspect-ratio: 1 / 1; }
 }
+
+
+/* Sprite sheet crop dimensions and offsets are applied to the sheet itself, not the product frame. */
+.sprite-window .sprite-sheet {
+  position: absolute !important;
+  display: block !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 400% !important;
+  max-width: none !important;
+  max-height: none !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: left top !important;
+  transform: translate(var(--sprite-x, 0%), var(--sprite-y, 0%)) !important;
+  padding: 0 !important;
+  transition: none !important;
+}
+.sprite-window .sprite-sheet.sprite-4x2 { width: 400% !important; }
+.sprite-window .sprite-sheet.sprite-5x3 { width: 500% !important; }
