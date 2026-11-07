@@ -744,3 +744,168 @@ main [id] { scroll-margin-top: 96px; }
   .store-fact-icon { flex-basis: 28px; width: 28px; height: 28px; }
   .store-fact-copy strong { font-size: 9px; }
 }
+
+
+/* Product-first hero: four real shop photographs, presented at a smaller and more natural scale. */
+.hero-shade { z-index: 0; }
+.hero-gallery {
+  position: absolute;
+  z-index: 1;
+  top: 36px;
+  right: max(5.2vw, calc((100vw - var(--max)) / 2));
+  bottom: 36px;
+  width: min(47%, 620px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 9px;
+  border: 1px solid rgba(94, 72, 48, .12);
+  border-radius: 7px;
+  background: #e9dfd1;
+  box-shadow: 0 18px 44px rgba(52, 37, 23, .1);
+}
+.hero-gallery img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  border-radius: 3px;
+  object-fit: cover;
+  background: #eee6dc;
+}
+.hero-gallery img[src*="heart-diya.jpg"],
+.hero-gallery img[src*="simini.jpg"] {
+  object-fit: contain;
+  background: #e6ddd0;
+}
+.hero-gallery img[src*="water-pots.jpg"] { object-position: center; }
+.hero-content { z-index: 2; }
+@media (max-width: 980px) {
+  .hero-gallery { right: 5%; width: 44%; top: 32px; bottom: 32px; gap: 8px; padding: 7px; }
+}
+@media (max-width: 700px) {
+  .hero-gallery {
+    position: relative;
+    inset: auto;
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.42 / 1;
+    padding: 6px;
+    gap: 6px;
+    border-radius: 5px;
+  }
+}
+@media (max-width: 360px) {
+  .hero-gallery { aspect-ratio: 1.32 / 1; gap: 5px; padding: 5px; }
+}
+
+/* Never zoom the owner-supplied product photographs to manufacture detail. */
+.category-card img[src*="heart-diya.jpg"],
+.product-image-wrap img[src*="heart-diya.jpg"],
+.category-card img[src*="simini.jpg"],
+.product-image-wrap img[src*="simini.jpg"] {
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  background: #e8dfd2;
+}
+.category-card:hover img[src*="heart-diya.jpg"],
+.product-card:hover .product-image-wrap img[src*="heart-diya.jpg"],
+.category-card:hover img[src*="simini.jpg"],
+.product-card:hover .product-image-wrap img[src*="simini.jpg"] {
+  transform: none;
+}
+
+/* Search feedback and a short, factual shopping path replace repeated brand slogans. */
+.product-result-count {
+  margin: 16px 0 -8px;
+  color: rgba(248,242,232,.65);
+  font-size: 10px;
+  letter-spacing: .04em;
+}
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.empty-state[hidden] { display: none; }
+.empty-state a {
+  color: #f0c49d;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.how-to-shop {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: clamp(35px, 6vw, 80px);
+  align-items: center;
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+.how-to-heading h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.5vw, 55px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.04em;
+}
+.how-to-heading h2 em { color: var(--clay); }
+.how-to-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.how-to-step {
+  min-width: 0;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 17px 18px;
+  border: 1px solid rgba(41,40,32,.13);
+  background: rgba(255,253,248,.58);
+}
+.how-to-number {
+  color: var(--clay);
+  font-family: var(--serif);
+  font-size: 17px;
+}
+.how-to-step h3 {
+  margin: 13px 0 7px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.how-to-step p {
+  margin: 0 0 15px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.65;
+}
+.how-to-step a {
+  margin-top: auto;
+  color: var(--clay-dark);
+  font-size: 9px;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+.how-to-step a:hover { text-decoration: underline; }
+@media (max-width: 980px) {
+  .how-to-shop { grid-template-columns: 1fr; gap: 27px; }
+}
+@media (max-width: 700px) {
+  .how-to-shop { padding-top: 68px; padding-bottom: 68px; gap: 24px; }
+  .how-to-steps { grid-template-columns: 1fr; gap: 9px; }
+  .how-to-step { min-height: 0; padding: 16px; }
+  .how-to-step h3 { margin-top: 8px; font-size: 18px; }
+  .how-to-step p { margin-bottom: 10px; font-size: 11px; }
+  .product-result-count { margin: 12px 0 -7px; }
+}
