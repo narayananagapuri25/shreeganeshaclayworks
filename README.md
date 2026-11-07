@@ -18,7 +18,7 @@ A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 ## Contact numbers
 
 - Primary call / WhatsApp number: **+91 94934 04602**. Website enquiries are directed here.
-- Alternate number: **+91 85555896577**, displayed exactly as printed on the supplied shop poster. It is currently display-only because the printed number has 11 digits after the country code and must be confirmed before creating a tap-to-call or WhatsApp link.
+- Alternate call / WhatsApp number: **+91 85558 96577**. Both direct phone and WhatsApp links are enabled.
 
 ## Pricing and inventory notes
 
@@ -31,7 +31,7 @@ Some product photographs show bag or box quantities (for example 500-piece bags 
 1. Confirm all price-chart entries and product names with the shop.
 2. Confirm the exact product range, stock, packaging and bulk-order terms.
 3. Review the Telugu wording and all product descriptions.
-4. Confirm the alternate mobile number before making it clickable.
+4. Both contact numbers are confirmed and linked for calls and WhatsApp.
 5. Add verified opening hours, social links and any confirmed delivery/pickup information.
 6. Complete Android and desktop visual review, then test every WhatsApp and map link.
 
