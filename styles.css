@@ -917,3 +917,53 @@ main [id] { scroll-margin-top: 96px; }
   .how-to-step p { margin-bottom: 10px; font-size: 11px; }
   .product-result-count { margin: 12px 0 -7px; }
 }
+
+
+/* Product photography: show complete real objects on one quiet, warm canvas. */
+.hero-gallery img {
+  object-fit: contain;
+  padding: 10px;
+  background: #f1eadf;
+}
+.hero-gallery img[src*="simini.jpg"] { padding: 4px; }
+.hero-gallery img[src*="stand-agul.jpg"] { padding: 13px; }
+
+.product-image-wrap {
+  background: #eee6da;
+}
+.product-image-wrap img {
+  object-fit: contain;
+  object-position: center;
+  padding: 10px;
+}
+.product-image-wrap img[src*="heart-diya.jpg"] {
+  object-fit: cover;
+  object-position: center 85%;
+  padding: 0;
+  background: #e6ddd1;
+}
+.product-image-wrap img[src*="store-stock.jpg"] {
+  object-fit: cover;
+  padding: 0;
+}
+.product-image-wrap img[src*="simini.jpg"] { padding: 6px; }
+.product-card:hover .product-image-wrap img[src*="heart-diya.jpg"],
+.product-card:hover .product-image-wrap img[src*="simini.jpg"] {
+  transform: none;
+}
+.category-card img[src*="heart-diya.jpg"] {
+  object-fit: cover;
+  object-position: center 85%;
+  transform: none;
+}
+.category-card:hover img[src*="heart-diya.jpg"] { transform: none; }
+.category-card img[src*="simini.jpg"] {
+  object-fit: contain;
+  background: #e8dfd2;
+}
+.category-card:hover img[src*="simini.jpg"] { transform: none; }
+
+/* Keep the real photos crisp at native size; never use browser zoom to fake detail. */
+.hero-gallery img, .category-card img, .product-image-wrap img, .story-image-wrap img {
+  image-rendering: auto;
+}
