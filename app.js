@@ -24,8 +24,8 @@ const products = [
     category: "idols",
     name: { en: "Pooja & other clay items", te: "పూజా & ఇతర మట్టి వస్తువులు" },
     description: {
-      en: "Illustrative clay Ganesha idol image. Ask us about the actual pooja pieces, idols and designs currently available at the shop.",
-      te: "ఉదాహరణ కోసం రూపొందించిన మట్టి గణేశ విగ్రహం చిత్రం. దుకాణంలో ప్రస్తుతం ఉన్న పూజా వస్తువులు, విగ్రహాలు, నమూనాల గురించి అడగండి."
+      en: "A view of the shop’s clay products. Ask us about actual idols, pooja pieces and designs currently available.",
+      te: "దుకాణంలోని మట్టి వస్తువుల చిత్రం. ప్రస్తుతం అందుబాటులో ఉన్న విగ్రహాలు, పూజా వస్తువులు, నమూనాల గురించి అడగండి."
     },
     categoryLabel: { en: "Pooja & more", te: "పూజ & ఇతర వస్తువులు" },
     price: { en: "Ask about current designs & prices", te: "ప్రస్తుత నమూనాలు, ధరల కోసం అడగండి" },
