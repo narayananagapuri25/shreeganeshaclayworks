@@ -6,7 +6,7 @@ A mobile-first digital showroom for traditional clay products, based in Mancheri
 
 A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 
-- Responsive storefront and category-led discovery for diyas, agul, stand agul, simini lamps, cooking vessels and water pots.
+- Responsive storefront and category-led discovery for clay idols and pooja pieces, diyas, agul, stand agul, simini lamps, cooking vessels and water pots.
 - Product search and category filtering.
 - English / Telugu language toggle.
 - Shop-supplied diya and pottery rate chart, with item-specific WhatsApp enquiry links.
