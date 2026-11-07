@@ -17,6 +17,7 @@ const requiredFiles = [
   "assets/products/plain-agul.jpg",
   "assets/products/stand-agul.jpg",
   "assets/products/store-stock.jpg",
+  "assets/products/simini.jpg",
 ];
 for (const file of requiredFiles) await access(path.join(root, file));
 
