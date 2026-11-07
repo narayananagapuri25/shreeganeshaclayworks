@@ -178,7 +178,7 @@ const translations = {
     rateIntro: "Prices below are transcribed from the rate chart supplied by the shop. Choose a design, then message us to confirm today's rate and availability.",
     rateDisclaimer: "Prices are from the supplied rate chart and may change. Please confirm the current price, quantity and availability on WhatsApp before visiting or placing an order. Dozen prices are shown exactly as printed in the chart.",
     rateItem: "Product / size", rateSingle: "Single piece", rateDozen: "Dozen",
-    rateAsk: "Ask about this item",
+    rateAsk: "Ask about this item", rateEnquire: "Ask on WhatsApp",
     storyImageCaption: "A look inside our store", storyEyebrow: "OUR LOVE FOR CLAY",
     storyTitle: "Some things feel<br>like <em>coming home.</em>",
     storyText: "Clay has always been part of the way we cook, celebrate, pray and bring warmth into our homes. At Shree Ganesha Clay Works, we bring together traditional clay products for everyday moments and special occasions.",
@@ -193,8 +193,8 @@ const translations = {
     addressLabel: "FIND OUR STORE", directionsButton: "Get directions", messageButton: "Message the store",
     visitCardTitle: "LET'S TALK CLAY",
     visitCardText: "Questions about a product or looking for something specific? We are just a message away.",
-    phoneLabel: "CALL / WHATSAPP", secondPhoneLabel: "ALTERNATE CONTACT", whatsappButton: "Chat with us on WhatsApp",
-    contactNote: "Availability and response times may vary. We will confirm your enquiry directly.",
+    phoneLabel: "CALL / WHATSAPP", secondPhoneLabel: "ALTERNATE NUMBER (AS PRINTED)", whatsappButton: "Chat with us on WhatsApp",
+    contactNote: "The alternate number is displayed as printed on the shop poster. Enquiries through this website go to the primary WhatsApp number.",
     closingEyebrow: "SHREE GANESHA CLAY WORKS · MANCHERIAL",
     closingTitle: "Choose clay.<br><em>Keep tradition close.</em>",
     closingLink: "Explore the collections", footerTagline: "Experience the tradition of clay.",
@@ -225,7 +225,7 @@ const translations = {
     rateIntro: "దుకాణం అందించిన ధరల పట్టిక నుంచి క్రింది ధరలను నమోదు చేశాము. ప్రస్తుత ధర మరియు లభ్యత కోసం వాట్సాప్‌లో నిర్ధారించుకోండి.",
     rateDisclaimer: "ఈ ధరలు అందించిన ధరల పట్టిక ఆధారంగా ఉన్నాయి; మారవచ్చు. ఆర్డర్ లేదా దుకాణ సందర్శనకు ముందు ప్రస్తుత ధర, పరిమాణం మరియు లభ్యతను వాట్సాప్‌లో నిర్ధారించుకోండి. డజను ధరలు పట్టికలో ఉన్నట్లుగానే చూపించబడ్డాయి.",
     rateItem: "వస్తువు / సైజు", rateSingle: "ఒక్కటి", rateDozen: "డజను",
-    rateAsk: "ఈ వస్తువు గురించి అడగండి",
+    rateAsk: "ఈ వస్తువు గురించి అడగండి", rateEnquire: "వాట్సాప్‌లో అడగండి",
     storyImageCaption: "మా దుకాణంలోని ఒక చూపు", storyEyebrow: "మట్టిపై మా అభిమానం",
     storyTitle: "కొన్ని వస్తువులు<br><em>ఇంటిలా అనిపిస్తాయి.</em>",
     storyText: "వంట, పండుగలు, పూజలు మరియు మన ఇళ్లలో ఆప్యాయతను నింపడంలో మట్టికి ఎప్పటి నుంచో ప్రత్యేక స్థానం ఉంది. ష్రీ గణేశ క్లే వర్క్స్‌లో రోజువారీ అవసరాలు మరియు ప్రత్యేక సందర్భాల కోసం సంప్రదాయ మట్టి వస్తువులను అందిస్తున్నాము.",
@@ -240,8 +240,8 @@ const translations = {
     addressLabel: "మా దుకాణం చిరునామా", directionsButton: "దారి తెలుసుకోండి", messageButton: "దుకాణానికి సందేశం పంపండి",
     visitCardTitle: "మట్టి వస్తువుల గురించి మాట్లాడుకుందాం",
     visitCardText: "ఏదైనా వస్తువు గురించి వివరాలు కావాలా? మీకు కావలసినది వెతుకుతున్నారా? మేము ఒక సందేశం దూరంలో ఉన్నాము.",
-    phoneLabel: "ఫోన్ / వాట్సాప్", secondPhoneLabel: "మరో సంప్రదింపు నంబర్", whatsappButton: "వాట్సాప్‌లో మాట్లాడండి",
-    contactNote: "లభ్యత మరియు స్పందన సమయం మారవచ్చు. మీ వివరాలను మేము నేరుగా నిర్ధారిస్తాము.",
+    phoneLabel: "ఫోన్ / వాట్సాప్", secondPhoneLabel: "పోస్టర్‌లో ముద్రించిన ప్రత్యామ్నాయ నంబర్", whatsappButton: "వాట్సాప్‌లో మాట్లాడండి",
+    contactNote: "ప్రత్యామ్నాయ నంబర్ దుకాణం పోస్టర్‌లో ఉన్నట్లుగానే చూపించబడింది. ఈ వెబ్‌సైట్ ద్వారా పంపే వాట్సాప్ సందేశాలు ప్రధాన నంబర్‌కు వెళ్తాయి.",
     closingEyebrow: "ష్రీ గణేశ క్లే వర్క్స్ · మంచిర్యాల",
     closingTitle: "మట్టిని ఎంచుకోండి.<br><em>సంప్రదాయాన్ని నిలుపుకోండి.</em>",
     closingLink: "సేకరణలను చూడండి", footerTagline: "మట్టి సంప్రదాయాన్ని అనుభవించండి.",
@@ -314,13 +314,23 @@ function renderRateGroups() {
   const language = activeLanguage;
   rateGroupsElement.innerHTML = rateGroups.map(function (group) {
     const rows = group.rows.map(function (row) {
+      const rateSummary = group.noDozen
+        ? row[1]
+        : row[1] + " per piece / " + row[2] + " per dozen";
+      const message = "Hello " + SHOP.name + "! I would like to enquire about " +
+        row[0] + " (printed rate: " + rateSummary +
+        "). Please confirm today's price, available quantity and stock.";
       return '<tr><th scope="row">' + row[0] + '</th><td>' + row[1] + '</td>' +
-        (group.noDozen ? '' : '<td>' + row[2] + '</td>') + '</tr>';
+        (group.noDozen ? '' : '<td>' + row[2] + '</td>') +
+        '<td><a class="rate-enquire" href="' + waUrl(message) +
+        '" target="_blank" rel="noopener noreferrer">' +
+        translations[language].rateEnquire + '<span aria-hidden="true"> ↗</span></a></td></tr>';
     }).join("");
     return '<section class="rate-card"><h3>' + group.title[language] + '</h3><div class="rate-table-wrap">' +
       '<table class="rate-table"><thead><tr><th scope="col">' + translations[language].rateItem + '</th>' +
       '<th scope="col">' + translations[language].rateSingle + '</th>' +
       (group.noDozen ? '' : '<th scope="col">' + translations[language].rateDozen + '</th>') +
+      '<th scope="col">' + translations[language].rateEnquire + '</th>' +
       '</tr></thead><tbody>' + rows + '</tbody></table></div></section>';
   }).join("");
 }
