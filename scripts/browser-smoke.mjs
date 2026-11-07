@@ -94,7 +94,7 @@ try {
   const toggle = page.locator(".menu-toggle");
   await toggle.click();
   assert.equal(await toggle.getAttribute("aria-expanded"), "true", "Mobile menu should open");
-  await page.locator(".hero").click({ position: { x: 8, y: 8 } });
+  await page.locator(".site-header .brand").click();
   assert.equal(await toggle.getAttribute("aria-expanded"), "false", "Mobile menu should close after tapping outside");
   const mobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
   assert.equal(mobileOverflow, false, "Mobile page must not overflow horizontally");
