@@ -1,89 +1,154 @@
-/* Shree Ganesha Clay Works — lightweight catalogue and WhatsApp enquiries.
-   Update the primary WhatsApp number here after the owner confirms it. */
+/* Shree Ganesha Clay Works — product catalogue, published rate guide and WhatsApp enquiries. */
 const SHOP = {
   name: "Shree Ganesha Clay Works",
-  whatsappNumber: "919493404602",
-  alternatePhone: "+9185558596577"
+  whatsappNumber: "919493404602"
 };
 
 const products = [
   {
-    id: "clay-idols",
-    category: "idols",
-    name: { en: "Clay idols for home & pooja", te: "ఇంటి పూజ కోసం మట్టి విగ్రహాలు" },
-    description: {
-      en: "Ask us about the available traditional idols, designs and sizes.",
-      te: "అందుబాటులో ఉన్న సంప్రదాయ విగ్రహాలు, డిజైన్లు మరియు సైజుల గురించి అడగండి."
-    },
-    categoryLabel: { en: "Devotion & decor", te: "పూజ & అలంకరణ" },
-    tag: { en: "Explore the range", te: "సేకరణను చూడండి" },
-    image: "https://images.unsplash.com/photo-1708368951853-3f33c050e687?auto=format&fit=crop&w=900&q=82",
-    alt: "Earth-toned clay pottery display"
-  },
-  {
-    id: "diyas",
+    id: "heart-diya",
     category: "diyas",
-    name: { en: "Traditional diyas & lamps", te: "సంప్రదాయ మట్టి దీపాలు" },
+    name: { en: "Heart-shaped diya", te: "హృదయ ఆకారపు మట్టి దీపం" },
     description: {
-      en: "Explore clay lamps and festive pieces for pooja and celebrations.",
-      te: "పూజలు మరియు పండుగల కోసం మట్టి దీపాలు, అలంకరణ వస్తువులను చూడండి."
+      en: "A small traditional diya with a heart-shaped design.",
+      te: "హృదయ ఆకారంలో తయారు చేసిన సంప్రదాయ మట్టి దీపం."
     },
-    categoryLabel: { en: "Light & celebration", te: "వెలుగు & వేడుకలు" },
-    tag: { en: "Festive favourites", te: "పండుగ ప్రత్యేకం" },
-    image: "https://images.unsplash.com/photo-1755752914975-196f46552b7c?auto=format&fit=crop&w=900&q=82",
-    alt: "Decorative terracotta diyas"
+    categoryLabel: { en: "Clay diya", te: "మట్టి దీపం" },
+    price: "₹3.00 / piece · ₹30 / dozen",
+    image: "assets/products/heart-diya.jpg",
+    alt: "Heart-shaped terracotta diya supplied by the shop"
   },
   {
-    id: "cookware",
-    category: "cookware",
+    id: "plain-agul",
+    category: "agul",
+    name: { en: "Plain agul", te: "సాదా అగులు" },
+    description: {
+      en: "Traditional agul designs. Ask us about available sizes and finishes.",
+      te: "సంప్రదాయ అగులు డిజైన్లు. అందుబాటులో ఉన్న సైజులు, నమూనాల కోసం అడగండి."
+    },
+    categoryLabel: { en: "Traditional clayware", te: "సంప్రదాయ మట్టి వస్తువులు" },
+    price: "Enquire for current price",
+    image: "assets/products/plain-agul.jpg",
+    alt: "Plain agul clay pieces"
+  },
+  {
+    id: "stand-agul",
+    category: "stand",
+    name: { en: "Stand agul", te: "స్టాండ్ అగులు" },
+    description: {
+      en: "Stand designs in different numbered sizes, as shown in the shop's catalogue.",
+      te: "దుకాణం కేటలాగ్‌లో చూపిన వివిధ నంబర్ల సైజుల్లో స్టాండ్ అగులు."
+    },
+    categoryLabel: { en: "Stand designs", te: "స్టాండ్ నమూనాలు" },
+    price: "₹8–₹40 / piece · variants differ",
+    image: "assets/products/stand-agul.jpg",
+    alt: "Terracotta stand agul from the shop"
+  },
+  {
+    id: "simini",
+    category: "simini",
+    name: { en: "B/Simini & C/Simini lamps", te: "బి / సి సిమిని దీపాలు" },
+    description: {
+      en: "Clay simini lamp bases. Please ask about the glass chimney and current combinations.",
+      te: "మట్టి సిమిని దీపాల బేస్‌లు. గాజు చిమ్నీ మరియు అందుబాటులో ఉన్న రకాల గురించి అడగండి."
+    },
+    categoryLabel: { en: "Clay lamps", te: "మట్టి దీపాలు" },
+    price: "C/Simini ₹50 · B/Simini ₹60",
+    image: "assets/products/simini.jpg",
+    alt: "Traditional clay simini lamp base"
+  },
+  {
+    id: "cooking-vessels",
+    category: "pots",
     name: { en: "Clay cooking vessels", te: "మట్టి వంట పాత్రలు" },
     description: {
-      en: "Ask about traditional cooking pots, handi and other kitchenware.",
-      te: "సంప్రదాయ వంట కుండలు, హాండీలు మరియు ఇతర వంట పాత్రల గురించి అడగండి."
+      en: "Cooking vessels listed in the supplied rate chart, from ½ litre to 5 litres.",
+      te: "సరఫరా చేసిన ధరల పట్టికలో ఉన్న ½ లీటర్ నుంచి 5 లీటర్ల వంట పాత్రలు."
     },
-    categoryLabel: { en: "For the kitchen", te: "వంటగది కోసం" },
-    tag: { en: "Everyday cooking", te: "రోజువారీ వంట" },
-    image: "https://images.unsplash.com/photo-1749359669134-289058a33c63?auto=format&fit=crop&w=900&q=82",
-    alt: "Clay cooking pot over a small fire"
+    categoryLabel: { en: "Kitchen collection", te: "వంటగది సేకరణ" },
+    price: "₹100–₹300 / piece · capacity varies",
+    image: "assets/products/store-stock.jpg",
+    alt: "Clay products displayed in the shop"
   },
   {
-    id: "water",
-    category: "water",
-    name: { en: "Earthen water pots", te: "మట్టి కుండలు" },
+    id: "water-pots",
+    category: "pots",
+    name: { en: "Clay water pots & Ranjan", te: "మట్టి నీటి కుండలు & రంజన్" },
     description: {
-      en: "Ask us about water pots, matkas, lids and available capacities.",
-      te: "నీటి కుండలు, మూతలు మరియు అందుబాటులో ఉన్న పరిమాణాల గురించి అడగండి."
+      en: "Water pots listed in 8, 12, 15 and 20 litre sizes, plus Ranjan.",
+      te: "8, 12, 15, 20 లీటర్ల నీటి కుండలు మరియు రంజన్."
     },
     categoryLabel: { en: "Home essentials", te: "ఇంటి అవసరాలు" },
-    tag: { en: "Explore sizes", te: "సైజులు తెలుసుకోండి" },
-    image: "https://images.unsplash.com/photo-1755798321597-06341c6c7dee?auto=format&fit=crop&w=900&q=82",
-    alt: "Traditional terracotta pot with lid"
+    price: "₹150–₹300 / pot · Ranjan ₹250–₹300",
+    image: "assets/products/store-stock.jpg",
+    alt: "Clay stock inside Shree Ganesha Clay Works"
+  }
+];
+
+const rateGroups = [
+  {
+    title: { en: "Numbered diyas", te: "నంబర్ మట్టి దీపాలు" },
+    rows: [
+      ["Diya No. 1", "₹1.50", "₹15"],
+      ["Diya No. 2", "₹2.00", "₹20"],
+      ["Diya No. 3", "₹2.50", "₹25"],
+      ["Diya No. 4", "₹3.00", "₹30"],
+      ["Diya No. 5", "₹4.00", "₹40"],
+      ["Diya No. 6", "₹7.00", "₹70"],
+      ["Diya No. 7", "₹9.00", "₹90"],
+      ["Diya No. 8", "₹15.00", "₹150"],
+      ["Diya No. 9", "₹18.00", "₹180"],
+      ["Diya No. 10", "₹20.00", "₹200"],
+      ["Diya No. 12", "₹35.00", "₹350"],
+      ["1/2 Ltr", "₹75.00", "₹750"]
+    ]
   },
   {
-    id: "tableware",
-    category: "tableware",
-    name: { en: "Cups, bowls & tableware", te: "మట్టి కప్పులు, గిన్నెలు & పాత్రలు" },
-    description: {
-      en: "Discover clay cups, bowls, serving pieces and other tableware.",
-      te: "మట్టి కప్పులు, గిన్నెలు, వడ్డించే పాత్రలు మరియు ఇతర వస్తువులను చూడండి."
-    },
-    categoryLabel: { en: "Gather around", te: "కలిసి భోజనం" },
-    tag: { en: "For the table", te: "భోజనపు బల్ల కోసం" },
-    image: "https://images.unsplash.com/photo-1708368951853-3f33c050e687?auto=format&fit=crop&w=900&q=82",
-    alt: "Clay bowls and traditional vessels"
+    title: { en: "Special diyas & designs", te: "ప్రత్యేక మట్టి దీపాలు & నమూనాలు" },
+    rows: [
+      ["Colour Diya — Single", "₹12.00", "₹120"],
+      ["Colour Diya — Double", "₹25.00", "₹250"],
+      ["Colour Diya — 4 Face", "₹50.00", "₹500"],
+      ["Pot & Thulasi", "₹100.00", "₹1,000"],
+      ["Heart Shape", "₹3.00", "₹30"],
+      ["No. 4 Stand", "₹8.00", "₹80"],
+      ["No. 5 Stand", "₹10.00", "₹100"],
+      ["No. 6 Stand", "₹15.00", "₹150"],
+      ["No. 7 Stand", "₹20.00", "₹200"],
+      ["No. 8 Stand", "₹25.00", "₹250"],
+      ["B/Star", "₹6.00", "₹60"],
+      ["No. 7 Star", "₹10.00", "₹100"],
+      ["No. 10 Star", "₹20.00", "₹200"],
+      ["C/Stand", "₹25.00", "₹250"],
+      ["B/Stand", "₹40.00", "₹400"],
+      ["No. 5 Star Stand", "₹10.00", "₹100"],
+      ["Cone", "₹45.00", "₹450"],
+      ["B/Tulasi", "₹30.00", "₹300"],
+      ["C/Simini", "₹50.00", "₹500"],
+      ["B/Simini", "₹60.00", "₹600"]
+    ]
   },
   {
-    id: "garden",
-    category: "garden",
-    name: { en: "Garden & home pieces", te: "తోట & ఇంటి అలంకరణ వస్తువులు" },
-    description: {
-      en: "Ask about clay planters, decorative pots and other home pieces.",
-      te: "మట్టి మొక్కల కుండీలు, అలంకరణ కుండీలు మరియు ఇతర వస్తువుల గురించి అడగండి."
-    },
-    categoryLabel: { en: "A touch of earth", te: "మట్టితో అందం" },
-    tag: { en: "For your space", te: "మీ ఇంటి కోసం" },
-    image: "https://images.unsplash.com/photo-1755798321597-06341c6c7dee?auto=format&fit=crop&w=900&q=82",
-    alt: "Earth-toned terracotta vessels"
+    title: { en: "Clay cooking vessels · పంట పాత్రలు", te: "మట్టి వంట పాత్రలు" },
+    noDozen: true,
+    rows: [
+      ["5 L", "₹300", ""],
+      ["3 L", "₹250", ""],
+      ["2 L", "₹200", ""],
+      ["1 L", "₹150", ""],
+      ["1/2 L", "₹100", ""]
+    ]
+  },
+  {
+    title: { en: "Clay water pots · నీటి కుండలు", te: "మట్టి నీటి కుండలు" },
+    noDozen: true,
+    rows: [
+      ["20 L", "₹300", ""],
+      ["15 L", "₹250", ""],
+      ["12 L", "₹200", ""],
+      ["8 L", "₹150", ""],
+      ["Ranjan", "₹250–₹300", ""]
+    ]
   }
 ];
 
@@ -91,25 +156,30 @@ const translations = {
   en: {
     announcement: "Traditional clayware • Mancherial, Telangana",
     announcementLink: "Visit our store",
-    navHome: "Home", navProducts: "Collections", navStory: "Our story", navVisit: "Visit us",
+    navHome: "Home", navProducts: "Collections", navRates: "Rate chart", navStory: "Our story", navVisit: "Visit us",
     navEnquire: "Enquire on WhatsApp", heroEyebrow: "THE BEAUTY OF EARTHEN CRAFT",
     heroTitle: "Made of earth.<br><em>Rooted in tradition.</em>",
-    heroText: "Discover clay idols, diyas, cooking ware and timeless pieces that bring a little more meaning to everyday moments.",
+    heroText: "Explore traditional diyas, agul, simini lamps, cooking vessels and water pots from our Mancherial store.",
     exploreButton: "Explore collections", visitButton: "Find our store",
     heroNote: "A celebration of clay, culture & everyday living",
     stripOne: "Clay for your home", stripTwo: "Tradition for your rituals", stripThree: "Warmth for your table", stripFour: "A store to explore",
     categoryEyebrow: "EXPLORE THE STORE", categoryTitle: "Find your kind<br><em>of clay.</em>",
-    categoryText: "From meaningful little details to pieces made for everyday use, find a collection that feels at home with you.",
-    category01: "DEVOTION & DECOR", category02: "LIGHT & CELEBRATION", category03: "MADE FOR THE KITCHEN",
-    category04: "EVERYDAY ESSENTIALS", category05: "GATHER AROUND", category06: "A TOUCH OF EARTH",
-    catIdols: "Clay idols", catDiyas: "Diyas & lamps", catCookware: "Cooking ware",
-    catWater: "Water pots", catTableware: "Cups & tableware", catGarden: "Garden & home",
+    categoryText: "Browse real product photographs from our store, then contact us directly for current designs and availability.",
+    category01: "POOJA & FESTIVAL", category02: "TRADITIONAL DESIGNS", category03: "STAND DESIGNS",
+    category04: "LAMPS & SIMINI", category05: "KITCHEN & HOME", category06: "HOME ESSENTIALS",
+    catDiyas: "Clay diyas", catAgul: "Agul", catStand: "Stand agul", catSimini: "Simini lamps",
+    catCookware: "Cooking ware", catWater: "Water pots",
     collectionEyebrow: "A CLOSER LOOK", collectionTitle: "A collection for<br><em>every occasion.</em>",
-    collectionText: "Browse a few of the collections you can explore at our store. Message us to check current designs, sizes and availability.",
+    collectionText: "A selection of product types from Shree Ganesha Clay Works. Message us to confirm designs, sizes and availability.",
     filterAll: "All collections", searchPlaceholder: "Search collections",
     emptyState: "No matching collections. Try another search.",
-    collectionFootnote: "These are representative collection examples. Please enquire for actual designs, sizes, prices and availability.",
-    storyImageCaption: "The timeless touch of clay", storyEyebrow: "OUR LOVE FOR CLAY",
+    collectionFootnote: "Pack quantities appearing in some shared product photos are reference pack sizes only, not a live stock count.",
+    rateEyebrow: "SHOP PRICE GUIDE", rateTitle: "A clear price for<br><em>every little light.</em>",
+    rateIntro: "Prices below are transcribed from the rate chart supplied by the shop. Choose a design, then message us to confirm today's rate and availability.",
+    rateDisclaimer: "Prices are from the supplied rate chart and may change. Please confirm the current price, quantity and availability on WhatsApp before visiting or placing an order. Dozen prices are shown exactly as printed in the chart.",
+    rateItem: "Product / size", rateSingle: "Single piece", rateDozen: "Dozen",
+    rateAsk: "Ask about this item",
+    storyImageCaption: "A look inside our store", storyEyebrow: "OUR LOVE FOR CLAY",
     storyTitle: "Some things feel<br>like <em>coming home.</em>",
     storyText: "Clay has always been part of the way we cook, celebrate, pray and bring warmth into our homes. At Shree Ganesha Clay Works, we bring together traditional clay products for everyday moments and special occasions.",
     storyTextTwo: "Step inside, explore the collections and talk to us about the pieces you are looking for. We will be happy to help you find the right one.",
@@ -128,31 +198,35 @@ const translations = {
     closingEyebrow: "SHREE GANESHA CLAY WORKS · MANCHERIAL",
     closingTitle: "Choose clay.<br><em>Keep tradition close.</em>",
     closingLink: "Explore the collections", footerTagline: "Experience the tradition of clay.",
-    footerLocation: "Mancherial, Telangana, India", backTop: "Back to top ↑", floatingWhatsapp: "WhatsApp us",
-    askCollection: "Ask about this collection", exploreRange: "Explore the range"
+    footerLocation: "Mancherial, Telangana, India", backTop: "Back to top ↑", floatingWhatsapp: "WhatsApp us"
   },
   te: {
     announcement: "సంప్రదాయ మట్టి వస్తువులు • మంచిర్యాల, తెలంగాణ",
     announcementLink: "మా దుకాణాన్ని సందర్శించండి",
-    navHome: "హోమ్", navProducts: "సేకరణలు", navStory: "మా గురించి", navVisit: "మా దుకాణం",
+    navHome: "హోమ్", navProducts: "సేకరణలు", navRates: "ధరల పట్టిక", navStory: "మా గురించి", navVisit: "మా దుకాణం",
     navEnquire: "వాట్సాప్‌లో అడగండి", heroEyebrow: "మట్టి కళలోని అందం",
     heroTitle: "మట్టితో రూపం.<br><em>సంప్రదాయమే మా బలం.</em>",
-    heroText: "మట్టి విగ్రహాలు, దీపాలు, వంట పాత్రలు మరియు రోజువారీ జీవితానికి ప్రత్యేకతనిచ్చే సంప్రదాయ వస్తువులను చూడండి.",
+    heroText: "మంచిర్యాలలోని మా దుకాణంలో సంప్రదాయ దీపాలు, అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలను చూడండి.",
     exploreButton: "సేకరణలను చూడండి", visitButton: "మా దుకాణం",
     heroNote: "మట్టి, సంస్కృతి మరియు రోజువారీ జీవనానికి ఒక వేడుక",
     stripOne: "మీ ఇంటి కోసం మట్టి వస్తువులు", stripTwo: "మీ ఆచారాలకు సంప్రదాయం", stripThree: "మీ భోజనానికి ప్రత్యేకత", stripFour: "సందర్శించదగిన దుకాణం",
     categoryEyebrow: "మా దుకాణాన్ని చూడండి", categoryTitle: "మీకు నచ్చిన<br><em>మట్టి వస్తువులు.</em>",
-    categoryText: "రోజువారీ అవసరాల నుంచి ప్రత్యేక సందర్భాల వరకు, మీకు నచ్చిన సేకరణను ఎంచుకోండి.",
-    category01: "పూజ & అలంకరణ", category02: "వెలుగు & వేడుకలు", category03: "వంటగది కోసం",
-    category04: "రోజువారీ అవసరాలు", category05: "భోజనపు బల్ల కోసం", category06: "మట్టితో అందం",
-    catIdols: "మట్టి విగ్రహాలు", catDiyas: "మట్టి దీపాలు", catCookware: "వంట పాత్రలు",
-    catWater: "నీటి కుండలు", catTableware: "కప్పులు & పాత్రలు", catGarden: "తోట & ఇల్లు",
+    categoryText: "మా దుకాణంలోని నిజమైన ఉత్పత్తుల ఫోటోలను చూడండి. ప్రస్తుత నమూనాలు, సైజులు మరియు లభ్యత కోసం నేరుగా మమ్మల్ని సంప్రదించండి.",
+    category01: "పూజ & పండుగలు", category02: "సంప్రదాయ నమూనాలు", category03: "స్టాండ్ నమూనాలు",
+    category04: "దీపాలు & సిమిని", category05: "వంటగది & ఇల్లు", category06: "ఇంటి అవసరాలు",
+    catDiyas: "మట్టి దీపాలు", catAgul: "అగులు", catStand: "స్టాండ్ అగులు", catSimini: "సిమిని దీపాలు",
+    catCookware: "వంట పాత్రలు", catWater: "నీటి కుండలు",
     collectionEyebrow: "మరింత దగ్గరగా చూడండి", collectionTitle: "ప్రతి సందర్భానికి<br><em>ఒక సేకరణ.</em>",
-    collectionText: "మా దుకాణంలో చూడగలిగే కొన్ని సేకరణలను ఇక్కడ చూడండి. ప్రస్తుత డిజైన్లు, సైజులు మరియు లభ్యత కోసం మాకు సందేశం పంపండి.",
+    collectionText: "ష్రీ గణేశ క్లే వర్క్స్‌లో లభించే కొన్ని ఉత్పత్తుల రకాలు. నమూనాలు, సైజులు మరియు లభ్యత నిర్ధారించుకోవడానికి మాకు సందేశం పంపండి.",
     filterAll: "అన్ని సేకరణలు", searchPlaceholder: "సేకరణలను వెతకండి",
     emptyState: "సరిపోలే సేకరణలు లేవు. మరో పదంతో వెతకండి.",
-    collectionFootnote: "ఇవి సేకరణలకు ఉదాహరణలు మాత్రమే. అసలు డిజైన్లు, సైజులు, ధరలు మరియు లభ్యత కోసం దయచేసి అడగండి.",
-    storyImageCaption: "మట్టికి ఎప్పటికీ నిలిచే అందం", storyEyebrow: "మట్టిపై మా అభిమానం",
+    collectionFootnote: "కొన్ని ఉత్పత్తుల ఫోటోలలో కనిపించే బ్యాగ్ లేదా బాక్స్ పరిమాణాలు సూచన మాత్రమే; అవి ప్రస్తుత స్టాక్ సంఖ్యలు కావు.",
+    rateEyebrow: "దుకాణం ధరల గైడ్", rateTitle: "ప్రతి దీపానికి<br><em>స్పష్టమైన ధర.</em>",
+    rateIntro: "దుకాణం అందించిన ధరల పట్టిక నుంచి క్రింది ధరలను నమోదు చేశాము. ప్రస్తుత ధర మరియు లభ్యత కోసం వాట్సాప్‌లో నిర్ధారించుకోండి.",
+    rateDisclaimer: "ఈ ధరలు అందించిన ధరల పట్టిక ఆధారంగా ఉన్నాయి; మారవచ్చు. ఆర్డర్ లేదా దుకాణ సందర్శనకు ముందు ప్రస్తుత ధర, పరిమాణం మరియు లభ్యతను వాట్సాప్‌లో నిర్ధారించుకోండి. డజను ధరలు పట్టికలో ఉన్నట్లుగానే చూపించబడ్డాయి.",
+    rateItem: "వస్తువు / సైజు", rateSingle: "ఒక్కటి", rateDozen: "డజను",
+    rateAsk: "ఈ వస్తువు గురించి అడగండి",
+    storyImageCaption: "మా దుకాణంలోని ఒక చూపు", storyEyebrow: "మట్టిపై మా అభిమానం",
     storyTitle: "కొన్ని వస్తువులు<br><em>ఇంటిలా అనిపిస్తాయి.</em>",
     storyText: "వంట, పండుగలు, పూజలు మరియు మన ఇళ్లలో ఆప్యాయతను నింపడంలో మట్టికి ఎప్పటి నుంచో ప్రత్యేక స్థానం ఉంది. ష్రీ గణేశ క్లే వర్క్స్‌లో రోజువారీ అవసరాలు మరియు ప్రత్యేక సందర్భాల కోసం సంప్రదాయ మట్టి వస్తువులను అందిస్తున్నాము.",
     storyTextTwo: "మా దుకాణానికి వచ్చి సేకరణలను చూడండి. మీకు కావలసిన వస్తువుల గురించి మాతో మాట్లాడండి. సరైన వస్తువును ఎంచుకోవడంలో సంతోషంగా సహాయం చేస్తాము.",
@@ -171,8 +245,7 @@ const translations = {
     closingEyebrow: "ష్రీ గణేశ క్లే వర్క్స్ · మంచిర్యాల",
     closingTitle: "మట్టిని ఎంచుకోండి.<br><em>సంప్రదాయాన్ని నిలుపుకోండి.</em>",
     closingLink: "సేకరణలను చూడండి", footerTagline: "మట్టి సంప్రదాయాన్ని అనుభవించండి.",
-    footerLocation: "మంచిర్యాల, తెలంగాణ, భారతదేశం", backTop: "పైకి వెళ్లండి ↑", floatingWhatsapp: "వాట్సాప్ చేయండి",
-    askCollection: "ఈ సేకరణ గురించి అడగండి", exploreRange: "సేకరణను చూడండి"
+    footerLocation: "మంచిర్యాల, తెలంగాణ, భారతదేశం", backTop: "పైకి వెళ్లండి ↑", floatingWhatsapp: "వాట్సాప్ చేయండి"
   }
 };
 
@@ -183,13 +256,14 @@ let searchTerm = "";
 const productGrid = document.getElementById("product-grid");
 const emptyState = document.getElementById("empty-state");
 const searchInput = document.getElementById("product-search");
+const rateGroupsElement = document.getElementById("rate-groups");
 
 function waUrl(message) {
   return "https://wa.me/" + SHOP.whatsappNumber + "?text=" + encodeURIComponent(message);
 }
 
 function generalMessage() {
-  return "Hello " + SHOP.name + "! I would like to know more about your clay products and current collections. Please share details and availability.";
+  return "Hello " + SHOP.name + "! I would like to know more about your clay products. Please share current designs, prices and availability.";
 }
 
 function applyWhatsAppLinks() {
@@ -206,30 +280,25 @@ function renderProducts() {
     const matchesFilter = activeFilter === "all" || product.category === activeFilter;
     const searchable = [
       product.name.en, product.name.te, product.description.en, product.description.te,
-      product.categoryLabel.en, product.categoryLabel.te
+      product.categoryLabel.en, product.categoryLabel.te, product.price
     ].join(" ").toLowerCase();
     return matchesFilter && searchable.includes(searchTerm);
   });
 
   productGrid.innerHTML = visible.map(function (product) {
-    const name = product.name[language];
-    const description = product.description[language];
-    const categoryLabel = product.categoryLabel[language];
-    const tag = product.tag[language];
-    const action = translations[language].askCollection;
-    const message = "Hello " + SHOP.name + "! I am interested in your " + product.name.en + " collection. Please share current designs, sizes, prices and availability.";
-    const image = product.image;
+    const message = "Hello " + SHOP.name + "! I am interested in " + product.name.en + ". Please confirm the current price, available designs and stock.";
     return '<article class="product-card">' +
       '<div class="product-image-wrap">' +
-      '<img src="' + image + '" alt="' + product.alt + '" loading="lazy">' +
-      '<span class="product-tag">' + tag + '</span>' +
+      '<img src="' + product.image + '" alt="' + product.alt + '" loading="lazy">' +
+      '<span class="product-tag">' + product.categoryLabel[language] + '</span>' +
       '</div>' +
       '<div class="product-card-body">' +
-      '<span class="product-card-category">' + categoryLabel + '</span>' +
-      '<h3>' + name + '</h3>' +
-      '<p>' + description + '</p>' +
+      '<span class="product-card-category">' + product.categoryLabel[language] + '</span>' +
+      '<h3>' + product.name[language] + '</h3>' +
+      '<p>' + product.description[language] + '</p>' +
+      '<div class="product-price">' + product.price + '</div>' +
       '<a class="product-card-action" href="' + waUrl(message) + '" target="_blank" rel="noopener noreferrer">' +
-      '<span>' + action + '</span><span aria-hidden="true">↗</span></a>' +
+      '<span>' + translations[language].rateAsk + '</span><span aria-hidden="true">↗</span></a>' +
       '</div></article>';
   }).join("");
 
@@ -241,6 +310,21 @@ function renderProducts() {
   emptyState.hidden = visible.length !== 0;
 }
 
+function renderRateGroups() {
+  const language = activeLanguage;
+  rateGroupsElement.innerHTML = rateGroups.map(function (group) {
+    const rows = group.rows.map(function (row) {
+      return '<tr><th scope="row">' + row[0] + '</th><td>' + row[1] + '</td>' +
+        (group.noDozen ? '' : '<td>' + row[2] + '</td>') + '</tr>';
+    }).join("");
+    return '<section class="rate-card"><h3>' + group.title[language] + '</h3><div class="rate-table-wrap">' +
+      '<table class="rate-table"><thead><tr><th scope="col">' + translations[language].rateItem + '</th>' +
+      '<th scope="col">' + translations[language].rateSingle + '</th>' +
+      (group.noDozen ? '' : '<th scope="col">' + translations[language].rateDozen + '</th>') +
+      '</tr></thead><tbody>' + rows + '</tbody></table></div></section>';
+  }).join("");
+}
+
 function setLanguage(language) {
   if (!translations[language]) return;
   activeLanguage = language;
@@ -248,18 +332,12 @@ function setLanguage(language) {
 
   document.querySelectorAll("[data-i18n]").forEach(function (element) {
     const key = element.getAttribute("data-i18n");
-    if (translations[language][key] !== undefined) {
-      element.innerHTML = translations[language][key];
-    }
+    if (translations[language][key] !== undefined) element.innerHTML = translations[language][key];
   });
-
   document.querySelectorAll("[data-i18n-placeholder]").forEach(function (element) {
     const key = element.getAttribute("data-i18n-placeholder");
-    if (translations[language][key] !== undefined) {
-      element.placeholder = translations[language][key];
-    }
+    if (translations[language][key] !== undefined) element.placeholder = translations[language][key];
   });
-
   document.querySelectorAll("[data-lang]").forEach(function (button) {
     const selected = button.getAttribute("data-lang") === language;
     button.classList.toggle("is-active", selected);
@@ -267,6 +345,7 @@ function setLanguage(language) {
   });
 
   renderProducts();
+  renderRateGroups();
 }
 
 document.querySelectorAll("[data-filter]").forEach(function (button) {
@@ -327,3 +406,4 @@ document.addEventListener("keydown", function (event) {
 document.getElementById("current-year").textContent = new Date().getFullYear();
 applyWhatsAppLinks();
 renderProducts();
+renderRateGroups();
