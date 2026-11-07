@@ -280,3 +280,5 @@ img { display: block; max-width: 100%; }
 .image-failed { background: linear-gradient(135deg, #e7d6c4, #c68b65); }
 .image-failed img { display: none; }
 .contact-number { font-size: 15px; font-weight: 600; letter-spacing: .02em; }
+
+:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
