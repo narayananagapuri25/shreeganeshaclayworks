@@ -123,7 +123,9 @@ try {
   });
   assert.equal(diyaImageStyle.zoom, 1, "The original heart-diya photo must not be artificially zoomed");
   assert.equal(diyaImageStyle.clipPath, "none", "Do not reshape the original heart-diya photograph with an artificial mask");
-  assert.equal(diyaImageStyle.objectFit, "contain", "The complete original heart-diya photo should remain visible without cropping");
+    assert.equal(diyaImageStyle.objectFit, "cover", "The heart-diya source should fill its tile with a natural centre crop");
+  const siminiImageFit = await page.locator('.category-card[data-category-link="simini"] img').evaluate((element) => getComputedStyle(element).objectFit);
+  assert.equal(siminiImageFit, "contain", "The taller simini lamp photograph should remain fully visible");
   const storeAddress = await page.locator("address").innerText();
   assert.match(storeAddress, /Near Collectorate/i, "Store address should include the supplied landmark");
   assert.match(storeAddress, /Govt\. Dispensary/i, "Store address should include the supplied dispensary landmark");
