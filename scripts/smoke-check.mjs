@@ -95,7 +95,10 @@ assert.match(css, /prefers-reduced-motion/, "Reduced-motion support is missing")
 assert.match(css, /:focus-visible/, "Visible keyboard focus styling is missing");
 assert.match(css, /scroll-margin-top/, "Sticky-header anchor offset is missing");
 assert.match(html, /\+91 85555896577/, "The second poster number must remain displayed");
-assert.doesNotMatch(html, /tel:\+9185555896577|wa\.me\/9185555896577/, "Do not create a clickable link for the unverified 11-digit alternate number");
+assert.match(html, /tel:\+918555896577/, "Alternate contact must be clickable for phone calls");
+assert.match(html, /https:\/\/wa\.me\/918555896577/, "Alternate contact must be clickable for WhatsApp");
+assert.match(html, /\+91 85558 96577/, "Alternate contact must be displayed in the confirmed format");
+assert.doesNotMatch(html, /85555896577/, "The old misprinted alternate number must not remain");
 
 console.log("Site smoke checks passed.");
 console.log("- Required site files and real shop product photos exist");
