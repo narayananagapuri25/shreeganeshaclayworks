@@ -150,7 +150,7 @@ assert.match(html, /\+91 85558 96577/, "Alternate contact must be displayed in t
 assert.doesNotMatch(html, /85555896577/, "The old misprinted alternate number must not remain");
 
 console.log("Site smoke checks passed.");
-console.log("- Required site files and AI-generated illustrative product sheets exist");
+console.log("- Required site files and checked-in shop reference photographs exist");
 console.log("- In-page links and category filters are connected");
 console.log("- English/Telugu translation coverage is complete");
 console.log("- Product catalogue and WhatsApp enquiry generation are present");
