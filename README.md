@@ -56,6 +56,41 @@ GitHub Actions runs syntax checks, static content checks, and Playwright interac
 
 Open `index.html` in a modern browser. No build step or package installation is required.
 
-## Hosting
+## Cloudflare Pages deployment
 
-The repository is not connected to a domain or hosting provider. Hosting and domain setup will happen only after the website is reviewed and approved.
+This is a plain static HTML/CSS/JavaScript site. It has no framework, server runtime, build dependencies, or environment variables.
+
+Recommended Git-connected Pages settings:
+
+| Setting | Value |
+|---|---|
+| Git repository | `narayananagapuri25/shreeganeshaclayworks` |
+| Production branch | `main` |
+| Framework preset | `None` |
+| Root directory | Repository root (leave blank/default) |
+| Build command | `exit 0` (or leave blank if the dashboard accepts no build command) |
+| Build output directory | `.` |
+| Environment variables | None |
+
+### Connect GitHub to Cloudflare
+
+1. Sign in to the Cloudflare dashboard and open **Workers & Pages**.
+2. Choose **Create application → Pages → Connect to Git**.
+3. Connect GitHub and authorize the repository `narayananagapuri25/shreeganeshaclayworks`.
+4. Select the repository and enter the settings in the table above.
+5. Keep `main` as the production branch. Enable preview deployments for non-production branches so the open `feat/first-showcase` pull request can be inspected without publishing it to the production branch.
+6. Save and start the deployment. Cloudflare will provide a `*.pages.dev` address.
+
+Do not attach the custom domain until the pull request has been reviewed, the final code has been merged into `main`, and the Pages preview has passed the final desktop/mobile and contact-link review. With Git integration, new commits to the configured production branch trigger deployments automatically.
+
+### Add the custom domain
+
+After the production deployment is verified, open **Workers & Pages → your Pages project → Custom domains → Set up a domain**, enter the exact domain you own, and follow Cloudflare's activation instructions. An apex/root domain requires the domain to be added to Cloudflare and its nameservers pointed to Cloudflare; a subdomain can use the DNS record Cloudflare provides. Do not change existing DNS records until the exact domain and current email/DNS requirements have been checked.
+
+### Post-deployment checks
+
+- Open the `pages.dev` URL on desktop and Android.
+- Confirm the logo and every local product photo load.
+- Test English/Telugu switching, catalogue search, rates, both phone numbers, WhatsApp links, directions, and the 9 AM–7 PM opening hours.
+- Check that the flyer address appears exactly as supplied and that there is no horizontal overflow or missing image.
+- Add the custom domain only after those checks pass.
