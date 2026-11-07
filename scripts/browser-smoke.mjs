@@ -72,6 +72,13 @@ try {
 
   await page.locator('[data-filter="all"]').click();
   assert.equal(await page.locator(".rate-enquire").count(), 42, "Every displayed rate row should have an enquiry action");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(baseUrl, { waitUntil: "networkidle" });
+  const mobileRateOverflow = await page.locator("#rate-chart").evaluate((element) => element.scrollWidth > element.clientWidth);
+  assert.equal(mobileRateOverflow, false, "Mobile rate chart should fit without a sideways scrolling table");
+  assert.equal(await page.locator(".rate-enquire").first().isVisible(), true, "Mobile WhatsApp rate actions should remain visible");
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(baseUrl, { waitUntil: "networkidle" });
   const rateHref = await page.locator(".rate-enquire").first().getAttribute("href");
   assert.match(rateHref, /^https:\/\/wa\.me\/919493404602\?text=/, "Rate enquiry should target the primary WhatsApp number");
 
