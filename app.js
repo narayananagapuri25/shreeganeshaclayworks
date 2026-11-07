@@ -80,8 +80,8 @@ const products = [
     },
     categoryLabel: { en: "Kitchen collection", te: "వంటగది సేకరణ" },
     price: "₹100–₹300 / piece · capacity varies",
-    image: "assets/products/store-stock.jpg",
-    alt: "Clay products displayed in the shop"
+    image: "assets/products/cooking-vessels.jpg",
+    alt: "Clay cooking vessel shown in the shop rate chart"
   },
   {
     id: "water-pots",
@@ -93,8 +93,8 @@ const products = [
     },
     categoryLabel: { en: "Home essentials", te: "ఇంటి అవసరాలు" },
     price: "₹150–₹300 / pot · Ranjan ₹250–₹300",
-    image: "assets/products/store-stock.jpg",
-    alt: "Clay stock inside Shree Ganesha Clay Works"
+    image: "assets/products/water-pots.jpg",
+    alt: "Traditional clay water pot shown in the shop rate chart"
   }
 ];
 
