@@ -774,10 +774,13 @@ main [id] { scroll-margin-top: 96px; }
   object-fit: cover;
   background: #eee6dc;
 }
-.hero-gallery img[src*="heart-diya.jpg"],
 .hero-gallery img[src*="simini.jpg"] {
   object-fit: contain;
   background: #e6ddd0;
+}
+.hero-gallery img[src*="heart-diya.jpg"] {
+  object-fit: cover;
+  object-position: center 50%;
 }
 .hero-gallery img[src*="water-pots.jpg"] { object-position: center; }
 .hero-content { z-index: 2; }
@@ -803,7 +806,12 @@ main [id] { scroll-margin-top: 96px; }
 
 /* Never zoom the owner-supplied product photographs to manufacture detail. */
 .category-card img[src*="heart-diya.jpg"],
-.product-image-wrap img[src*="heart-diya.jpg"],
+.product-image-wrap img[src*="heart-diya.jpg"] {
+  object-fit: cover;
+  object-position: center 50%;
+  transform: none;
+  background: #e8dfd2;
+}
 .category-card img[src*="simini.jpg"],
 .product-image-wrap img[src*="simini.jpg"] {
   object-fit: contain;
