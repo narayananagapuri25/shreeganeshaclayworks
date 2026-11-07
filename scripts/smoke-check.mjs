@@ -95,6 +95,8 @@ assert.match(productsBlock[1], /name: \{ en: "Pooja & other clay items"/, "The s
 assert.equal([...productsBlock[1].matchAll(/price: \{\s*en:/g)].length, 7, "Every product card must have an English and Telugu price/availability label");
 assert.match(app, /product\.price\.en, product\.price\.te/, "Search must include translated product price guidance");
 assert.match(app, /product\.price\[language\]/, "Product price guidance must follow the selected language");
+assert.doesNotMatch(app, /class="product-tag"/, "Do not repeat category labels over product images");
+assert.match(css, /\.product-card-body\s*\{\s*display:\s*flex/, "Product cards should use equal-height body layout");
 assert.match(app, /visible\.length === 1[\s\S]*oneResult/, "Single-result search copy must use the singular form");
 assert.match(app, /oneResult: "Showing 1 result"/, "English singular result translation is missing");
 assert.match(app, /oneResult: "1 ఫలితం"/, "Telugu singular result translation is missing");
