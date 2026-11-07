@@ -100,7 +100,7 @@ assert.match(css, /\.product-card-body\s*\{\s*display:\s*flex/, "Product cards s
 assert.match(css, /object-fit:\s*contain\s*!important/, "All product photos must use full-item contain framing");
 assert.match(css, /\.category-label\s*\{[\s\S]*?position:\s*static/, "Category labels must sit below the photo, not over the product");
 assert.match(css, /\.category-card::after,[\s\S]*?display:\s*none/, "The photo-overlay gradient must not obscure products");
-assert.match(css, /\.hero-photo\s*\{\s*display:\s*none\s*\}/, "Do not crop the old stock photo as a full hero background");
+assert.match(css, /\.hero-photo\s*\{\s*display:\s*none\s*;?\s*\}/, "Do not crop the old stock photo as a full hero background");
 assert.match(app, /visible\.length === 1[\s\S]*oneResult/, "Single-result search copy must use the singular form");
 assert.match(app, /oneResult: "Showing 1 result"/, "English singular result translation is missing");
 assert.match(app, /oneResult: "1 ఫలితం"/, "Telugu singular result translation is missing");
