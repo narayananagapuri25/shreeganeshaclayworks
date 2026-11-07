@@ -420,8 +420,13 @@ main [id] { scroll-margin-top: 96px; }
 @media (max-width: 700px) {
   main [id] { scroll-margin-top: 82px; }
   .contact-number { font-size: 14px; }
-  .rate-table { min-width: 450px; }
-  .rate-table-wrap { -webkit-overflow-scrolling: touch; }
+  .rate-table { width: 100%; min-width: 0; table-layout: fixed; font-size: 8px; }
+  .rate-table th, .rate-table td { padding: 8px 4px; white-space: normal; overflow-wrap: anywhere; }
+  .rate-table thead th { font-size: 7px; line-height: 1.3; letter-spacing: 0; }
+  .rate-table th:first-child, .rate-table td:first-child { width: 34%; text-align: left; }
+  .rate-table tbody td:last-child { min-width: 0; }
+  .rate-enquire { font-size: 8px; line-height: 1.25; white-space: nowrap; }
+  .rate-table-wrap { overflow-x: visible; -webkit-overflow-scrolling: auto; }
 }
 
 .skip-link {
