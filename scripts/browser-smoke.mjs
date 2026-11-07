@@ -116,8 +116,7 @@ try {
   assert.equal(desktopCategoryColumns, 4, "Desktop categories should use a balanced four-column grid");
   const diyaImageStyle = await page.locator('.category-card[data-category-link="diyas"] img').evaluate((element) => {
     const style = getComputedStyle(element);
-    const match = style.transform.match(/^matrix\\(([^,]+)/);
-    return { zoom: match ? Number(match[1]) : 1, clipPath: style.clipPath, objectFit: style.objectFit };
+    const open = style.transform.indexOf("(");\n    const zoom = open >= 0 ? Number(style.transform.slice(open + 1).split(",")[0]) : 1;\n    return { zoom, clipPath: style.clipPath, objectFit: style.objectFit };
   });
   assert.ok(diyaImageStyle.zoom >= 1.2 && diyaImageStyle.zoom <= 1.35, "The heart-diya image should use a modest natural crop");
   assert.equal(diyaImageStyle.clipPath, "none", "Do not reshape the original heart-diya photograph with an artificial mask");
