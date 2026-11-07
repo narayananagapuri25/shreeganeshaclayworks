@@ -178,7 +178,7 @@ const translations = {
     rateIntro: "Prices below are transcribed from the rate chart supplied by the shop. Choose a design, then message us to confirm today's rate and availability.",
     rateDisclaimer: "Prices are from the supplied rate chart and may change. Please confirm the current price, quantity and availability on WhatsApp before visiting or placing an order. Dozen prices are shown exactly as printed in the chart.",
     rateItem: "Product / size", rateSingle: "Single piece", rateDozen: "Dozen",
-    rateAsk: "Ask about this item", rateEnquire: "Ask on WhatsApp",
+    rateAsk: "Ask about this item", rateEnquire: "WhatsApp", rateEnquireAction: "Ask",
     storyImageCaption: "A look inside our store", storyEyebrow: "OUR LOVE FOR CLAY",
     storyTitle: "Some things feel<br>like <em>coming home.</em>",
     storyText: "Clay has always been part of the way we cook, celebrate, pray and bring warmth into our homes. At Shree Ganesha Clay Works, we bring together traditional clay products for everyday moments and special occasions.",
@@ -225,7 +225,7 @@ const translations = {
     rateIntro: "దుకాణం అందించిన ధరల పట్టిక నుంచి క్రింది ధరలను నమోదు చేశాము. ప్రస్తుత ధర మరియు లభ్యత కోసం వాట్సాప్‌లో నిర్ధారించుకోండి.",
     rateDisclaimer: "ఈ ధరలు అందించిన ధరల పట్టిక ఆధారంగా ఉన్నాయి; మారవచ్చు. ఆర్డర్ లేదా దుకాణ సందర్శనకు ముందు ప్రస్తుత ధర, పరిమాణం మరియు లభ్యతను వాట్సాప్‌లో నిర్ధారించుకోండి. డజను ధరలు పట్టికలో ఉన్నట్లుగానే చూపించబడ్డాయి.",
     rateItem: "వస్తువు / సైజు", rateSingle: "ఒక్కటి", rateDozen: "డజను",
-    rateAsk: "ఈ వస్తువు గురించి అడగండి", rateEnquire: "వాట్సాప్‌లో అడగండి",
+    rateAsk: "ఈ వస్తువు గురించి అడగండి", rateEnquire: "WhatsApp", rateEnquireAction: "అడగండి",
     storyImageCaption: "మా దుకాణంలోని ఒక చూపు", storyEyebrow: "మట్టిపై మా అభిమానం",
     storyTitle: "కొన్ని వస్తువులు<br><em>ఇంటిలా అనిపిస్తాయి.</em>",
     storyText: "వంట, పండుగలు, పూజలు మరియు మన ఇళ్లలో ఆప్యాయతను నింపడంలో మట్టికి ఎప్పటి నుంచో ప్రత్యేక స్థానం ఉంది. ష్రీ గణేశ క్లే వర్క్స్‌లో రోజువారీ అవసరాలు మరియు ప్రత్యేక సందర్భాల కోసం సంప్రదాయ మట్టి వస్తువులను అందిస్తున్నాము.",
@@ -324,7 +324,7 @@ function renderRateGroups() {
         (group.noDozen ? '' : '<td>' + row[2] + '</td>') +
         '<td><a class="rate-enquire" href="' + waUrl(message) +
         '" target="_blank" rel="noopener noreferrer">' +
-        translations[language].rateEnquire + '<span aria-hidden="true"> ↗</span></a></td></tr>';
+        translations[language].rateEnquireAction + '<span aria-hidden="true"> ↗</span></a></td></tr>';
     }).join("");
     return '<section class="rate-card"><h3>' + group.title[language] + '</h3><div class="rate-table-wrap">' +
       '<table class="rate-table"><thead><tr><th scope="col">' + translations[language].rateItem + '</th>' +
