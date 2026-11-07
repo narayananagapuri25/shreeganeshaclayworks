@@ -153,7 +153,7 @@ const rateGroups = [
     ]
   },
   {
-    title: { en: "Clay water pots · నీటి కుండలు", te: "మట్టి నీటి కుండలు" },
+    title: { en: "Clay water pots", te: "మట్టి నీటి కుండలు" },
     noDozen: true,
     rows: [
       ["20 L", "₹300", ""],
@@ -432,6 +432,15 @@ document.addEventListener("click", function (event) {
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") closeMenu();
 });
+
+// Keep the floating WhatsApp shortcut out of the opening announcement and hero.
+// It appears after the visitor has started scrolling, then remains available.
+const floatingWhatsapp = document.querySelector(".floating-whatsapp");
+function updateFloatingWhatsapp() {
+  floatingWhatsapp.classList.toggle("is-visible", window.scrollY > 360);
+}
+window.addEventListener("scroll", updateFloatingWhatsapp, { passive: true });
+updateFloatingWhatsapp();
 
 document.getElementById("current-year").textContent = new Date().getFullYear();
 applyWhatsAppLinks();
