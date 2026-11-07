@@ -78,6 +78,9 @@ try {
           naturalWidth: element.naturalWidth,
           naturalHeight: element.naturalHeight,
           complete: element.complete,
+          objectFit: getComputedStyle(element).objectFit,
+          transform: getComputedStyle(element).transform,
+          clipPath: getComputedStyle(element).clipPath,
           pixelVariation: max - min
         };
       });
@@ -89,6 +92,9 @@ try {
         details.pixelVariation >= 12,
         "Image appears blank or has no visible product detail: " + JSON.stringify(details)
       );
+      assert.equal(details.objectFit, "contain", "The complete source photo must be visible on desktop and mobile: " + details.src);
+      assert.equal(details.transform, "none", "A product photo must never be zoomed into and clipped: " + details.src);
+      assert.equal(details.clipPath, "none", "A product photo must never be masked: " + details.src);
     }
   }
 
@@ -146,6 +152,9 @@ try {
   }
 
   assert.equal(await page.locator(".category-image-frame").count(), 7, "Every category should have a dedicated product-photo frame");
+  assert.equal(await page.locator(".category-image-frame img").count(), 7, "Every category photo should be inside its own framed image stage");
+  assert.equal(await page.locator(".category-card > .category-label").count(), 7, "Category labels must be outside and below the product image stage");
+  assert.equal(await page.locator(".story-image-wrap .image-caption").evaluate((caption) => getComputedStyle(caption).position), "static", "Story caption must not cover the item photograph");
   for (let i = 0; i < await page.locator(".category-card").count(); i += 1) {
     const card = page.locator(".category-card").nth(i);
     await card.hover();
