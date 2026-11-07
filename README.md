@@ -8,8 +8,8 @@ A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 
 - Responsive storefront and category-led discovery for clay idols and pooja pieces, diyas, agul, stand agul, simini lamps, cooking vessels and water pots.
 - Product search with English, Telugu and common item-name aliases; category filtering and live result counts.
-- A four-image hero gallery made only from the shop's real product photographs, plus a simple three-step browse → confirm → visit guide.
-- Product photographs retain their natural shape and are not AI-generated or artificially zoomed.
+- A four-image hero gallery using the clearest supplied shop photos (cooking vessel, plain agul, stand agul and simini), plus a simple three-step browse → confirm → visit guide.
+- Product photographs remain the shop's real images. Product cards use consistent neutral framing; portrait diya and simini images receive item-specific treatment rather than a forced shared crop. No AI-generated substitutes or artificial zoom are used.
 - English / Telugu language toggle.
 - Shop-supplied diya and pottery rate chart, with item-specific WhatsApp enquiry links.
 - Product-specific WhatsApp enquiries; no checkout, customer accounts or payment collection.
@@ -45,7 +45,7 @@ Some product photographs show bag or box quantities (for example 500-piece bags 
 6. Display the owner-requested store hours as 9:00 AM–7:00 PM. No additional weekday/weekend schedule is implied.
 7. No official social profile was verified during launch review. Add social links only after the shop supplies or confirms the exact accounts. Delivery/pickup information also remains unconfirmed.
 8. Complete the final Android and desktop visual review, then test every WhatsApp and map link.
-9. Confirm the heart-diya photo against a clean original from the shop; the current genuine product photograph is retained with natural rectangular framing.
+9. Ask the shop for higher-resolution single-product photos for the diya, water pots and stand agul. The current diya photo has a handwritten-paper background, the water-pot source is small, and the stand-agul photo is soft; these are kept out of the hero rather than disguised with AI replacements.
 
 ## Automated review
 
