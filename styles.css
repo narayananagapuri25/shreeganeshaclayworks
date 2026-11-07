@@ -656,3 +656,91 @@ main [id] { scroll-margin-top: 96px; }
 .product-card:hover .product-image-wrap img[src*="heart-diya.jpg"] {
   transform: scale(1.3);
 }
+
+
+/* Practical store facts: replace decorative slogans with useful visit information. */
+.store-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 0;
+  min-height: 92px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+.store-fact {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 18px;
+  border-right: 1px solid rgba(73, 99, 69, .17);
+  color: #4b4a3d;
+  transition: background .18s ease, color .18s ease;
+}
+.store-fact:first-child { padding-left: 0; }
+.store-fact:last-child { padding-right: 0; border-right: 0; }
+.store-fact[href]:hover { color: var(--clay-dark); background: rgba(255,255,255,.24); }
+.store-fact-icon {
+  display: grid;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid rgba(168, 80, 50, .25);
+  border-radius: 50%;
+  color: var(--clay);
+  font-size: 19px;
+  line-height: 1;
+}
+.store-fact-copy { display: flex; min-width: 0; flex-direction: column; gap: 5px; }
+.store-fact-copy small {
+  color: var(--leaf);
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  line-height: 1.3;
+}
+.store-fact-copy strong {
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.hours-contact-line strong {
+  color: #fff8ed;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .015em;
+}
+@media (max-width: 980px) {
+  .store-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 12px; padding-bottom: 12px; }
+  .store-fact { padding: 12px 15px; }
+  .store-fact:nth-child(2) { border-right: 0; }
+  .store-fact:nth-child(3) { padding-left: 0; }
+}
+@media (max-width: 700px) {
+  .announcement { justify-content: center; }
+  .store-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 8px 4%;
+    overflow: visible;
+  }
+  .store-fact { gap: 9px; padding: 12px 8px; }
+  .store-fact:first-child, .store-fact:nth-child(3) { padding-left: 4px; }
+  .store-fact:nth-child(2) { border-right: 0; }
+  .store-fact:nth-child(3), .store-fact:nth-child(4) { border-top: 1px solid rgba(73, 99, 69, .17); }
+  .store-fact:nth-child(3) { border-right: 1px solid rgba(73, 99, 69, .17); }
+  .store-fact-icon { flex-basis: 31px; width: 31px; height: 31px; font-size: 16px; }
+  .store-fact-copy small { font-size: 7px; letter-spacing: .1em; }
+  .store-fact-copy strong { font-size: 10px; }
+  .hours-contact-line strong { font-size: 15px; }
+}
+@media (max-width: 360px) {
+  .store-fact { gap: 7px; padding: 11px 6px; }
+  .store-fact-icon { flex-basis: 28px; width: 28px; height: 28px; }
+  .store-fact-copy strong { font-size: 9px; }
+}
