@@ -54,7 +54,7 @@ const products = [
     },
     categoryLabel: { en: "Clay lamps", te: "మట్టి దీపాలు" },
     price: "C/Simini ₹50 · B/Simini ₹60",
-    image: "assets/products/simini.jpg",
+    image: "assets/products/store-stock.jpg",
     alt: "Traditional clay simini lamp base"
   },
   {
