@@ -208,6 +208,9 @@ try {
   assert.equal(await page.locator("#product-grid .product-card").count(), 7, "Seven shop collections should render");
   assert.match(await page.locator("#product-grid h3").nth(0).innerText(), /Traditional clay diya/, "The diya card name should match the actual photograph");
   assert.match(await page.locator("#product-grid .product-price").nth(0).innerText(), /See diya sizes & rates below/, "Do not apply the separate heart-shape rate to an unverified diya photograph");
+  assert.equal(await page.locator("#product-grid .product-tag").count(), 0, "Product cards should not repeat the category label over the image and under it");
+  const firstRowActionBottoms = await page.locator("#product-grid .product-card-action").evaluateAll((links) => links.slice(0, 3).map((link) => link.getBoundingClientRect().bottom));
+  assert.ok(Math.max(...firstRowActionBottoms) - Math.min(...firstRowActionBottoms) < 2, "Desktop product enquiry actions should align across the first row");
   assert.equal(await page.locator(".how-to-step").count(), 3, "The practical three-step shopping guide should render");
   assert.match(await page.locator("#product-result-count").innerText(), /7/, "The catalogue should show the initial result count");
   await assertAllProductImagesLoad();
@@ -266,6 +269,8 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(baseUrl, { waitUntil: "networkidle" });
   assert.equal(await page.locator(".floating-whatsapp").isVisible(), false, "Mobile opening view must not have an overlay over the announcement strip");
+  const mobileActionBottoms = await page.locator("#product-grid .product-card-action").evaluateAll((links) => links.slice(0, 2).map((link) => link.getBoundingClientRect().bottom));
+  assert.ok(Math.max(...mobileActionBottoms) - Math.min(...mobileActionBottoms) < 2, "Mobile product enquiry actions should align across each row");
   await assertAllProductImagesLoad();
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: path.join(root, "artifacts/site-mobile.png"), fullPage: true });
