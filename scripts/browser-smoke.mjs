@@ -91,8 +91,9 @@ try {
   await page.locator('[data-lang="en"]').click();
 
   assert.equal(await page.locator('a[href="tel:+919493404602"]').count(), 1, "Primary number should have a call link");
-  assert.equal(await page.getByText("+91 85555896577", { exact: true }).count(), 1, "Alternate poster number should remain visible");
-  assert.equal(await page.locator('a[href*="85555896577"]').count(), 0, "Unverified alternate number must not be made clickable");
+  assert.equal(await page.getByText("+91 85558 96577", { exact: true }).count(), 1, "Alternate number should remain visible");
+  assert.equal(await page.locator('a[href="tel:+918555896577"]').count(), 1, "Alternate number should have a direct phone link");
+  assert.equal(await page.locator('a[href="https://wa.me/918555896577"]').count(), 1, "Alternate number should have a direct WhatsApp link");
 
   const desktopOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
   assert.equal(desktopOverflow, false, "Desktop page must not overflow horizontally");
@@ -120,7 +121,7 @@ try {
   assert.match(await page.locator("#product-grid h3").first().innerText(), /Clay idols/);
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
-  console.log("Browser checks passed: desktop, mobile, search, filters, language, rate enquiries, both contacts and navigation.");
+  console.log("Browser checks passed: desktop, mobile, search, filters, language, rate enquiries, both phone and WhatsApp contacts and navigation.");
 } finally {
   if (browser) await browser.close();
   await new Promise((resolve) => server.close(resolve));
