@@ -85,7 +85,7 @@ try {
   await page.locator('[data-lang="te"]').click();
   assert.equal(await page.locator("html").getAttribute("lang"), "te");
   assert.match(await page.locator("#product-grid h3").first().innerText(), /మట్టి|దీపం/);
-  assert.match(await page.locator(".rate-enquire").first().innerText(), /వాట్సాప్/);
+  assert.match(await page.locator(".rate-enquire").first().innerText(), /అడగండి/);
   await page.locator('[data-lang="en"]').click();
 
   assert.equal(await page.locator('a[href="tel:+919493404602"]').count(), 1, "Primary number should have a call link");
