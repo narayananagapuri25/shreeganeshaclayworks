@@ -49,7 +49,7 @@ assert.match(html, /9:00 AM–7:00 PM/, "The requested 9 AM–7 PM store hours m
 assert.match(html, /Near Collectorate, Opp\. Govt\. Dispensary/, "The flyer address must remain on the page");
 assert.match(html, /Mancherial–Chennur Highway, Naspur/, "The complete flyer street address must remain on the page");
 assert.match(html, /504208/, "The flyer PIN code must remain on the page");
-assert.match(html, /class="store-facts"/, "The quick store information bar must appear after the hero");
+assert.match(html, /class="[^"]*store-facts[^"]*"/, "The quick store information bar must appear after the hero");
 assert.match(html, /href="tel:\+919493404602"/, "The quick store facts must include a working call action");
 
 for (const asset of ["styles.css", "app.js", "favicon.svg"]) {
