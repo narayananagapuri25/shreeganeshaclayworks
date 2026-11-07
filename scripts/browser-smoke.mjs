@@ -114,13 +114,14 @@ try {
   assert.equal(await page.locator(".hero-note, .hero-index").count(), 0, "Hero should not contain redundant overlay captions");
   const desktopCategoryColumns = await page.locator(".category-grid").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length);
   assert.equal(desktopCategoryColumns, 4, "Desktop categories should use a balanced four-column grid");
-  const diyaZoom = await page.locator('.category-card[data-category-link="diyas"] img').evaluate((element) => {
-    const match = getComputedStyle(element).transform.match(/^matrix\(([^,]+)/);
-    return match ? Number(match[1]) : 1;
+  const diyaImageStyle = await page.locator('.category-card[data-category-link="diyas"] img').evaluate((element) => {
+    const style = getComputedStyle(element);
+    const match = style.transform.match(/^matrix\\(([^,]+)/);
+    return { zoom: match ? Number(match[1]) : 1, clipPath: style.clipPath, objectFit: style.objectFit };
   });
-  assert.ok(diyaZoom >= 1.4, "The heart-diya photograph should be tightly cropped around the product");
-  const diyaClip = await page.locator('.category-card[data-category-link="diyas"] img').evaluate((element) => getComputedStyle(element).clipPath);
-  assert.notEqual(diyaClip, "none", "The heart-diya tile should mask the distracting paper background");
+  assert.ok(diyaImageStyle.zoom >= 1.2 && diyaImageStyle.zoom <= 1.35, "The heart-diya image should use a modest natural crop");
+  assert.equal(diyaImageStyle.clipPath, "none", "Do not reshape the original heart-diya photograph with an artificial mask");
+  assert.equal(diyaImageStyle.objectFit, "cover", "The original heart-diya photo should stay in a natural rectangular frame");
   const storeAddress = await page.locator("address").innerText();
   assert.match(storeAddress, /Near Collectorate/i, "Store address should include the supplied landmark");
   assert.match(storeAddress, /Govt\. Dispensary/i, "Store address should include the supplied dispensary landmark");
@@ -139,6 +140,26 @@ try {
     assert.match(await link.getAttribute("rel"), /noopener/, "New-tab WhatsApp links should be protected");
   }
   assert.equal(await page.locator(".brand-logo").count(), 2, "The supplied logo should appear in header and footer");
+  const logoUsage = await page.locator(".brand-logo").evaluateAll((images) => images.map((image) => {
+    const style = getComputedStyle(image);
+    return {
+      src: image.getAttribute("src"),
+      fit: style.objectFit,
+      filter: style.filter,
+      clipPath: style.clipPath,
+      loaded: image.complete && image.naturalWidth > 0
+    };
+  }));
+  assert.deepEqual(logoUsage.map((logo) => logo.src), [
+    "assets/brand/official-logo.jpg",
+    "assets/brand/official-logo.jpg"
+  ], "Header and footer must use the exact same supplied logo file");
+  for (const logo of logoUsage) {
+    assert.equal(logo.fit, "contain", "The original logo must never be cropped");
+    assert.equal(logo.filter, "none", "The original logo must not be recoloured or filtered");
+    assert.equal(logo.clipPath, "none", "The original logo must not be masked or reshaped");
+    assert.equal(logo.loaded, true, "The original logo must load in both placements");
+  }
   assert.equal(await page.locator(".brand-logo").first().evaluate((image) => image.complete && image.naturalWidth > 0), true, "The original shop logo should load");
   const logoLayout = await page.locator(".site-header .brand-logo").evaluate((image) => {
     const rect = image.getBoundingClientRect();
