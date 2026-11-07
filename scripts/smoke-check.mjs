@@ -63,7 +63,8 @@ for (const key of translationKeys) {
 const productsBlock = app.match(/const products = \[([\s\S]*?)\n\];\s*\n\nconst rateGroups/);
 assert.ok(productsBlock, "Could not locate product catalogue");
 const productCount = [...productsBlock[1].matchAll(/\bid:\s*["'][a-z-]+["']/g)].length;
-assert.equal(productCount, 6, "Expected six shop catalogue entries");
+assert.equal(productCount, 7, "Expected seven shop catalogue entries including clay idol enquiries");
+assert.match(productsBlock[1], /id: "clay-idols"/, "Clay idol enquiry collection is missing");
 
 assert.match(app, /whatsappNumber:\s*"919493404602"/, "Primary WhatsApp number is not configured");
 assert.match(app, /https:\/\/wa\.me\//, "WhatsApp link builder is missing");
