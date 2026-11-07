@@ -111,7 +111,7 @@ try {
   const directionsLink = page.locator('a[href^="https://www.google.com/maps/search/"]');
   assert.equal(await directionsLink.count(), 1, "Store directions link should be present");
   const directionsHref = await directionsLink.getAttribute("href");
-  assert.match(decodeURIComponent(directionsHref), /Shree Ganesha Clay Works/i, "Directions should search for the correct shop name");
+  assert.match(new URL(directionsHref).searchParams.get("query"), /Shree Ganesha Clay Works/i, "Directions should search for the correct shop name");
   const generalWhatsAppLinks = page.locator('[data-whatsapp="general"]');
   assert.ok(await generalWhatsAppLinks.count() >= 4, "Header, hero, footer and floating WhatsApp shortcuts should be available");
   for (let i = 0; i < await generalWhatsAppLinks.count(); i += 1) {
