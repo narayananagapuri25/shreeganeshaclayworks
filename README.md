@@ -15,6 +15,11 @@ A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 - Product and store photographs supplied by the shop.
 - Basic security headers, static smoke checks, and automated Playwright browser checks for desktop and mobile interactions.
 
+## Original brand asset
+
+- The supplied file `assets/brand/official-logo.jpg` is the canonical shop logo. It is used unchanged in the header and footer, with `object-fit: contain` so it is never cropped or recoloured.
+- Automated smoke checks pin its Git blob SHA and verify both placements use that exact file. Do not redraw, regenerate, recolour, or substitute the logo.
+
 ## Contact numbers
 
 - Primary call / WhatsApp number: **+91 94934 04602**. Website enquiries are directed here.
@@ -34,6 +39,7 @@ Some product photographs show bag or box quantities (for example 500-piece bags 
 4. Both contact numbers are confirmed and linked for calls and WhatsApp.
 5. Add verified opening hours, social links and any confirmed delivery/pickup information.
 6. Complete Android and desktop visual review, then test every WhatsApp and map link.
+7. Confirm the final heart-diya image against a clean original from the shop; the current source photo is retained with a natural rectangular crop until a better original is supplied.
 
 ## Automated review
 
