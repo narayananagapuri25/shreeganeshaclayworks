@@ -169,6 +169,11 @@ try {
     assert.equal(logo.loaded, true, "The original logo must load in both placements");
   }
   assert.equal(await page.locator(".brand-logo").first().evaluate((image) => image.complete && image.naturalWidth > 0), true, "The original shop logo should load");
+  const logoSourceDimensions = await page.locator(".brand-logo").first().evaluate((image) => ({
+    width: image.naturalWidth,
+    height: image.naturalHeight
+  }));
+  assert.deepEqual(logoSourceDimensions, { width: 1774, height: 887 }, "The approved clean high-resolution logo source should load at its expected resolution");
   const logoLayout = await page.locator(".site-header .brand-logo").evaluate((image) => {
     const rect = image.getBoundingClientRect();
     const style = getComputedStyle(image);
