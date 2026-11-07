@@ -49,6 +49,23 @@ try {
   const pageErrors = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
 
+  async function assertAllProductImagesLoad() {
+    const images = page.locator(".category-card img, .product-card img, .story-image-wrap img, .brand-logo");
+    const count = await images.count();
+    assert.ok(count >= 17, "Expected all category, product, story and logo images to be present");
+    for (let i = 0; i < count; i += 1) {
+      const image = images.nth(i);
+      await image.scrollIntoViewIfNeeded();
+      await image.evaluate((element) => element.decode());
+      const details = await image.evaluate((element) => ({
+        src: element.getAttribute("src"),
+        naturalWidth: element.naturalWidth,
+        complete: element.complete
+      }));
+      assert.ok(details.complete && details.naturalWidth > 0, "Image failed to load: " + details.src);
+    }
+  }
+
   await mkdir(path.join(root, "artifacts"), { recursive: true });
   const response = await page.goto(baseUrl, { waitUntil: "networkidle" });
   assert.equal(response.status(), 200, "Home page must load");
@@ -57,6 +74,8 @@ try {
   assert.equal(await page.locator(".brand-logo").first().evaluate((image) => image.complete && image.naturalWidth > 0), true, "The original shop logo should load");
   assert.equal(await page.locator(".category-card").count(), 7, "All seven shop categories should render");
   assert.equal(await page.locator("#product-grid .product-card").count(), 7, "Seven shop collections should render");
+  await assertAllProductImagesLoad();
+  await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: path.join(root, "artifacts/site-desktop.png"), fullPage: true });
 
   await page.locator('[data-filter="agul"]').click();
@@ -100,6 +119,8 @@ try {
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(baseUrl, { waitUntil: "networkidle" });
+  await assertAllProductImagesLoad();
+  await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: path.join(root, "artifacts/site-mobile.png"), fullPage: true });
   const toggle = page.locator(".menu-toggle");
   await toggle.click();
@@ -121,7 +142,7 @@ try {
   assert.match(await page.locator("#product-grid h3").first().innerText(), /Clay idols/);
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
-  console.log("Browser checks passed: desktop, mobile, search, filters, language, rate enquiries, both phone and WhatsApp contacts and navigation.");
+  console.log("Browser checks passed: desktop, mobile, all product images, search, filters, language, rate enquiries, both phone and WhatsApp contacts and navigation.");
 } finally {
   if (browser) await browser.close();
   await new Promise((resolve) => server.close(resolve));
