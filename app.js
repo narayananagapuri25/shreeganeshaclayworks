@@ -168,7 +168,7 @@ const rateGroups = [
 const translations = {
   en: {
     announcement: "Store hours · 9 AM–7 PM",
-    announcementLink: "Get directions",
+    announcementLink: "Get directions ↗",
     navHome: "Home", navProducts: "Collections", navRates: "Rate chart", navStory: "Our story", navVisit: "Visit us",
     navEnquire: "Enquire on WhatsApp", heroEyebrow: "THE BEAUTY OF EARTHEN CRAFT",
     heroTitle: "Made of earth.<br><em>Rooted in tradition.</em>",
@@ -218,7 +218,7 @@ const translations = {
   },
   te: {
     announcement: "దుకాణ సమయాలు · ఉదయం 9–సాయంత్రం 7",
-    announcementLink: "దారి తెలుసుకోండి",
+    announcementLink: "దారి తెలుసుకోండి ↗",
     navHome: "హోమ్", navProducts: "సేకరణలు", navRates: "ధరల పట్టిక", navStory: "మా గురించి", navVisit: "మా దుకాణం",
     navEnquire: "వాట్సాప్‌లో అడగండి", heroEyebrow: "మట్టి కళలోని అందం",
     heroTitle: "మట్టితో రూపం.<br><em>సంప్రదాయమే మా బలం.</em>",
