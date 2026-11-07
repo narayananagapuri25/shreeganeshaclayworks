@@ -16,6 +16,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="announcement">
     <span class="announcement-dot"></span>
     <span data-i18n="announcement">Traditional clayware • Mancherial, Telangana</span>
@@ -52,7 +53,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero" id="home">
       <div class="hero-photo" role="img" aria-label="Traditional clay pottery arranged in warm natural light"></div>
       <div class="hero-shade"></div>
@@ -134,16 +135,16 @@
 
         <div class="collection-tools">
           <div class="filter-list" role="group" aria-label="Filter products">
-            <button class="filter-chip is-active" type="button" data-filter="all" data-i18n="filterAll">All collections</button>
-            <button class="filter-chip" type="button" data-filter="diyas" data-i18n="catDiyas">Clay diyas</button>
-            <button class="filter-chip" type="button" data-filter="agul" data-i18n="catAgul">Agul</button>
-            <button class="filter-chip" type="button" data-filter="stand" data-i18n="catStand">Stand agul</button>
-            <button class="filter-chip" type="button" data-filter="simini" data-i18n="catSimini">Simini lamps</button>
-            <button class="filter-chip" type="button" data-filter="pots" data-i18n="catCookware">Cooking & water pots</button>
+            <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true" data-i18n="filterAll">All collections</button>
+            <button class="filter-chip" type="button" data-filter="diyas" aria-pressed="false" data-i18n="catDiyas">Clay diyas</button>
+            <button class="filter-chip" type="button" data-filter="agul" aria-pressed="false" data-i18n="catAgul">Agul</button>
+            <button class="filter-chip" type="button" data-filter="stand" aria-pressed="false" data-i18n="catStand">Stand agul</button>
+            <button class="filter-chip" type="button" data-filter="simini" aria-pressed="false" data-i18n="catSimini">Simini lamps</button>
+            <button class="filter-chip" type="button" data-filter="pots" aria-pressed="false" data-i18n="catCookware">Cooking & water pots</button>
           </div>
           <label class="search-box">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
-            <input id="product-search" type="search" placeholder="Search collections" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+            <input id="product-search" type="search" aria-label="Search product collections" placeholder="Search collections" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
           </label>
         </div>
 
