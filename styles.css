@@ -174,7 +174,8 @@ img { display: block; max-width: 100%; }
 .footer-links a, .footer-bottom { color: rgba(247,241,231,.65); font-size: 9px; }
 .footer-links a:hover, .footer-bottom a:hover { color: #e4b78f; }
 .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 13px; }
-.floating-whatsapp { position: fixed; z-index: 30; right: 22px; bottom: 22px; display: inline-flex; align-items: center; gap: 9px; padding: 13px 17px; color: white; background: #2e6c48; border-radius: 40px; box-shadow: 0 8px 30px rgba(22,41,27,.23); font-size: 10px; font-weight: 700; transition: transform .2s, background .2s; }
+.floating-whatsapp { position: fixed; z-index: 30; right: 22px; bottom: 22px; display: inline-flex; align-items: center; gap: 9px; padding: 13px 17px; color: white; background: #2e6c48; border-radius: 40px; box-shadow: 0 8px 30px rgba(22,41,27,.23); font-size: 10px; font-weight: 700; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(8px); transition: opacity .2s, visibility .2s, transform .2s, background .2s; }
+.floating-whatsapp.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
 .floating-whatsapp:hover { background: #24583a; transform: translateY(-3px); }
 .floating-whatsapp svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
