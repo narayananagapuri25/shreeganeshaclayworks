@@ -52,59 +52,31 @@ try {
   async function assertAllProductImagesLoad() {
     const images = page.locator(".hero-gallery img, .category-card img, .product-card img, .story-image-wrap img");
     const count = await images.count();
-    assert.ok(count >= 19, "Expected hero, category, product and story images to be present");
+    assert.ok(count >= 19, "Expected four hero, seven category, seven product and one story photograph");
+    assert.equal(await page.locator(".sprite-sheet, .sprite-window").count(), 0, "No sprite-sheet crop windows may remain in the storefront");
     for (let i = 0; i < count; i += 1) {
       const image = images.nth(i);
       await image.scrollIntoViewIfNeeded();
       await image.evaluate((element) => element.decode());
-      const details = await image.evaluate((element) => {
-        const sprite = element.classList.contains("sprite-sheet");
-        let pixelVariation = 0;
-        if (!sprite) {
-          const canvas = document.createElement("canvas");
-          canvas.width = 16;
-          canvas.height = 16;
-          const context = canvas.getContext("2d", { willReadFrequently: true });
-          context.drawImage(element, 0, 0, canvas.width, canvas.height);
-          const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
-          let min = 255;
-          let max = 0;
-          for (let i = 0; i < pixels.length; i += 4) {
-            if (pixels[i + 3] < 16) continue;
-            for (let channel = 0; channel < 3; channel += 1) {
-              min = Math.min(min, pixels[i + channel]);
-              max = Math.max(max, pixels[i + channel]);
-            }
-          }
-          pixelVariation = max - min;
-        }
-        return {
-          src: element.getAttribute("src"),
-          naturalWidth: element.naturalWidth,
-          naturalHeight: element.naturalHeight,
-          complete: element.complete,
-          objectFit: getComputedStyle(element).objectFit,
-          transform: getComputedStyle(element).transform,
-          clipPath: getComputedStyle(element).clipPath,
-          sprite,
-          pixelVariation
-        };
-      });
-      assert.ok(
-        details.complete && details.naturalWidth >= 120 && details.naturalHeight >= 60,
-        "Image is missing, too small or broken: " + JSON.stringify(details)
-      );
-      if (details.sprite) {
-        assert.ok(details.naturalWidth >= 1400, "Generated product sheet should load at full source resolution");
-        assert.equal(details.objectFit, "contain", "Product sheet must retain its source proportions");
-        assert.notEqual(details.transform, "none", "Every product sheet image must use an individual crop position");
-        assert.equal(details.clipPath, "none", "Product sheet crops must not be masked");
-        const window = image.locator("xpath=..");
-        assert.equal(await window.evaluate((element) => getComputedStyle(element).overflow), "hidden", "Sprite window must clip to its own product cell");
-      } else {
-        assert.ok(details.pixelVariation >= 12, "Real shop photograph appears blank: " + JSON.stringify(details));
-        assert.equal(details.transform, "none", "The real shop photograph must not be zoomed");
-        assert.equal(details.objectFit, "contain", "The real shop photograph must remain whole");
+      const details = await image.evaluate((element) => ({
+        src: element.getAttribute("src"),
+        naturalWidth: element.naturalWidth,
+        naturalHeight: element.naturalHeight,
+        complete: element.complete,
+        objectFit: getComputedStyle(element).objectFit,
+        transform: getComputedStyle(element).transform,
+        clipPath: getComputedStyle(element).clipPath
+      }));
+      assert.ok(details.complete && details.naturalWidth >= 120 && details.naturalHeight >= 120,
+        "Image is missing, too small or broken: " + JSON.stringify(details));
+      assert.equal(details.objectFit, "contain", "Every item must be shown in full, not cropped: " + details.src);
+      assert.equal(details.transform, "none", "Product photos must not zoom or crop on hover: " + details.src);
+      assert.equal(details.clipPath, "none", "Product photos must not be masked: " + details.src);
+      if (!details.src.includes("store-stock.jpg")) {
+        assert.ok(details.naturalWidth >= 900 && details.naturalHeight >= 900,
+          "Standalone product assets must use the full-resolution square export: " + JSON.stringify(details));
+        assert.ok(Math.abs(details.naturalWidth - details.naturalHeight) <= 2,
+          "Every generated product asset must have a consistent square canvas: " + details.src);
       }
     }
   }
@@ -128,11 +100,11 @@ try {
   assert.equal(await heroGallery.locator("img").count(), 4, "Hero should show four original shop product photographs");
   const heroSources = await heroGallery.locator("img").evaluateAll((images) => images.map((image) => image.getAttribute("src")));
   assert.deepEqual(heroSources, [
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/54cb7e80-4d79-46a8-98b6-96ee1c305eba.png",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/3e9cd8b4-0102-4dbe-acaf-f2877b439d31.png",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/54cb7e80-4d79-46a8-98b6-96ee1c305eba.png",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/3e9cd8b4-0102-4dbe-acaf-f2877b439d31.png"
-  ], "Hero should use the two consistent AI-generated pottery sheets with individual product crops");
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/d8dfcf4b-4e02-4af2-a076-74a183b013bb.jpg",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/f82022af-6824-4726-b9ec-1fb31c344532.jpg",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/67bc33cb-4b1b-4865-a316-0ca68e3ad372.jpg",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/610198fe-6c5d-4215-af87-b1c81be5d844.jpg"
+  ], "Hero must use four standalone square product assets, not sprite sheets");
   assert.ok(heroGalleryLayout.width > 250 && heroGalleryLayout.height > 200, "Hero product gallery should have a substantial visible area");
   assert.equal(heroGalleryLayout.columns, 2, "Hero product photographs should use a balanced two-column gallery");
   assert.ok(heroGalleryLayout.left > (await page.evaluate(() => window.innerWidth)) * 0.45, "Desktop product gallery should sit to the right of the copy");
@@ -154,47 +126,44 @@ try {
   const allProductImageFits = await page.locator(".hero-gallery img, .category-card img, .product-image-wrap img, .story-image-wrap img").evaluateAll((images) => images.map((image) => ({
     source: image.getAttribute("src"),
     fit: getComputedStyle(image).objectFit,
-    transform: getComputedStyle(image).transform,
-    sprite: image.classList.contains("sprite-sheet")
+    transform: getComputedStyle(image).transform
   })));
   assert.ok(allProductImageFits.length >= 19, "Hero, category, product and story photographs should all be checked");
   for (const image of allProductImageFits) {
-    assert.equal(image.fit, "contain", "Every source sheet must preserve its original aspect ratio: " + image.source);
-    if (!image.sprite) assert.equal(image.transform, "none", "The real store photograph must not be zoomed: " + image.source);
+    assert.equal(image.fit, "contain", "Every product frame must show the complete image: " + image.source);
+    assert.equal(image.transform, "none", "No product frame may zoom or crop the photograph: " + image.source);
   }
 
-  assert.equal(await page.locator(".category-image-frame").count(), 7, "Every category should have a dedicated product-photo frame");
-  assert.equal(await page.locator(".category-image-frame .sprite-window").count(), 7, "Every category should have a dedicated product crop window");
-  assert.equal(await page.locator(".category-image-frame img").count(), 7, "Every category product crop should be loaded from the AI product sheet");
-  assert.equal(await page.locator(".category-card > .category-label").count(), 7, "Category labels must be outside and below the product image stage");
+  assert.equal(await page.locator(".category-image-frame").count(), 7, "Every category should have its own photo frame");
+  assert.equal(await page.locator(".category-image-frame > img").count(), 7, "Every category should use a standalone product image");
+  assert.equal(await page.locator(".category-image-frame .sprite-window").count(), 0, "Category cards must not use crop windows");
+  assert.equal(await page.locator(".category-card > .category-label").count(), 7, "Category labels must sit outside and below the product photo frame");
   assert.equal(await page.locator(".story-image-wrap .image-caption").evaluate((caption) => getComputedStyle(caption).position), "static", "Story caption must not cover the item photograph");
   for (let i = 0; i < await page.locator(".category-card").count(); i += 1) {
     const card = page.locator(".category-card").nth(i);
     await card.hover();
-    const before = await card.locator("img").evaluate((image) => getComputedStyle(image).transform);
-    await page.waitForTimeout(80);
-    const after = await card.locator("img").evaluate((image) => getComputedStyle(image).transform);
-    assert.equal(after, before, "Hover must not change the product crop or zoom the item");
+    const transform = await card.locator("img").evaluate((image) => getComputedStyle(image).transform);
+    assert.equal(transform, "none", "Category hover must never zoom or crop a complete product photo");
   }
   const categoryImageAndLabelPositions = await page.locator(".category-card").evaluateAll((cards) => cards.map((card) => {
     const frame = card.querySelector(".category-image-frame").getBoundingClientRect();
-    const window = card.querySelector(".sprite-window").getBoundingClientRect();
+    const image = card.querySelector(".category-image-frame > img").getBoundingClientRect();
     const number = card.querySelector(".category-number").getBoundingClientRect();
     const label = card.querySelector(".category-label").getBoundingClientRect();
     const cardRect = card.getBoundingClientRect();
     return {
       frameTop: frame.top, frameBottom: frame.bottom,
-      windowTop: window.top, windowBottom: window.bottom,
+      imageTop: image.top, imageBottom: image.bottom,
       numberTop: number.top, numberBottom: number.bottom,
       labelTop: label.top, labelBottom: label.bottom,
       cardBottom: cardRect.bottom
     };
   }));
   for (const position of categoryImageAndLabelPositions) {
-    assert.ok(position.windowTop >= position.frameTop - 1 && position.windowBottom <= position.frameBottom + 1, "The complete product photo crop must stay inside its frame");
-    assert.ok(position.numberTop >= position.frameTop && position.numberBottom <= position.frameBottom, "Category number must stay within the photo frame: " + JSON.stringify(position));
-    assert.ok(position.labelTop >= position.frameBottom - 1, "Category title must sit below the complete product photograph");
-    assert.ok(position.labelBottom <= position.cardBottom + 1, "Category title must remain inside its card");
+    assert.ok(position.imageTop >= position.frameTop - 1 && position.imageBottom <= position.frameBottom + 1, "The complete photo must remain inside its category image frame");
+    assert.ok(position.numberTop >= position.imageBottom - 1 && position.numberBottom <= position.frameBottom + 1, "Category number must sit below the photo inside its frame");
+    assert.ok(position.labelTop >= position.frameBottom - 1, "Category name must sit below the complete photo frame");
+    assert.ok(position.labelBottom <= position.cardBottom + 1, "Category name must remain inside its card");
   }
   const storeAddress = await page.locator("address").innerText();
   assert.match(storeAddress, /Near Collectorate/i, "Store address should include the supplied landmark");
