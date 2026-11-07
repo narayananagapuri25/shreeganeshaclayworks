@@ -72,6 +72,9 @@ assert.match(app, /const rateGroups = \[/, "Shop price chart data is missing");
 assert.match(app, /"Diya No\. 1", "₹1\.50", "₹15"/, "The listed No. 1 diya rate is missing");
 assert.match(app, /"B\/Simini", "₹60\.00", "₹600"/, "The listed B/Simini rate is missing");
 assert.match(app, /"Ranjan", "₹250–₹300", ""/, "The Ranjan rate is missing");
+assert.match(app, /class="rate-enquire"/, "Rate rows must link to item-specific WhatsApp enquiries");
+assert.match(app, /rateEnquire: "Ask on WhatsApp"/, "English rate enquiry action is missing");
+assert.match(app, /rateEnquire: "వాట్సాప్‌లో అడగండి"/, "Telugu rate enquiry action is missing");
 assert.match(app, /addEventListener\("click"/, "Interactive controls must use event listeners");
 assert.doesNotMatch(app, /onerror\s*=/i, "Avoid inline event handlers");
 
@@ -79,6 +82,9 @@ assert.match(css, /@media\s*\(max-width:\s*700px\)/, "Mobile layout breakpoint i
 assert.match(css, /\.rate-table/, "Price chart styling is missing");
 assert.match(css, /prefers-reduced-motion/, "Reduced-motion support is missing");
 assert.match(css, /:focus-visible/, "Visible keyboard focus styling is missing");
+assert.match(css, /scroll-margin-top/, "Sticky-header anchor offset is missing");
+assert.match(html, /\+91 85555896577/, "The second poster number must remain displayed");
+assert.doesNotMatch(html, /tel:\+9185555896577|wa\.me\/9185555896577/, "Do not create a clickable link for the unverified 11-digit alternate number");
 
 console.log("Site smoke checks passed.");
 console.log("- Required site files and real shop product photos exist");
