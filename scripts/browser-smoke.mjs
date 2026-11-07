@@ -53,8 +53,8 @@ try {
   const response = await page.goto(baseUrl, { waitUntil: "networkidle" });
   assert.equal(response.status(), 200, "Home page must load");
   assert.match(await page.title(), /Shree Ganesha Clay Works/);
-  assert.equal(await page.locator(".category-card").count(), 6, "All six shop categories should render");
-  assert.equal(await page.locator("#product-grid .product-card").count(), 6, "Six real catalogue categories should render");
+  assert.equal(await page.locator(".category-card").count(), 7, "All seven shop categories should render");
+  assert.equal(await page.locator("#product-grid .product-card").count(), 7, "Seven shop collections should render");
   await page.screenshot({ path: path.join(root, "artifacts/site-desktop.png"), fullPage: true });
 
   await page.locator('[data-filter="agul"]').click();
@@ -111,7 +111,11 @@ try {
   assert.equal(await page.locator("#product-grid .product-card").count(), 0);
   assert.equal(await page.locator("#empty-state").isVisible(), true, "No-results state should be visible");
   await page.locator("#product-search").clear();
-  assert.equal(await page.locator("#product-grid .product-card").count(), 6);
+  assert.equal(await page.locator("#product-grid .product-card").count(), 7);
+
+  await page.locator('[data-filter="idols"]').click();
+  assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Clay idol enquiry collection should be filterable");
+  assert.match(await page.locator("#product-grid h3").first().innerText(), /Clay idols/);
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
   console.log("Browser checks passed: desktop, mobile, search, filters, language, rate enquiries, both contacts and navigation.");
