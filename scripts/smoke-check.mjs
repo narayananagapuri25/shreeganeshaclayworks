@@ -27,7 +27,7 @@ for (const file of requiredFiles) await access(path.join(root, file));
 
 const logoBytes = await readFile(path.join(root, "assets/brand/official-logo.jpg"));
 const logoGitBlobSha = createHash("sha1")
-  .update(Buffer.concat([Buffer.from("blob " + logoBytes.length + "\\0"), logoBytes]))
+  .update(Buffer.concat([Buffer.from("blob " + logoBytes.length), Buffer.from([0]), logoBytes]))
   .digest("hex");
 assert.equal(
   logoGitBlobSha,
@@ -35,7 +35,7 @@ assert.equal(
   "The supplied official logo must remain byte-for-byte unchanged"
 );
 assert.equal(
-  (html.match(/src="assets\\/brand\\/official-logo\\.jpg"/g) || []).length,
+  html.split('src="assets/brand/official-logo.jpg"').length - 1,
   2,
   "The exact supplied logo must be used in both header and footer"
 );
