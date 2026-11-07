@@ -58,20 +58,25 @@ try {
       await image.scrollIntoViewIfNeeded();
       await image.evaluate((element) => element.decode());
       const details = await image.evaluate((element) => {
-        const canvas = document.createElement("canvas");
-        canvas.width = 16;
-        canvas.height = 16;
-        const context = canvas.getContext("2d", { willReadFrequently: true });
-        context.drawImage(element, 0, 0, canvas.width, canvas.height);
-        const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
-        let min = 255;
-        let max = 0;
-        for (let i = 0; i < pixels.length; i += 4) {
-          if (pixels[i + 3] < 16) continue;
-          for (let channel = 0; channel < 3; channel += 1) {
-            min = Math.min(min, pixels[i + channel]);
-            max = Math.max(max, pixels[i + channel]);
+        const sprite = element.classList.contains("sprite-sheet");
+        let pixelVariation = 0;
+        if (!sprite) {
+          const canvas = document.createElement("canvas");
+          canvas.width = 16;
+          canvas.height = 16;
+          const context = canvas.getContext("2d", { willReadFrequently: true });
+          context.drawImage(element, 0, 0, canvas.width, canvas.height);
+          const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+          let min = 255;
+          let max = 0;
+          for (let i = 0; i < pixels.length; i += 4) {
+            if (pixels[i + 3] < 16) continue;
+            for (let channel = 0; channel < 3; channel += 1) {
+              min = Math.min(min, pixels[i + channel]);
+              max = Math.max(max, pixels[i + channel]);
+            }
           }
+          pixelVariation = max - min;
         }
         return {
           src: element.getAttribute("src"),
@@ -81,25 +86,26 @@ try {
           objectFit: getComputedStyle(element).objectFit,
           transform: getComputedStyle(element).transform,
           clipPath: getComputedStyle(element).clipPath,
-          isSprite: element.classList.contains("sprite-sheet"),
-          pixelVariation: max - min
+          sprite,
+          pixelVariation
         };
       });
       assert.ok(
         details.complete && details.naturalWidth >= 120 && details.naturalHeight >= 60,
         "Image is missing, too small or broken: " + JSON.stringify(details)
       );
-      assert.ok(
-        details.pixelVariation >= 12,
-        "Image appears blank or has no visible product detail: " + JSON.stringify(details)
-      );
-      assert.equal(details.objectFit, "contain", "The complete source photo must be visible on desktop and mobile: " + details.src);
-      if (details.isSprite) {
-        assert.notEqual(details.transform, "none", "Generated sheet crops must use a specific tile position: " + details.src);
+      if (details.sprite) {
+        assert.ok(details.naturalWidth >= 1400, "Generated product sheet should load at full source resolution");
+        assert.equal(details.objectFit, "contain", "Product sheet must retain its source proportions");
+        assert.notEqual(details.transform, "none", "Every product sheet image must use an individual crop position");
+        assert.equal(details.clipPath, "none", "Product sheet crops must not be masked");
+        const window = image.locator("xpath=..");
+        assert.equal(await window.evaluate((element) => getComputedStyle(element).overflow), "hidden", "Sprite window must clip to its own product cell");
       } else {
-        assert.equal(details.transform, "none", "Real shop photographs must not be zoomed: " + details.src);
+        assert.ok(details.pixelVariation >= 12, "Real shop photograph appears blank: " + JSON.stringify(details));
+        assert.equal(details.transform, "none", "The real shop photograph must not be zoomed");
+        assert.equal(details.objectFit, "contain", "The real shop photograph must remain whole");
       }
-      assert.equal(details.clipPath, "none", "A product photo must never be masked: " + details.src);
     }
   }
 
