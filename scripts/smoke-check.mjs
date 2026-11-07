@@ -69,10 +69,10 @@ assert.ok(productsBlock, "Could not locate product catalogue");
 const productCount = [...productsBlock[1].matchAll(/\bid:\s*["'][a-z-]+["']/g)].length;
 assert.equal(productCount, 7, "Expected seven shop catalogue entries including clay idol enquiries");
 assert.match(productsBlock[1], /id: "clay-idols"/, "Clay idol enquiry collection is missing");
-assert.match(productsBlock[1], /id: "cooking-vessels"[\\s\\S]*?image: "assets\\/products\\/cooking-vessels\\.jpg"/, "Cooking vessels should use their own shop product photo");
-assert.match(productsBlock[1], /id: "water-pots"[\\s\\S]*?image: "assets\\/products\\/water-pots\\.jpg"/, "Water pots should use their own shop product photo");
-assert.match(html, /assets\\/products\\/cooking-vessels\\.jpg/, "Cooking vessel category image is missing");
-assert.match(html, /assets\\/products\\/water-pots\\.jpg/, "Water pot category image is missing");
+assert.ok(app.includes('id: "cooking-vessels"') && app.includes('image: "assets/products/cooking-vessels.jpg"'), "Cooking vessels should use their own shop product photo");
+assert.ok(app.includes('id: "water-pots"') && app.includes('image: "assets/products/water-pots.jpg"'), "Water pots should use their own shop product photo");
+assert.ok(html.includes('assets/products/cooking-vessels.jpg'), "Cooking vessel category image is missing");
+assert.ok(html.includes('assets/products/water-pots.jpg'), "Water pot category image is missing");
 
 assert.match(app, /whatsappNumber:\s*"919493404602"/, "Primary WhatsApp number is not configured");
 assert.match(app, /https:\/\/wa\.me\//, "WhatsApp link builder is missing");
