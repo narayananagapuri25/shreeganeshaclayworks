@@ -57,12 +57,38 @@ try {
       const image = images.nth(i);
       await image.scrollIntoViewIfNeeded();
       await image.evaluate((element) => element.decode());
-      const details = await image.evaluate((element) => ({
-        src: element.getAttribute("src"),
-        naturalWidth: element.naturalWidth,
-        complete: element.complete
-      }));
-      assert.ok(details.complete && details.naturalWidth > 0, "Image failed to load: " + details.src);
+      const details = await image.evaluate((element) => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 16;
+        canvas.height = 16;
+        const context = canvas.getContext("2d", { willReadFrequently: true });
+        context.drawImage(element, 0, 0, canvas.width, canvas.height);
+        const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+        let min = 255;
+        let max = 0;
+        for (let i = 0; i < pixels.length; i += 4) {
+          if (pixels[i + 3] < 16) continue;
+          for (let channel = 0; channel < 3; channel += 1) {
+            min = Math.min(min, pixels[i + channel]);
+            max = Math.max(max, pixels[i + channel]);
+          }
+        }
+        return {
+          src: element.getAttribute("src"),
+          naturalWidth: element.naturalWidth,
+          naturalHeight: element.naturalHeight,
+          complete: element.complete,
+          pixelVariation: max - min
+        };
+      });
+      assert.ok(
+        details.complete && details.naturalWidth >= 120 && details.naturalHeight >= 60,
+        "Image is missing, too small or broken: " + JSON.stringify(details)
+      );
+      assert.ok(
+        details.pixelVariation >= 12,
+        "Image appears blank or has no visible product detail: " + JSON.stringify(details)
+      );
     }
   }
 
@@ -187,7 +213,7 @@ try {
   assert.match(await page.locator("#product-grid h3").first().innerText(), /Clay idols/);
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
-  console.log("Browser checks passed: desktop, mobile, all product images, search, filters, language, rate enquiries, both phone and WhatsApp contacts and navigation.");
+  console.log("Browser checks passed: desktop, mobile, visible product-image detail, search, filters, language, rate enquiries, both phone and WhatsApp contacts and navigation.");
 } finally {
   if (browser) await browser.close();
   await new Promise((resolve) => server.close(resolve));
