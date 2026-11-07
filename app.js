@@ -19,6 +19,19 @@ const products = [
     alt: "Heart-shaped terracotta diya supplied by the shop"
   },
   {
+    id: "clay-idols",
+    category: "idols",
+    name: { en: "Clay idols & pooja pieces", te: "మట్టి విగ్రహాలు & పూజా వస్తువులు" },
+    description: {
+      en: "Looking for a clay idol or pooja piece? Message us to confirm the designs, sizes and availability currently at the shop.",
+      te: "మట్టి విగ్రహం లేదా పూజా వస్తువు కావాలా? ప్రస్తుతం దుకాణంలో ఉన్న నమూనాలు, సైజులు మరియు లభ్యత కోసం మాకు సందేశం పంపండి."
+    },
+    categoryLabel: { en: "Pooja & devotion", te: "పూజ & భక్తి" },
+    price: "Enquire for current designs and price",
+    image: "assets/products/store-stock.jpg",
+    alt: "Shop stock at Shree Ganesha Clay Works; ask about clay idol designs"
+  },
+  {
     id: "plain-agul",
     category: "agul",
     name: { en: "Plain agul", te: "సాదా అగులు" },
@@ -166,9 +179,9 @@ const translations = {
     categoryEyebrow: "EXPLORE THE STORE", categoryTitle: "Find your kind<br><em>of clay.</em>",
     categoryText: "Browse real product photographs from our store, then contact us directly for current designs and availability.",
     category01: "POOJA & FESTIVAL", category02: "TRADITIONAL DESIGNS", category03: "STAND DESIGNS",
-    category04: "LAMPS & SIMINI", category05: "KITCHEN & HOME", category06: "HOME ESSENTIALS",
+    category04: "LAMPS & SIMINI", category05: "KITCHEN & HOME", category06: "HOME ESSENTIALS", category07: "POOJA & DEVOTION",
     catDiyas: "Clay diyas", catAgul: "Agul", catStand: "Stand agul", catSimini: "Simini lamps",
-    catCookware: "Cooking ware", catWater: "Water pots",
+    catCookware: "Cooking ware", catWater: "Water pots", catIdols: "Clay idols & pooja",
     collectionEyebrow: "A CLOSER LOOK", collectionTitle: "A collection for<br><em>every occasion.</em>",
     collectionText: "A selection of product types from Shree Ganesha Clay Works. Message us to confirm designs, sizes and availability.",
     filterAll: "All collections", searchPlaceholder: "Search collections",
@@ -213,9 +226,9 @@ const translations = {
     categoryEyebrow: "మా దుకాణాన్ని చూడండి", categoryTitle: "మీకు నచ్చిన<br><em>మట్టి వస్తువులు.</em>",
     categoryText: "మా దుకాణంలోని నిజమైన ఉత్పత్తుల ఫోటోలను చూడండి. ప్రస్తుత నమూనాలు, సైజులు మరియు లభ్యత కోసం నేరుగా మమ్మల్ని సంప్రదించండి.",
     category01: "పూజ & పండుగలు", category02: "సంప్రదాయ నమూనాలు", category03: "స్టాండ్ నమూనాలు",
-    category04: "దీపాలు & సిమిని", category05: "వంటగది & ఇల్లు", category06: "ఇంటి అవసరాలు",
+    category04: "దీపాలు & సిమిని", category05: "వంటగది & ఇల్లు", category06: "ఇంటి అవసరాలు", category07: "పూజ & భక్తి",
     catDiyas: "మట్టి దీపాలు", catAgul: "అగులు", catStand: "స్టాండ్ అగులు", catSimini: "సిమిని దీపాలు",
-    catCookware: "వంట పాత్రలు", catWater: "నీటి కుండలు",
+    catCookware: "వంట పాత్రలు", catWater: "నీటి కుండలు", catIdols: "మట్టి విగ్రహాలు & పూజా వస్తువులు",
     collectionEyebrow: "మరింత దగ్గరగా చూడండి", collectionTitle: "ప్రతి సందర్భానికి<br><em>ఒక సేకరణ.</em>",
     collectionText: "ష్రీ గణేశ క్లే వర్క్స్‌లో లభించే కొన్ని ఉత్పత్తుల రకాలు. నమూనాలు, సైజులు మరియు లభ్యత నిర్ధారించుకోవడానికి మాకు సందేశం పంపండి.",
     filterAll: "అన్ని సేకరణలు", searchPlaceholder: "సేకరణలను వెతకండి",
