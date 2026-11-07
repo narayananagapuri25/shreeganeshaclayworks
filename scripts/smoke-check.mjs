@@ -18,6 +18,7 @@ const requiredFiles = [
   "assets/products/stand-agul.jpg",
   "assets/products/store-stock.jpg",
   "assets/products/simini.jpg",
+  "assets/brand/official-logo.jpg",
 ];
 for (const file of requiredFiles) await access(path.join(root, file));
 
@@ -36,10 +37,11 @@ for (const requiredId of ["home", "categories", "collections", "rate-chart", "st
   assert.ok(idSet.has(requiredId), "Missing required page element: " + requiredId);
 }
 
-for (const asset of ["styles.css", "app.js", "favicon.svg"]) {
+for (const asset of ["styles.css", "app.js", "favicon.svg", "assets/brand/official-logo.jpg"]) {
   assert.ok(html.includes(asset), "HTML must link local asset " + asset);
 }
 assert.doesNotMatch(html, /images\.unsplash\.com/, "Product pages should use the shop's real photos");
+assert.match(html, /assets\/brand\/official-logo\.jpg/, "The supplied shop logo should be used");
 
 const categoryLinks = new Set([...html.matchAll(/data-category-link="([^"]+)"/g)].map((m) => m[1]));
 const filters = new Set([...html.matchAll(/data-filter="([^"]+)"/g)].map((m) => m[1]));
