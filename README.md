@@ -38,11 +38,12 @@ Some product photographs show bag or box quantities (for example 500-piece bags 
 1. Confirm all price-chart entries and product names with the shop.
 2. Confirm the exact product range, stock, packaging and bulk-order terms.
 3. Review the Telugu wording and all product descriptions.
-4. Both contact numbers are confirmed and linked for calls and WhatsApp.
-5. Confirm the exact street address and opening hours before publishing. The draft currently uses the Near Collectorate / Govt. Dispensary address. A public business listing associated with the alternate shop contact shows a different Naspur address (Uma Maheswara Colony / Seethrampalli Road) and lists 9:00 AM–7:00 PM daily; do not replace the supplied website details or publish hours until the owner confirms which record is current.
-6. Add official social links and confirmed delivery/pickup information; none have been supplied for publication yet.
-7. Complete Android and desktop visual review, then test every WhatsApp and map link.
-8. Confirm the final heart-diya image against a clean original from the shop; the current source photo is retained with a natural rectangular crop until a better original is supplied.
+4. Both contact numbers are confirmed from the shop-supplied flyer and linked for calls and WhatsApp.
+5. The street address is confirmed from the shop-supplied flyer: Near Collectorate, Opp. Govt. Dispensary, Mancherial–Chennur Highway, Naspur, Mancherial, Telangana – 504208. Use this owner-supplied address as the source of truth; do not replace it with conflicting third-party directory listings.
+6. Opening hours are not shown on the supplied flyer and are intentionally omitted until the shop confirms them.
+7. Add official social links and confirmed delivery/pickup information; none have been supplied for publication yet.
+8. Complete Android and desktop visual review, then test every WhatsApp and map link.
+9. Confirm the final heart-diya image against a clean original from the shop; the current source photo is retained with a natural rectangular crop until a better original is supplied.
 
 ## Automated review
 
