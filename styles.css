@@ -1159,3 +1159,38 @@ main [id] { scroll-margin-top: 96px; }
   .category-image-frame > .category-number { padding: 5px 10px 6px; }
   .category-card > .category-label { padding: 3px 10px 11px; }
 }
+
+
+/* Story caption stays below the image so the complete shop photo remains unobstructed. */
+.story-image-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 25px 0 0;
+}
+.story-image-wrap:before { bottom: 40px; }
+.story-image-wrap img {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1.02 / 1;
+  padding: 16px;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #eee6da;
+}
+.image-caption {
+  position: static;
+  left: auto;
+  bottom: auto;
+  display: inline-block;
+  margin-top: 9px;
+  padding: 9px 13px;
+  align-self: flex-start;
+}
+@media (max-width: 700px) {
+  .story-image-wrap { padding-right: 17px; }
+  .story-image-wrap:before { bottom: 37px; }
+  .story-image-wrap img { padding: 11px; }
+}
