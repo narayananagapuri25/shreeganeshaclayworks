@@ -103,6 +103,21 @@ try {
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForFunction(() => !document.querySelector(".floating-whatsapp").classList.contains("is-visible"));
   assert.match(await page.title(), /Shree Ganesha Clay Works/);
+  const heroPhotoStyle = await page.locator(".hero-photo").evaluate((element) => {
+    const style = getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    return { image: style.backgroundImage, width: rect.width, height: rect.height };
+  });
+  assert.match(heroPhotoStyle.image, /cooking-vessels\\.jpg/, "Hero should use the clean original cooking-vessel photograph");
+  assert.ok(heroPhotoStyle.width > 250 && heroPhotoStyle.height > 200, "Hero photograph should have a substantial visible area");
+  assert.equal(await page.locator(".hero-note, .hero-index").count(), 0, "Hero should not contain redundant overlay captions");
+  const desktopCategoryColumns = await page.locator(".category-grid").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length);
+  assert.equal(desktopCategoryColumns, 4, "Desktop categories should use a balanced four-column grid");
+  const diyaZoom = await page.locator('.category-card[data-category-link="diyas"] img').evaluate((element) => {
+    const match = getComputedStyle(element).transform.match(/^matrix\\(([^,]+)/);
+    return match ? Number(match[1]) : 1;
+  });
+  assert.ok(diyaZoom >= 1.4, "The heart-diya photograph should be tightly cropped around the product");
   const storeAddress = await page.locator("address").innerText();
   assert.match(storeAddress, /Near Collectorate/i, "Store address should include the supplied landmark");
   assert.match(storeAddress, /Govt\. Dispensary/i, "Store address should include the supplied dispensary landmark");
