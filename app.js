@@ -346,7 +346,6 @@ function renderProducts() {
     return '<article class="product-card">' +
       '<div class="product-image-wrap">' +
       '<img src="' + product.image + '" alt="' + product.alt + '" loading="lazy">' +
-      '<span class="product-tag">' + product.categoryLabel[language] + '</span>' +
       '</div>' +
       '<div class="product-card-body">' +
       '<span class="product-card-category">' + product.categoryLabel[language] + '</span>' +
