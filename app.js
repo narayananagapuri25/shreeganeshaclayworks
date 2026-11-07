@@ -8,29 +8,29 @@ const products = [
   {
     id: "heart-diya",
     category: "diyas",
-    name: { en: "Heart-shaped diya", te: "హృదయ ఆకారపు మట్టి దీపం" },
+    name: { en: "Traditional clay diya", te: "సంప్రదాయ మట్టి దీపం" },
     description: {
-      en: "A small traditional diya with a heart-shaped design.",
-      te: "హృదయ ఆకారంలో తయారు చేసిన సంప్రదాయ మట్టి దీపం."
+      en: "A traditional clay diya shown in the shop's original photograph. See the numbered and special diya rates below, then ask us to confirm your preferred design.",
+      te: "దుకాణం అసలు ఫోటోలో చూపిన సంప్రదాయ మట్టి దీపం. నంబర్ మరియు ప్రత్యేక దీపాల ధరల కోసం క్రింది పట్టిక చూడండి."
     },
     categoryLabel: { en: "Clay diya", te: "మట్టి దీపం" },
-    price: "₹3.00 / piece · ₹30 / dozen",
+    price: { en: "See diya sizes & rates below", te: "దీపాల సైజులు, ధరల కోసం క్రింది పట్టిక చూడండి" },
     image: "assets/products/heart-diya.jpg",
-    alt: "Heart-shaped terracotta diya supplied by the shop",
+    alt: "Traditional clay diya photographed from above",
     searchTerms: ["diya", "diyas", "deepam", "deepalu", "clay lamp", "దీపం", "దీపాలు"]
   },
   {
     id: "clay-idols",
     category: "idols",
-    name: { en: "Clay idols & pooja pieces", te: "మట్టి విగ్రహాలు & పూజా వస్తువులు" },
+    name: { en: "Pooja & other clay items", te: "పూజా & ఇతర మట్టి వస్తువులు" },
     description: {
-      en: "Looking for a clay idol or pooja piece? Message us to confirm the designs, sizes and availability currently at the shop.",
-      te: "మట్టి విగ్రహం లేదా పూజా వస్తువు కావాలా? ప్రస్తుతం దుకాణంలో ఉన్న నమూనాలు, సైజులు మరియు లభ్యత కోసం మాకు సందేశం పంపండి."
+      en: "A view of the shop's clay stock. Ask us about idols, pooja pieces and the designs currently available.",
+      te: "దుకాణంలోని మట్టి వస్తువుల నిల్వను చూపించే ఫోటో. విగ్రహాలు, పూజా వస్తువులు మరియు ప్రస్తుతం అందుబాటులో ఉన్న నమూనాల గురించి అడగండి."
     },
-    categoryLabel: { en: "Pooja & devotion", te: "పూజ & భక్తి" },
-    price: "Enquire for current designs and price",
+    categoryLabel: { en: "Pooja & more", te: "పూజ & ఇతర వస్తువులు" },
+    price: { en: "Ask about current designs & prices", te: "ప్రస్తుత నమూనాలు, ధరల కోసం అడగండి" },
     image: "assets/products/store-stock.jpg",
-    alt: "Shop stock at Shree Ganesha Clay Works; ask about clay idol designs",
+    alt: "Rows of clay products displayed inside the shop",
     searchTerms: ["clay idol", "idols", "pooja", "puja", "devotional", "విగ్రహాలు", "పూజా వస్తువులు"]
   },
   {
@@ -42,7 +42,7 @@ const products = [
       te: "సంప్రదాయ అగులు డిజైన్లు. అందుబాటులో ఉన్న సైజులు, నమూనాల కోసం అడగండి."
     },
     categoryLabel: { en: "Traditional clayware", te: "సంప్రదాయ మట్టి వస్తువులు" },
-    price: "Enquire for current price",
+    price: { en: "Ask about sizes & current price", te: "సైజులు, ప్రస్తుత ధర కోసం అడగండి" },
     image: "assets/products/plain-agul.jpg",
     alt: "Plain agul clay pieces",
     searchTerms: ["agul", "agal", "traditional agul", "అగులు"]
@@ -56,7 +56,7 @@ const products = [
       te: "దుకాణం కేటలాగ్‌లో చూపిన వివిధ నంబర్ల సైజుల్లో స్టాండ్ అగులు."
     },
     categoryLabel: { en: "Stand designs", te: "స్టాండ్ నమూనాలు" },
-    price: "₹8–₹40 / piece · variants differ",
+    price: { en: "₹8–₹40 / piece · sizes vary", te: "ఒక్కొక్కటి ₹8–₹40 · సైజును బట్టి" },
     image: "assets/products/stand-agul.jpg",
     alt: "Terracotta stand agul from the shop",
     searchTerms: ["stand agul", "agul stand", "stand design", "స్టాండ్ అగులు"]
@@ -70,7 +70,7 @@ const products = [
       te: "మట్టి సిమిని దీపాల బేస్‌లు. గాజు చిమ్నీ మరియు అందుబాటులో ఉన్న రకాల గురించి అడగండి."
     },
     categoryLabel: { en: "Clay lamps", te: "మట్టి దీపాలు" },
-    price: "C/Simini ₹50 · B/Simini ₹60",
+    price: { en: "C/Simini ₹50 each · B/Simini ₹60 each", te: "సి సిమిని ₹50 · బి సిమిని ₹60 ఒక్కొక్కటి" },
     image: "assets/products/simini.jpg",
     alt: "Traditional clay simini lamp base",
     searchTerms: ["simini", "b/simini", "c/simini", "chimney lamp", "oil lamp", "సిమిని", "సిమిని దీపాలు"]
@@ -84,7 +84,7 @@ const products = [
       te: "సరఫరా చేసిన ధరల పట్టికలో ఉన్న ½ లీటర్ నుంచి 5 లీటర్ల వంట పాత్రలు."
     },
     categoryLabel: { en: "Kitchen collection", te: "వంటగది సేకరణ" },
-    price: "₹100–₹300 / piece · capacity varies",
+    price: { en: "₹100–₹300 / vessel · capacity varies", te: "₹100–₹300 / పాత్ర · సామర్థ్యాన్ని బట్టి" },
     image: "assets/products/cooking-vessels.jpg",
     alt: "Clay cooking vessel shown in the shop rate chart",
     searchTerms: ["cooking pot", "cookware", "clay pot", "handi", "vessel", "వంట పాత్రలు", "వంట కుండ"]
@@ -98,7 +98,7 @@ const products = [
       te: "8, 12, 15, 20 లీటర్ల నీటి కుండలు మరియు రంజన్."
     },
     categoryLabel: { en: "Home essentials", te: "ఇంటి అవసరాలు" },
-    price: "₹150–₹300 / pot · Ranjan ₹250–₹300",
+    price: { en: "₹150–₹300 / pot · Ranjan ₹250–₹300", te: "కుండ ₹150–₹300 · రంజన్ ₹250–₹300" },
     image: "assets/products/water-pots.jpg",
     alt: "Traditional clay water pot shown in the shop rate chart",
     searchTerms: ["water pot", "matka", "clay water storage", "ranjan", "నీటి కుండ", "నీటి కుండలు", "రంజన్"]
@@ -201,15 +201,15 @@ const translations = {
     categoryEyebrow: "EXPLORE THE STORE", categoryTitle: "Shop by<br><em>category.</em>",
     categoryText: "Choose a product type to jump straight to its collection and send a direct enquiry to the shop.",
     category01: "POOJA & FESTIVAL", category02: "TRADITIONAL DESIGNS", category03: "STAND DESIGNS",
-    category04: "LAMPS & SIMINI", category05: "KITCHEN & HOME", category06: "HOME ESSENTIALS", category07: "POOJA & DEVOTION",
+    category04: "LAMPS & SIMINI", category05: "KITCHEN & HOME", category06: "HOME ESSENTIALS", category07: "MORE TO EXPLORE",
     catDiyas: "Clay diyas", catAgul: "Agul", catStand: "Stand agul", catSimini: "Simini lamps",
-    catCookware: "Cooking ware", catWater: "Water pots", catIdols: "Clay idols & pooja",
+    catCookware: "Cooking ware", catWater: "Water pots", catIdols: "Pooja & other items",
     collectionEyebrow: "A CLOSER LOOK", collectionTitle: "Browse products<br><em>& prices.</em>",
     collectionText: "Search by product name or category. Each product links to WhatsApp so you can confirm today’s price, size and availability.",
     filterAll: "All collections", searchPlaceholder: "Search diyas, pots, lamps…",
     emptyState: "No matching products. Try another search.",
     emptyAsk: "Ask the shop on WhatsApp ↗",
-    resultsCount: "Showing {count} results",
+    oneResult: "Showing 1 result", resultsCount: "Showing {count} results",
     collectionFootnote: "Pack quantities appearing in some shared product photos are reference pack sizes only, not a live stock count.",
     rateEyebrow: "SHOP PRICE GUIDE", rateTitle: "Shop price<br><em>guide.</em>",
     rateIntro: "Browse the rates supplied by the shop by product and size. Tap any row to ask about the current price and availability on WhatsApp.",
@@ -265,15 +265,15 @@ const translations = {
     categoryEyebrow: "మా దుకాణాన్ని చూడండి", categoryTitle: "వస్తువుల<br><em>రకాన్ని ఎంచుకోండి.</em>",
     categoryText: "ఒక వస్తువు రకాన్ని ఎంచుకుంటే సంబంధిత సేకరణకు వెళ్లి నేరుగా దుకాణాన్ని సంప్రదించవచ్చు.",
     category01: "పూజ & పండుగలు", category02: "సంప్రదాయ నమూనాలు", category03: "స్టాండ్ నమూనాలు",
-    category04: "దీపాలు & సిమిని", category05: "వంటగది & ఇల్లు", category06: "ఇంటి అవసరాలు", category07: "పూజ & భక్తి",
+    category04: "దీపాలు & సిమిని", category05: "వంటగది & ఇల్లు", category06: "ఇంటి అవసరాలు", category07: "ఇంకా చూడండి",
     catDiyas: "మట్టి దీపాలు", catAgul: "అగులు", catStand: "స్టాండ్ అగులు", catSimini: "సిమిని దీపాలు",
-    catCookware: "వంట పాత్రలు", catWater: "నీటి కుండలు", catIdols: "మట్టి విగ్రహాలు & పూజా వస్తువులు",
+    catCookware: "వంట పాత్రలు", catWater: "నీటి కుండలు", catIdols: "పూజా & ఇతర వస్తువులు",
     collectionEyebrow: "మరింత దగ్గరగా చూడండి", collectionTitle: "ఉత్పత్తులు<br><em>& ధరలు.</em>",
     collectionText: "వస్తువు పేరు లేదా రకం ద్వారా వెతకండి. ప్రస్తుత ధర, సైజు మరియు లభ్యతను వాట్సాప్‌లో నిర్ధారించుకోండి.",
     filterAll: "అన్ని సేకరణలు", searchPlaceholder: "దీపాలు, కుండలు, పాత్రలు వెతకండి",
     emptyState: "సరిపోలే ఉత్పత్తులు లేవు. మరో పదంతో వెతకండి.",
     emptyAsk: "వాట్సాప్‌లో దుకాణాన్ని అడగండి ↗",
-    resultsCount: "{count} ఫలితాలు",
+    oneResult: "1 ఫలితం", resultsCount: "{count} ఫలితాలు",
     collectionFootnote: "కొన్ని ఉత్పత్తుల ఫోటోలలో కనిపించే బ్యాగ్ లేదా బాక్స్ పరిమాణాలు సూచన మాత్రమే; అవి ప్రస్తుత స్టాక్ సంఖ్యలు కావు.",
     rateEyebrow: "దుకాణం ధరల గైడ్", rateTitle: "దుకాణం<br><em>ధరల పట్టిక.</em>",
     rateIntro: "దుకాణం అందించిన ధరలను వస్తువు మరియు సైజు వారీగా చూడండి. ప్రస్తుత ధర, లభ్యత కోసం ఏ వరుసనైనా ఎంచుకుని వాట్సాప్‌లో అడగండి.",
@@ -335,7 +335,7 @@ function renderProducts() {
     const matchesFilter = activeFilter === "all" || product.category === activeFilter;
     const searchable = [
       product.name.en, product.name.te, product.description.en, product.description.te,
-      product.categoryLabel.en, product.categoryLabel.te, product.price,
+      product.categoryLabel.en, product.categoryLabel.te, product.price.en, product.price.te,
       ...(product.searchTerms || [])
     ].join(" ").toLowerCase();
     return matchesFilter && searchable.includes(searchTerm);
@@ -352,7 +352,7 @@ function renderProducts() {
       '<span class="product-card-category">' + product.categoryLabel[language] + '</span>' +
       '<h3>' + product.name[language] + '</h3>' +
       '<p>' + product.description[language] + '</p>' +
-      '<div class="product-price">' + product.price + '</div>' +
+      '<div class="product-price">' + product.price[language] + '</div>' +
       '<a class="product-card-action" href="' + waUrl(message) + '" target="_blank" rel="noopener noreferrer">' +
       '<span>' + translations[language].rateAsk + '</span><span aria-hidden="true">↗</span></a>' +
       '</div></article>';
@@ -363,7 +363,9 @@ function renderProducts() {
       imageElement.closest(".product-image-wrap").classList.add("image-failed");
     }, { once: true });
   });
-  productResultCount.textContent = translations[language].resultsCount.replace("{count}", String(visible.length));
+  productResultCount.textContent = visible.length === 1
+    ? translations[language].oneResult
+    : translations[language].resultsCount.replace("{count}", String(visible.length));
   emptyState.hidden = visible.length !== 0;
 }
 
