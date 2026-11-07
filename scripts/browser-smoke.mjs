@@ -159,8 +159,8 @@ try {
     };
   }));
   assert.deepEqual(logoUsage.map((logo) => logo.src), [
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/1c9eabaa-6eaa-4ea1-b69a-576cf86c3a17.png",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/1c9eabaa-6eaa-4ea1-b69a-576cf86c3a17.png"
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/31f76da6-55d4-411f-acf4-30cec1f43b94.png",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/31f76da6-55d4-411f-acf4-30cec1f43b94.png"
   ], "Header and footer must use the exact crop from the supplied flyer");
   for (const logo of logoUsage) {
     assert.equal(logo.fit, "contain", "The original logo must never be cropped");
