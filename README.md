@@ -39,8 +39,8 @@ Some product photographs show bag or box quantities (for example 500-piece bags 
 2. Confirm the exact product range, stock, packaging and bulk-order terms.
 3. Review the Telugu wording and all product descriptions.
 4. Both contact numbers are transcribed from the shop-supplied flyer and linked for calls and WhatsApp.
-5. The flyer gives this address: Near Collectorate, Opp. Govt. Dispensary, Mancherial–Chennur Highway, Naspur, Mancherial, Telangana – 504208. The current public business listing linked to the alternate phone shows a different Naspur address (Uma Maheswara Colony / Seethrampalli Road). Keep the flyer address on the website for now, but get owner confirmation before public launch in case the shop has moved.
-6. The public listing reports 9:00 AM–7:00 PM daily, but the flyer does not state hours. Do not publish those hours until the shop confirms they are current.
+5. Use the owner-confirmed flyer address on the website: Near Collectorate, Opp. Govt. Dispensary, Mancherial–Chennur Highway, Naspur, Mancherial, Telangana – 504208. A third-party listing differs; the shop-supplied flyer takes precedence unless the owner later provides an updated address.
+6. Display the owner-requested store hours as 9:00 AM–7:00 PM. No additional weekday/weekend schedule is implied.
 7. No official social profile was verified during launch review. Add social links only after the shop supplies or confirms the exact accounts. Delivery/pickup information also remains unconfirmed.
 8. Complete the final Android and desktop visual review, then test every WhatsApp and map link.
 9. Confirm the heart-diya photo against a clean original from the shop; the current genuine product photograph is retained with natural rectangular framing.
