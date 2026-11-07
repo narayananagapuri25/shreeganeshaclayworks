@@ -30,5 +30,12 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run browser interaction checks
         run: node scripts/browser-smoke.mjs
+      - name: Upload desktop and mobile screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-preview-screenshots
+          path: artifacts/site-*.png
+          if-no-files-found: ignore
       - name: Check patch whitespace
         run: git diff --check
