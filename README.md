@@ -38,12 +38,12 @@ Some product photographs show bag or box quantities (for example 500-piece bags 
 1. Confirm all price-chart entries and product names with the shop.
 2. Confirm the exact product range, stock, packaging and bulk-order terms.
 3. Review the Telugu wording and all product descriptions.
-4. Both contact numbers are confirmed from the shop-supplied flyer and linked for calls and WhatsApp.
-5. The street address is confirmed from the shop-supplied flyer: Near Collectorate, Opp. Govt. Dispensary, Mancherial–Chennur Highway, Naspur, Mancherial, Telangana – 504208. Use this owner-supplied address as the source of truth; do not replace it with conflicting third-party directory listings.
-6. Opening hours are not shown on the supplied flyer and are intentionally omitted until the shop confirms them.
-7. Add official social links and confirmed delivery/pickup information; none have been supplied for publication yet.
-8. Complete Android and desktop visual review, then test every WhatsApp and map link.
-9. Confirm the final heart-diya image against a clean original from the shop; the current source photo is retained with a natural rectangular crop until a better original is supplied.
+4. Both contact numbers are transcribed from the shop-supplied flyer and linked for calls and WhatsApp.
+5. The flyer gives this address: Near Collectorate, Opp. Govt. Dispensary, Mancherial–Chennur Highway, Naspur, Mancherial, Telangana – 504208. The current public business listing linked to the alternate phone shows a different Naspur address (Uma Maheswara Colony / Seethrampalli Road). Keep the flyer address on the website for now, but get owner confirmation before public launch in case the shop has moved.
+6. The public listing reports 9:00 AM–7:00 PM daily, but the flyer does not state hours. Do not publish those hours until the shop confirms they are current.
+7. No official social profile was verified during launch review. Add social links only after the shop supplies or confirms the exact accounts. Delivery/pickup information also remains unconfirmed.
+8. Complete the final Android and desktop visual review, then test every WhatsApp and map link.
+9. Confirm the heart-diya photo against a clean original from the shop; the current genuine product photograph is retained with natural rectangular framing.
 
 ## Automated review
 
