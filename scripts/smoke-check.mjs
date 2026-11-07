@@ -16,7 +16,7 @@ const requiredFiles = [
   "assets/products/heart-diya.webp",
   "assets/products/plain-agul.webp",
   "assets/products/stand-agul.webp",
-  "assets/products/store-stock.webp",
+  "assets/products/pooja-items.webp",
   "assets/products/simini.webp",
   "assets/products/cooking-vessels.webp",
   "assets/products/water-pots.webp",
@@ -59,7 +59,7 @@ assert.doesNotMatch(html, /sprite-window|sprite-sheet/, "HTML must not contain s
 assert.doesNotMatch(app, /spriteClass|sprite-window|sprite-sheet/, "Catalogue data and renderer must not use sprite crops");
 for (const imagePath of [
   "assets/products/heart-diya.webp",
-  "assets/products/store-stock.webp",
+  "assets/products/pooja-items.webp",
   "assets/products/plain-agul.webp",
   "assets/products/stand-agul.webp",
   "assets/products/simini.webp",
