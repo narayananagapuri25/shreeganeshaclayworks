@@ -103,6 +103,23 @@ try {
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForFunction(() => !document.querySelector(".floating-whatsapp").classList.contains("is-visible"));
   assert.match(await page.title(), /Shree Ganesha Clay Works/);
+  const storeAddress = await page.locator("address").innerText();
+  assert.match(storeAddress, /Near Collectorate/i, "Store address should include the supplied landmark");
+  assert.match(storeAddress, /Govt\. Dispensary/i, "Store address should include the supplied dispensary landmark");
+  assert.match(storeAddress, /Naspur/i, "Store address should include Naspur");
+  assert.match(storeAddress, /504208/, "Store address should include the supplied PIN code");
+  const directionsLink = page.locator('a[href^="https://www.google.com/maps/search/"]');
+  assert.equal(await directionsLink.count(), 1, "Store directions link should be present");
+  const directionsHref = await directionsLink.getAttribute("href");
+  assert.match(decodeURIComponent(directionsHref), /Shree Ganesha Clay Works/i, "Directions should search for the correct shop name");
+  const generalWhatsAppLinks = page.locator('[data-whatsapp="general"]');
+  assert.ok(await generalWhatsAppLinks.count() >= 4, "Header, hero, footer and floating WhatsApp shortcuts should be available");
+  for (let i = 0; i < await generalWhatsAppLinks.count(); i += 1) {
+    const link = generalWhatsAppLinks.nth(i);
+    assert.match(await link.getAttribute("href"), /^https:\/\/wa\.me\/919493404602\?text=/, "General WhatsApp shortcuts should target the primary shop number");
+    assert.equal(await link.getAttribute("target"), "_blank", "General WhatsApp shortcuts should open in a new tab");
+    assert.match(await link.getAttribute("rel"), /noopener/, "New-tab WhatsApp links should be protected");
+  }
   assert.equal(await page.locator(".brand-logo").count(), 2, "The supplied logo should appear in header and footer");
   assert.equal(await page.locator(".brand-logo").first().evaluate((image) => image.complete && image.naturalWidth > 0), true, "The original shop logo should load");
   const logoLayout = await page.locator(".site-header .brand-logo").evaluate((image) => {
@@ -169,6 +186,10 @@ try {
   const toggle = page.locator(".menu-toggle");
   await toggle.click();
   assert.equal(await toggle.getAttribute("aria-expanded"), "true", "Mobile menu should open");
+  await page.keyboard.press("Escape");
+  assert.equal(await toggle.getAttribute("aria-expanded"), "false", "Escape should close the mobile menu");
+  await toggle.click();
+  assert.equal(await toggle.getAttribute("aria-expanded"), "true", "Mobile menu should reopen");
   await page.locator(".site-header .brand").click();
   assert.equal(await toggle.getAttribute("aria-expanded"), "false", "Mobile menu should close after tapping outside");
   const mobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
@@ -221,7 +242,7 @@ try {
   assert.match(await page.locator("#product-grid h3").first().innerText(), /Clay idols/);
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
-  console.log("Browser checks passed: desktop, mobile, visible product-image detail, search, filters, language, rate enquiries, both phone and WhatsApp contacts and navigation.");
+  console.log("Browser checks passed: desktop, mobile, image detail, search, filters, English/Telugu, rate enquiries, store address/directions, primary and alternate call/WhatsApp links, menu Escape/outside-click and floating WhatsApp.");
 } finally {
   if (browser) await browser.close();
   await new Promise((resolve) => server.close(resolve));
