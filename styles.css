@@ -445,25 +445,25 @@ main [id] { scroll-margin-top: 96px; }
 /* Use the actual shop-supplied logo on both ends of the site */
 .brand {
   min-width: 172px;
-  min-height: 78px;
+  min-height: 86px;
 }
 .brand-logo {
   display: block;
   width: 172px;
-  height: 78px;
-  max-height: 78px;
+  height: 86px;
+  max-height: 86px;
   object-fit: contain;
   object-position: left center;
 }
 .brand-footer .brand-logo {
   width: 165px;
-  height: 74.5px;
-  max-height: 74.5px;
+  height: 82.5px;
+  max-height: 82.5px;
 }
 @media (max-width: 700px) {
-  .brand { min-width: 140px; min-height: 63.3px; }
-  .brand-logo { width: 140px; height: 63.3px; max-height: 63.3px; }
-  .brand-footer .brand-logo { width: 150px; height: 67.7px; max-height: 67.7px; }
+  .brand { min-width: 140px; min-height: 70px; }
+  .brand-logo { width: 140px; height: 70px; max-height: 70px; }
+  .brand-footer .brand-logo { width: 150px; height: 75px; max-height: 75px; }
 }
 
 /* Tablet navigation: keep the brand clear and avoid compressing desktop links */
