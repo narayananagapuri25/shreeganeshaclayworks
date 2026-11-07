@@ -231,7 +231,7 @@ try {
   assert.match(await page.locator(".rate-enquire").first().innerText(), /అడగండి/);
   await page.locator('[data-lang="en"]').click();
 
-  assert.equal(await page.locator('a[href="tel:+919493404602"]').count(), 1, "Primary number should have a call link");
+  assert.ok(await page.locator('a[href="tel:+919493404602"]').count() >= 2, "Primary number should have quick-action and visit-card call links");
   assert.equal(await page.locator('a[href="https://wa.me/919493404602"]').count(), 1, "Primary number should have a direct WhatsApp link");
   assert.equal(await page.getByText("+91 85558 96577", { exact: true }).count(), 1, "Alternate number should remain visible");
   assert.equal(await page.locator('a[href="tel:+918555896577"]').count(), 1, "Alternate number should have a direct phone link");
