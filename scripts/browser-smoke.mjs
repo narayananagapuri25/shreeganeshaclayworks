@@ -100,10 +100,10 @@ try {
   assert.equal(await heroGallery.locator("img").count(), 4, "Hero should show four original shop product photographs");
   const heroSources = await heroGallery.locator("img").evaluateAll((images) => images.map((image) => image.getAttribute("src")));
   assert.deepEqual(heroSources, [
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/d8dfcf4b-4e02-4af2-a076-74a183b013bb.jpg",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/f82022af-6824-4726-b9ec-1fb31c344532.jpg",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/67bc33cb-4b1b-4865-a316-0ca68e3ad372.jpg",
-    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/610198fe-6c5d-4215-af87-b1c81be5d844.jpg"
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/be725b00-f545-46e8-96ac-d51db6bffa7b.jpg",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/6daa1d27-f77c-4dd9-9bb4-6c3d96082e20.jpg",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/056d4476-fd70-4486-8ea9-38df4d853518.jpg",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/9bbe014c-1df6-4d90-8bc3-5cf73e166c43.jpg"
   ], "Hero must use four standalone square product assets, not sprite sheets");
   assert.ok(heroGalleryLayout.width > 250 && heroGalleryLayout.height > 200, "Hero product gallery should have a substantial visible area");
   assert.equal(heroGalleryLayout.columns, 2, "Hero product photographs should use a balanced two-column gallery");
