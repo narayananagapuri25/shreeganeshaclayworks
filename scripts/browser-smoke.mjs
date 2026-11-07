@@ -141,6 +141,13 @@ try {
     assert.match(await link.getAttribute("rel"), /noopener/, "New-tab WhatsApp links should be protected");
   }
   assert.equal(await page.locator(".brand-logo").count(), 2, "The supplied logo should appear in header and footer");
+  await page.locator(".site-footer .brand-logo").scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => {
+    const footerLogo = document.querySelector(".site-footer .brand-logo");
+    return footerLogo && footerLogo.complete && footerLogo.naturalWidth > 0;
+  });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForFunction(() => !document.querySelector(".floating-whatsapp").classList.contains("is-visible"));
   const logoUsage = await page.locator(".brand-logo").evaluateAll((images) => images.map((image) => {
     const style = getComputedStyle(image);
     return {
