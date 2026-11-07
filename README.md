@@ -9,12 +9,13 @@ A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 - Responsive storefront and category-led discovery for clay idols and pooja pieces, diyas, agul, stand agul, simini lamps, cooking vessels and water pots.
 - Product search with English, Telugu and common item-name aliases; category filtering and live result counts.
 - A four-image hero gallery using the clearest supplied shop photos (cooking vessel, plain agul, stand agul and simini), plus a simple three-step browse → confirm → visit guide.
-- Product photographs remain the shop's real images. Hero, category, catalogue and story images show the full supplied photograph using contain framing; category labels sit below the image, not on top of it. No AI-generated substitutes, forced crops or artificial zoom are used.
+- Product category and catalogue visuals are AI-generated illustrative pottery references, kept in two coordinated studio styles and cropped to individual product cells. The outer product frames are consistent; the crop windows exclude the generated sheet labels. These images are not photographs of the shop's exact current stock. Product descriptions direct customers to confirm actual designs, finishes, sizes and availability with the shop.
+- The original shop/store photograph remains in the story section. The supplied logo remains unchanged.
 - English / Telugu language toggle.
 - Shop-supplied diya and pottery rate chart, with item-specific WhatsApp enquiry links.
 - Product-specific WhatsApp enquiries; no checkout, customer accounts or payment collection.
 - Store address, directions, two printed contact numbers, responsive navigation and custom 404 page.
-- Product and store photographs supplied by the shop.
+- Original store photograph supplied by the shop; category illustrations generated for consistent presentation.
 - Basic security headers, static smoke checks, and automated Playwright browser checks for desktop and mobile interactions.
 
 ## Approved brand artwork
