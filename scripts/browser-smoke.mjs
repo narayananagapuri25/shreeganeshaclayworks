@@ -130,9 +130,31 @@ try {
   });
   assert.equal(diyaImageStyle.zoom, 1, "The original heart-diya photo must not be artificially zoomed");
   assert.equal(diyaImageStyle.clipPath, "none", "Do not reshape the original heart-diya photograph with an artificial mask");
-    assert.equal(diyaImageStyle.objectFit, "cover", "The heart-diya source should fill its tile with a natural centre crop");
+  assert.equal(diyaImageStyle.objectFit, "contain", "The complete diya and its full source photograph must remain visible");
   const siminiImageFit = await page.locator('.category-card[data-category-link="simini"] img').evaluate((element) => getComputedStyle(element).objectFit);
-  assert.equal(siminiImageFit, "contain", "The taller simini lamp photograph should remain fully visible");
+  assert.equal(siminiImageFit, "contain", "The complete simini lamp photograph should remain visible");
+
+  const allProductImageFits = await page.locator(".hero-gallery img, .category-card img, .product-image-wrap img, .story-image-wrap img").evaluateAll((images) => images.map((image) => ({
+    source: image.getAttribute("src"),
+    fit: getComputedStyle(image).objectFit,
+    transform: getComputedStyle(image).transform
+  })));
+  assert.ok(allProductImageFits.length >= 19, "Hero, category, product and story photographs should all be checked");
+  for (const image of allProductImageFits) {
+    assert.equal(image.fit, "contain", "Every product photograph must show the whole item: " + image.source);
+    assert.equal(image.transform, "none", "Product photographs must not be zoomed: " + image.source);
+  }
+
+  const categoryImageAndLabelPositions = await page.locator(".category-card").evaluateAll((cards) => cards.map((card) => {
+    const image = card.querySelector("img").getBoundingClientRect();
+    const number = card.querySelector(".category-number").getBoundingClientRect();
+    const label = card.querySelector(".category-label").getBoundingClientRect();
+    return { imageBottom: image.bottom, numberTop: number.top, numberBottom: number.bottom, labelTop: label.top };
+  }));
+  for (const position of categoryImageAndLabelPositions) {
+    assert.ok(position.numberTop >= position.imageBottom - 1, "Category number must sit below, not on top of, the whole product image");
+    assert.ok(position.labelTop >= position.numberBottom - 1, "Category name must sit below the product image and number");
+  }
   const storeAddress = await page.locator("address").innerText();
   assert.match(storeAddress, /Near Collectorate/i, "Store address should include the supplied landmark");
   assert.match(storeAddress, /Govt\. Dispensary/i, "Store address should include the supplied dispensary landmark");
@@ -272,6 +294,8 @@ try {
   const mobileActionBottoms = await page.locator("#product-grid .product-card-action").evaluateAll((links) => links.slice(0, 2).map((link) => link.getBoundingClientRect().bottom));
   assert.ok(Math.max(...mobileActionBottoms) - Math.min(...mobileActionBottoms) < 2, "Mobile product enquiry actions should align across each row");
   await assertAllProductImagesLoad();
+  const mobileProductImageFits = await page.locator(".hero-gallery img, .category-card img, .product-image-wrap img, .story-image-wrap img").evaluateAll((images) => images.map((image) => getComputedStyle(image).objectFit));
+  assert.ok(mobileProductImageFits.length >= 19 && mobileProductImageFits.every((fit) => fit === "contain"), "Mobile must show every product photograph in full without cropping");
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: path.join(root, "artifacts/site-mobile.png"), fullPage: true });
   const toggle = page.locator(".menu-toggle");
