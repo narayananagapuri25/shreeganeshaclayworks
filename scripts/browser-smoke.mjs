@@ -372,7 +372,7 @@ try {
   await page.locator('[data-filter="idols"]').click();
   assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Clay idol enquiry collection should be filterable");
   assert.match(await page.locator("#product-grid h3").first().innerText(), /Pooja & other clay items/);
-  assert.match(await page.locator("#product-grid .product-card p").first().innerText(), /view of the shop's clay stock/i);
+  assert.match(await page.locator("#product-grid .product-card p").first().innerText(), /Illustrative clay Ganesha idol image/i);
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
   console.log("Browser checks passed: desktop, mobile, image detail, search, filters, English/Telugu, rate enquiries, store address/directions, primary and alternate call/WhatsApp links, menu Escape/outside-click and floating WhatsApp.");
