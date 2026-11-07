@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile, access } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -23,6 +24,22 @@ const requiredFiles = [
   "assets/brand/official-logo.jpg",
 ];
 for (const file of requiredFiles) await access(path.join(root, file));
+
+const logoBytes = await readFile(path.join(root, "assets/brand/official-logo.jpg"));
+const logoGitBlobSha = createHash("sha1")
+  .update(Buffer.concat([Buffer.from("blob " + logoBytes.length + "\\0"), logoBytes]))
+  .digest("hex");
+assert.equal(
+  logoGitBlobSha,
+  "d9a6ee677e30123333122471beec7ffe58d1138c",
+  "The supplied official logo must remain byte-for-byte unchanged"
+);
+assert.equal(
+  (html.match(/src="assets\\/brand\\/official-logo\\.jpg"/g) || []).length,
+  2,
+  "The exact supplied logo must be used in both header and footer"
+);
+
 
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(ids).size, ids.length, "HTML must not contain duplicate IDs");
