@@ -81,6 +81,7 @@ try {
           objectFit: getComputedStyle(element).objectFit,
           transform: getComputedStyle(element).transform,
           clipPath: getComputedStyle(element).clipPath,
+          isSprite: element.classList.contains("sprite-sheet"),
           pixelVariation: max - min
         };
       });
@@ -93,7 +94,11 @@ try {
         "Image appears blank or has no visible product detail: " + JSON.stringify(details)
       );
       assert.equal(details.objectFit, "contain", "The complete source photo must be visible on desktop and mobile: " + details.src);
-      assert.equal(details.transform, "none", "A product photo must never be zoomed into and clipped: " + details.src);
+      if (details.isSprite) {
+        assert.notEqual(details.transform, "none", "Generated sheet crops must use a specific tile position: " + details.src);
+      } else {
+        assert.equal(details.transform, "none", "Real shop photographs must not be zoomed: " + details.src);
+      }
       assert.equal(details.clipPath, "none", "A product photo must never be masked: " + details.src);
     }
   }
@@ -117,11 +122,11 @@ try {
   assert.equal(await heroGallery.locator("img").count(), 4, "Hero should show four original shop product photographs");
   const heroSources = await heroGallery.locator("img").evaluateAll((images) => images.map((image) => image.getAttribute("src")));
   assert.deepEqual(heroSources, [
-    "assets/products/cooking-vessels.jpg",
-    "assets/products/plain-agul.jpg",
-    "assets/products/stand-agul.jpg",
-    "assets/products/simini.jpg"
-  ], "Hero should prioritise the clearest matching real product photographs, not the notebook diya or low-resolution water pot image");
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/54cb7e80-4d79-46a8-98b6-96ee1c305eba.png",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/3e9cd8b4-0102-4dbe-acaf-f2877b439d31.png",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/54cb7e80-4d79-46a8-98b6-96ee1c305eba.png",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/3e9cd8b4-0102-4dbe-acaf-f2877b439d31.png"
+  ], "Hero should use the two consistent AI-generated pottery sheets with individual product crops");
   assert.ok(heroGalleryLayout.width > 250 && heroGalleryLayout.height > 200, "Hero product gallery should have a substantial visible area");
   assert.equal(heroGalleryLayout.columns, 2, "Hero product photographs should use a balanced two-column gallery");
   assert.ok(heroGalleryLayout.left > (await page.evaluate(() => window.innerWidth)) * 0.45, "Desktop product gallery should sit to the right of the copy");
@@ -143,40 +148,44 @@ try {
   const allProductImageFits = await page.locator(".hero-gallery img, .category-card img, .product-image-wrap img, .story-image-wrap img").evaluateAll((images) => images.map((image) => ({
     source: image.getAttribute("src"),
     fit: getComputedStyle(image).objectFit,
-    transform: getComputedStyle(image).transform
+    transform: getComputedStyle(image).transform,
+    sprite: image.classList.contains("sprite-sheet")
   })));
   assert.ok(allProductImageFits.length >= 19, "Hero, category, product and story photographs should all be checked");
   for (const image of allProductImageFits) {
-    assert.equal(image.fit, "contain", "Every product photograph must show the whole item: " + image.source);
-    assert.equal(image.transform, "none", "Product photographs must not be zoomed: " + image.source);
+    assert.equal(image.fit, "contain", "Every source sheet must preserve its original aspect ratio: " + image.source);
+    if (!image.sprite) assert.equal(image.transform, "none", "The real store photograph must not be zoomed: " + image.source);
   }
 
   assert.equal(await page.locator(".category-image-frame").count(), 7, "Every category should have a dedicated product-photo frame");
-  assert.equal(await page.locator(".category-image-frame img").count(), 7, "Every category photo should be inside its own framed image stage");
+  assert.equal(await page.locator(".category-image-frame .sprite-window").count(), 7, "Every category should have a dedicated product crop window");
+  assert.equal(await page.locator(".category-image-frame img").count(), 7, "Every category product crop should be loaded from the AI product sheet");
   assert.equal(await page.locator(".category-card > .category-label").count(), 7, "Category labels must be outside and below the product image stage");
   assert.equal(await page.locator(".story-image-wrap .image-caption").evaluate((caption) => getComputedStyle(caption).position), "static", "Story caption must not cover the item photograph");
   for (let i = 0; i < await page.locator(".category-card").count(); i += 1) {
     const card = page.locator(".category-card").nth(i);
     await card.hover();
-    const transform = await card.locator("img").evaluate((image) => getComputedStyle(image).transform);
-    assert.equal(transform, "none", "Hover must never zoom a product photograph and cut off its edges");
+    const before = await card.locator("img").evaluate((image) => getComputedStyle(image).transform);
+    await page.waitForTimeout(80);
+    const after = await card.locator("img").evaluate((image) => getComputedStyle(image).transform);
+    assert.equal(after, before, "Hover must not change the product crop or zoom the item");
   }
   const categoryImageAndLabelPositions = await page.locator(".category-card").evaluateAll((cards) => cards.map((card) => {
     const frame = card.querySelector(".category-image-frame").getBoundingClientRect();
-    const image = card.querySelector("img").getBoundingClientRect();
+    const window = card.querySelector(".sprite-window").getBoundingClientRect();
     const number = card.querySelector(".category-number").getBoundingClientRect();
     const label = card.querySelector(".category-label").getBoundingClientRect();
     const cardRect = card.getBoundingClientRect();
     return {
       frameTop: frame.top, frameBottom: frame.bottom,
-      imageTop: image.top, imageBottom: image.bottom,
+      windowTop: window.top, windowBottom: window.bottom,
       numberTop: number.top, numberBottom: number.bottom,
       labelTop: label.top, labelBottom: label.bottom,
       cardBottom: cardRect.bottom
     };
   }));
   for (const position of categoryImageAndLabelPositions) {
-    assert.ok(position.imageTop >= position.frameTop - 1 && position.imageBottom <= position.frameBottom + 1, "The complete product image must stay inside its photo frame");
+    assert.ok(position.windowTop >= position.frameTop - 1 && position.windowBottom <= position.frameBottom + 1, "The complete product photo crop must stay inside its frame");
     assert.ok(position.numberTop >= position.frameTop && position.numberBottom <= position.frameBottom, "Category number must stay within the photo frame: " + JSON.stringify(position));
     assert.ok(position.labelTop >= position.frameBottom - 1, "Category title must sit below the complete product photograph");
     assert.ok(position.labelBottom <= position.cardBottom + 1, "Category title must remain inside its card");
