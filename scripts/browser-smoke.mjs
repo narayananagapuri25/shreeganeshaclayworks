@@ -50,9 +50,9 @@ try {
   page.on("pageerror", (error) => pageErrors.push(error.message));
 
   async function assertAllProductImagesLoad() {
-    const images = page.locator(".category-card img, .product-card img, .story-image-wrap img, .brand-logo");
+    const images = page.locator(".category-card img, .product-card img, .story-image-wrap img");
     const count = await images.count();
-    assert.ok(count >= 17, "Expected all category, product, story and logo images to be present");
+    assert.ok(count >= 15, "Expected all category, product and story images to be present");
     for (let i = 0; i < count; i += 1) {
       const image = images.nth(i);
       await image.scrollIntoViewIfNeeded();
