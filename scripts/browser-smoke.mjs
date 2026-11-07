@@ -145,15 +145,32 @@ try {
     assert.equal(image.transform, "none", "Product photographs must not be zoomed: " + image.source);
   }
 
+  assert.equal(await page.locator(".category-image-frame").count(), 7, "Every category should have a dedicated product-photo frame");
+  for (let i = 0; i < await page.locator(".category-card").count(); i += 1) {
+    const card = page.locator(".category-card").nth(i);
+    await card.hover();
+    const transform = await card.locator("img").evaluate((image) => getComputedStyle(image).transform);
+    assert.equal(transform, "none", "Hover must never zoom a product photograph and cut off its edges");
+  }
   const categoryImageAndLabelPositions = await page.locator(".category-card").evaluateAll((cards) => cards.map((card) => {
+    const frame = card.querySelector(".category-image-frame").getBoundingClientRect();
     const image = card.querySelector("img").getBoundingClientRect();
     const number = card.querySelector(".category-number").getBoundingClientRect();
     const label = card.querySelector(".category-label").getBoundingClientRect();
-    return { imageBottom: image.bottom, numberTop: number.top, numberBottom: number.bottom, labelTop: label.top };
+    const cardRect = card.getBoundingClientRect();
+    return {
+      frameTop: frame.top, frameBottom: frame.bottom,
+      imageTop: image.top, imageBottom: image.bottom,
+      numberTop: number.top, numberBottom: number.bottom,
+      labelTop: label.top, labelBottom: label.bottom,
+      cardBottom: cardRect.bottom
+    };
   }));
   for (const position of categoryImageAndLabelPositions) {
-    assert.ok(position.numberTop >= position.imageBottom - 1, "Category number must sit below, not on top of, the whole product image");
-    assert.ok(position.labelTop >= position.numberBottom - 1, "Category name must sit below the product image and number");
+    assert.ok(position.imageTop >= position.frameTop - 1 && position.imageBottom <= position.frameBottom + 1, "The complete product image must stay inside its photo frame");
+    assert.ok(position.numberTop >= position.frameTop && position.numberBottom <= position.frameBottom, "Category number must stay within the photo frame");
+    assert.ok(position.labelTop >= position.frameBottom - 1, "Category title must sit below the complete product photograph");
+    assert.ok(position.labelBottom <= position.cardBottom + 1, "Category title must remain inside its card");
   }
   const storeAddress = await page.locator("address").innerText();
   assert.match(storeAddress, /Near Collectorate/i, "Store address should include the supplied landmark");
