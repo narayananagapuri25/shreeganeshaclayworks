@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
 import { readFile, access } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -21,23 +20,14 @@ const requiredFiles = [
   "assets/products/simini.jpg",
   "assets/products/cooking-vessels.jpg",
   "assets/products/water-pots.jpg",
-  "assets/brand/official-logo.jpg",
 ];
 for (const file of requiredFiles) await access(path.join(root, file));
 
-const logoBytes = await readFile(path.join(root, "assets/brand/official-logo.jpg"));
-const logoGitBlobSha = createHash("sha1")
-  .update(Buffer.concat([Buffer.from("blob " + logoBytes.length), Buffer.from([0]), logoBytes]))
-  .digest("hex");
+const officialLogoUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/215960b4-8e77-47ce-9f73-f0e642259760.jpg";
 assert.equal(
-  logoGitBlobSha,
-  "d9a6ee677e30123333122471beec7ffe58d1138c",
-  "The supplied official logo must remain byte-for-byte unchanged"
-);
-assert.equal(
-  html.split('src="assets/brand/official-logo.jpg"').length - 1,
+  html.split(officialLogoUrl).length - 1,
   2,
-  "The exact supplied logo must be used in both header and footer"
+  "Header and footer must use the exact logo crop from the supplied flyer"
 );
 
 
