@@ -110,7 +110,7 @@ try {
   });
   assert.match(heroPhotoStyle.image, /cooking-vessels\.jpg/, "Hero should use the clean original cooking-vessel photograph");
   assert.ok(heroPhotoStyle.width > 250 && heroPhotoStyle.height > 200, "Hero photograph should have a substantial visible area");
-  assert.ok(heroPhotoStyle.left > window.innerWidth * 0.45, "Desktop hero photograph should sit to the right of the copy");
+  assert.ok(heroPhotoStyle.left > (await page.evaluate(() => window.innerWidth)) * 0.45, "Desktop hero photograph should sit to the right of the copy");
   assert.equal(await page.locator(".hero-note, .hero-index").count(), 0, "Hero should not contain redundant overlay captions");
   const desktopCategoryColumns = await page.locator(".category-grid").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length);
   assert.equal(desktopCategoryColumns, 4, "Desktop categories should use a balanced four-column grid");
