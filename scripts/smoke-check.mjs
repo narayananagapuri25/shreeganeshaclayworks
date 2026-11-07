@@ -94,7 +94,7 @@ assert.match(css, /\.rate-table/, "Price chart styling is missing");
 assert.match(css, /prefers-reduced-motion/, "Reduced-motion support is missing");
 assert.match(css, /:focus-visible/, "Visible keyboard focus styling is missing");
 assert.match(css, /scroll-margin-top/, "Sticky-header anchor offset is missing");
-assert.match(html, /\+91 85555896577/, "The second poster number must remain displayed");
+assert.match(html, /\+91 85558 96577/, "The confirmed alternate number must remain displayed");
 assert.match(html, /tel:\+918555896577/, "Alternate contact must be clickable for phone calls");
 assert.match(html, /https:\/\/wa\.me\/918555896577/, "Alternate contact must be clickable for WhatsApp");
 assert.match(html, /\+91 85558 96577/, "Alternate contact must be displayed in the confirmed format");
