@@ -53,6 +53,8 @@ try {
   const response = await page.goto(baseUrl, { waitUntil: "networkidle" });
   assert.equal(response.status(), 200, "Home page must load");
   assert.match(await page.title(), /Shree Ganesha Clay Works/);
+  assert.equal(await page.locator(".brand-logo").count(), 2, "The supplied logo should appear in header and footer");
+  assert.equal(await page.locator(".brand-logo").first().evaluate((image) => image.complete && image.naturalWidth > 0), true, "The original shop logo should load");
   assert.equal(await page.locator(".category-card").count(), 7, "All seven shop categories should render");
   assert.equal(await page.locator("#product-grid .product-card").count(), 7, "Seven shop collections should render");
   await page.screenshot({ path: path.join(root, "artifacts/site-desktop.png"), fullPage: true });
