@@ -129,7 +129,7 @@ const rateGroups = [
     ]
   },
   {
-    title: { en: "Clay cooking vessels · పంట పాత్రలు", te: "మట్టి వంట పాత్రలు" },
+    title: { en: "Clay cooking vessels", te: "మట్టి వంట పాత్రలు" },
     noDozen: true,
     rows: [
       ["5 L", "₹300", ""],
@@ -359,6 +359,7 @@ function setLanguage(language) {
 }
 
 document.querySelectorAll("[data-filter]").forEach(function (button) {
+  button.setAttribute("aria-pressed", String(button.getAttribute("data-filter") === activeFilter));
   button.addEventListener("click", function () {
     activeFilter = button.getAttribute("data-filter");
     document.querySelectorAll("[data-filter]").forEach(function (item) {
@@ -372,6 +373,8 @@ document.querySelectorAll("[data-filter]").forEach(function (button) {
 
 document.querySelectorAll("[data-category-link]").forEach(function (link) {
   link.addEventListener("click", function () {
+    searchInput.value = "";
+    searchTerm = "";
     activeFilter = link.getAttribute("data-category-link");
     const matchingFilter = document.querySelector('[data-filter="' + activeFilter + '"]');
     if (matchingFilter) matchingFilter.click();
@@ -407,6 +410,10 @@ menuToggle.addEventListener("click", function () {
 
 primaryNav.querySelectorAll("a").forEach(function (link) {
   link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("click", function (event) {
+  if (!primaryNav.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
 });
 
 document.addEventListener("keydown", function (event) {
