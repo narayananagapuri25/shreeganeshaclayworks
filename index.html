@@ -19,7 +19,7 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="announcement">
     <span class="announcement-dot"></span>
-    <span data-i18n="announcement">Traditional clayware • Mancherial, Telangana</span>
+    <span data-i18n="announcement">Store hours · 9 AM–7 PM</span>
     <a href="https://www.google.com/maps/search/?api=1&query=Near+Collectorate,+Opp.+Govt.+Dispensary,+Mancherial-Chennur+Highway,+Naspur,+Mancherial,+Telangana+504208" target="_blank" rel="noopener noreferrer" data-i18n="announcementLink">Get directions ↗</a>
   </div>
 
@@ -49,12 +49,17 @@
 
   <main id="main-content">
     <section class="hero" id="home">
-      <div class="hero-photo" role="img" aria-label="A traditional clay cooking vessel in a natural studio setting"></div>
+      <div class="hero-gallery" role="group" aria-label="Real product photographs from Shree Ganesha Clay Works">
+        <img src="assets/products/cooking-vessels.jpg" alt="Traditional clay cooking vessel from the shop" fetchpriority="high">
+        <img src="assets/products/water-pots.jpg" alt="Clay water pot from the shop" fetchpriority="high">
+        <img src="assets/products/heart-diya.jpg" alt="Heart-shaped clay diya from the shop" fetchpriority="high">
+        <img src="assets/products/simini.jpg" alt="Traditional simini lamp from the shop" fetchpriority="high">
+      </div>
       <div class="hero-shade"></div>
       <div class="hero-content">
         <p class="eyebrow hero-eyebrow"><span></span><span data-i18n="heroEyebrow">THE BEAUTY OF EARTHEN CRAFT</span></p>
-        <h1 data-i18n="heroTitle">Made of earth.<br><em>Rooted in tradition.</em></h1>
-        <p class="hero-lede" data-i18n="heroText">Discover clay idols, diyas, cooking ware and timeless pieces that bring a little more meaning to everyday moments.</p>
+        <h1 data-i18n="heroTitle">Clay for everyday.<br><em>Rooted in tradition.</em></h1>
+        <p class="hero-lede" data-i18n="heroText">Explore traditional diyas, agul, simini lamps, cooking vessels and water pots. Browse the shop rate guide or ask us about current availability.</p>
         <div class="hero-actions">
           <a class="button button-light" href="#collections"><span data-i18n="exploreButton">Explore collections</span><span aria-hidden="true">↗</span></a>
           <a class="text-link text-link-light" href="#visit"><span data-i18n="visitButton">Find our store</span><span aria-hidden="true">→</span></a>
@@ -85,9 +90,9 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow"><span data-i18n="categoryEyebrow">EXPLORE THE STORE</span></p>
-          <h2 data-i18n="categoryTitle">Find your kind<br><em>of clay.</em></h2>
+          <h2 data-i18n="categoryTitle">Shop by<br><em>category.</em></h2>
         </div>
-        <p class="section-aside" data-i18n="categoryText">From meaningful little details to pieces made for everyday use, find a collection that feels at home with you.</p>
+        <p class="section-aside" data-i18n="categoryText">Choose a product type to jump straight to its collection and send a direct enquiry to the shop.</p>
       </div>
 
       <div class="category-grid">
@@ -134,9 +139,9 @@
         <div class="collection-top">
           <div>
             <p class="eyebrow eyebrow-light"><span data-i18n="collectionEyebrow">A CLOSER LOOK</span></p>
-            <h2 data-i18n="collectionTitle">A collection for<br><em>every occasion.</em></h2>
+            <h2 data-i18n="collectionTitle">Browse products<br><em>& prices.</em></h2>
           </div>
-          <p class="collection-description" data-i18n="collectionText">Browse a few of the collections you can explore at our store. Message us to check current designs, sizes and availability.</p>
+          <p class="collection-description" data-i18n="collectionText">Search by product name or category. Each product links to WhatsApp so you can confirm today’s price, size and availability.</p>
         </div>
 
         <div class="collection-tools">
@@ -151,12 +156,13 @@
           </div>
           <label class="search-box">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
-            <input id="product-search" type="search" aria-label="Search product collections" placeholder="Search collections" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+            <input id="product-search" type="search" aria-label="Search product collections" placeholder="Search diyas, pots, lamps…" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
           </label>
         </div>
 
+        <p class="product-result-count" id="product-result-count" aria-live="polite">Showing 7 results</p>
         <div class="product-grid" id="product-grid" aria-live="polite"></div>
-        <p class="empty-state" id="empty-state" hidden data-i18n="emptyState">No matching collections. Try another search.</p>
+        <div class="empty-state" id="empty-state" hidden><span data-i18n="emptyState">No matching products. Try another search.</span> <a href="#" data-whatsapp="general" data-i18n="emptyAsk">Ask the shop on WhatsApp ↗</a></div>
         <div class="collection-footnote"><span class="footnote-star">✳</span><span data-i18n="collectionFootnote">These are representative collection examples. Please enquire for actual designs, sizes, prices and availability.</span></div>
       </div>
     </section>
@@ -190,15 +196,30 @@
       </div>
     </section>
 
-    <section class="values-band">
-      <div class="values-heading">
-        <p class="eyebrow eyebrow-light"><span data-i18n="valuesEyebrow">THE SIMPLE THINGS MATTER</span></p>
-        <h2 data-i18n="valuesTitle">A little more earth.<br><em>A little more meaning.</em></h2>
+    <section class="how-to-shop section" id="how-to-shop">
+      <div class="how-to-heading">
+        <p class="eyebrow"><span data-i18n="howToEyebrow">HOW TO SHOP</span></p>
+        <h2 data-i18n="howToTitle">From browsing to<br><em>your shop visit.</em></h2>
       </div>
-      <div class="value-items">
-        <div class="value-item"><span>01</span><div><strong data-i18n="valueOneTitle">A timeless tradition</strong><p data-i18n="valueOneText">Clay pieces connected to familiar rituals and everyday life.</p></div></div>
-        <div class="value-item"><span>02</span><div><strong data-i18n="valueTwoTitle">For many moments</strong><p data-i18n="valueTwoText">From the kitchen and pooja room to celebrations and gifting.</p></div></div>
-        <div class="value-item"><span>03</span><div><strong data-i18n="valueThreeTitle">Personal assistance</strong><p data-i18n="valueThreeText">Talk to us directly about designs, sizes and availability.</p></div></div>
+      <div class="how-to-steps">
+        <article class="how-to-step">
+          <span class="how-to-number">01</span>
+          <h3 data-i18n="howToBrowseTitle">Browse products</h3>
+          <p data-i18n="howToBrowseText">Explore the collections and check the printed rate guide.</p>
+          <a href="#collections" data-i18n="howToBrowseLink">Browse the catalogue ↗</a>
+        </article>
+        <article class="how-to-step">
+          <span class="how-to-number">02</span>
+          <h3 data-i18n="howToAskTitle">Confirm on WhatsApp</h3>
+          <p data-i18n="howToAskText">Ask about today's price, sizes, designs and availability.</p>
+          <a href="#" data-whatsapp="general" data-i18n="howToAskLink">Message the shop ↗</a>
+        </article>
+        <article class="how-to-step">
+          <span class="how-to-number">03</span>
+          <h3 data-i18n="howToVisitTitle">Visit the store</h3>
+          <p data-i18n="howToVisitText">Use the address and directions, or call before you travel.</p>
+          <a href="#visit" data-i18n="howToVisitLink">See store details ↗</a>
+        </article>
       </div>
     </section>
 
@@ -238,12 +259,6 @@
       </div>
     </section>
 
-    <section class="closing-banner">
-      <div class="closing-flower" aria-hidden="true">✳</div>
-      <p data-i18n="closingEyebrow">SHREE GANESHA CLAY WORKS · MANCHERIAL</p>
-      <h2 data-i18n="closingTitle">Choose clay.<br><em>Keep tradition close.</em></h2>
-      <a href="#collections" class="closing-link"><span data-i18n="closingLink">Explore the collections</span><span aria-hidden="true">↗</span></a>
-    </section>
   </main>
 
   <footer class="site-footer">
