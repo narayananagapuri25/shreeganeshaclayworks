@@ -229,6 +229,9 @@ try {
   assert.equal(await page.locator("html").getAttribute("lang"), "te");
   assert.match(await page.locator("#product-grid h3").first().innerText(), /మట్టి|దీపం/);
   assert.match(await page.locator(".rate-enquire").first().innerText(), /అడగండి/);
+  assert.match(await page.locator(".store-fact-hours").innerText(), /ఉదయం 9:00–సాయంత్రం 7:00/, "The top opening-hours fact should be translated into Telugu");
+  assert.match(await page.locator(".hours-contact-line").innerText(), /ఉదయం 9:00–సాయంత్రం 7:00/, "The visit-card hours should be translated into Telugu");
+  assert.match(await page.locator(".store-fact").nth(1).innerText(), /నాస్పూర్|మంచిర్యాల/, "The location fact should use Telugu when selected");
   await page.locator('[data-lang="en"]').click();
 
   assert.ok(await page.locator('a[href="tel:+919493404602"]').count() >= 2, "Primary number should have quick-action and visit-card call links");
