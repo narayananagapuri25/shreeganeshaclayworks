@@ -134,7 +134,7 @@ try {
   assert.ok(await page.locator(".store-fact-directions").isVisible(), "Quick directions action should be visible near the top");
   assert.match(await page.locator(".hours-contact-line").innerText(), /9:00 AM–7:00 PM/, "The visit card should repeat the confirmed opening hours");
   const directionsLink = page.locator('a[href^="https://www.google.com/maps/search/"]');
-  assert.ok(await directionsLink.count() >= 2, "Quick and visit-section directions links should be present");
+  assert.ok(await directionsLink.count() >= 3, "Announcement, quick-facts and visit-section directions links should be present");
   for (let i = 0; i < await directionsLink.count(); i += 1) {
     const directionsHref = await directionsLink.nth(i).getAttribute("href");
     const directionsQuery = new URL(directionsHref).searchParams.get("query");
