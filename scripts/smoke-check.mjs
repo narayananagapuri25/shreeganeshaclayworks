@@ -57,10 +57,20 @@ assert.equal((html.match(/class="hero-product-photo"/g) || []).length, 4, "Hero 
 assert.equal((html.match(/class="category-photo"/g) || []).length, 7, "Every category must have one standalone product photo");
 assert.doesNotMatch(html, /sprite-window|sprite-sheet/, "HTML must not contain sprite crop windows");
 assert.doesNotMatch(app, /spriteClass|sprite-window|sprite-sheet/, "Catalogue data and renderer must not use sprite crops");
-for (const imageUrl of ["https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/60dc7637-4bee-440d-8a05-72a074bbdba5.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/50b0e053-7fc8-485d-87ca-47507b040813.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/6daa1d27-f77c-4dd9-9bb4-6c3d96082e20.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/056d4476-fd70-4486-8ea9-38df4d853518.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/9bbe014c-1df6-4d90-8bc3-5cf73e166c43.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/be725b00-f545-46e8-96ac-d51db6bffa7b.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/e970681b-16db-46af-8cb0-8211e6ee1903.jpg"]) {
-  assert.ok(html.includes(imageUrl), "Missing standalone image in hero/category layout: " + imageUrl);
-  assert.ok(app.includes(imageUrl), "Missing standalone image in product catalogue: " + imageUrl);
+for (const imagePath of [
+  "assets/products/heart-diya.jpg",
+  "assets/products/store-stock.jpg",
+  "assets/products/plain-agul.jpg",
+  "assets/products/stand-agul.jpg",
+  "assets/products/simini.jpg",
+  "assets/products/cooking-vessels.jpg",
+  "assets/products/water-pots.jpg"
+]) {
+  assert.ok(html.includes(imagePath), "Missing local product image in hero/category layout: " + imagePath);
+  assert.ok(app.includes(imagePath), "Missing local product image in catalogue: " + imagePath);
 }
+assert.doesNotMatch(html, /cloudfront\.net\/[^"]+\.jpg/, "Do not reference broken external product photo files");
+assert.doesNotMatch(app, /cloudfront\.net\/[^"]+\.jpg/, "Catalogue images must be served from checked-in local files");
 assert.equal((html.match(/class="how-to-step"/g) || []).length, 3, "The page should have three practical shopping steps");
 assert.match(app, /searchTerms: \["diya"/, "Diyas should be discoverable through common search terms");
 assert.match(app, /searchTerms: \["water pot", "matka"/, "Water pots should be discoverable through common search terms");
