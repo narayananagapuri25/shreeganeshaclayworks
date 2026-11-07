@@ -95,6 +95,13 @@ try {
   await mkdir(path.join(root, "artifacts"), { recursive: true });
   const response = await page.goto(baseUrl, { waitUntil: "networkidle" });
   assert.equal(response.status(), 200, "Home page must load");
+  const floatingWhatsapp = page.locator(".floating-whatsapp");
+  assert.equal(await floatingWhatsapp.isVisible(), false, "Floating WhatsApp must stay out of the opening announcement/hero");
+  await page.evaluate(() => window.scrollTo(0, 420));
+  await page.waitForFunction(() => document.querySelector(".floating-whatsapp").classList.contains("is-visible"));
+  assert.equal(await floatingWhatsapp.isVisible(), true, "Floating WhatsApp should appear after scrolling");
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForFunction(() => !document.querySelector(".floating-whatsapp").classList.contains("is-visible"));
   assert.match(await page.title(), /Shree Ganesha Clay Works/);
   assert.equal(await page.locator(".brand-logo").count(), 2, "The supplied logo should appear in header and footer");
   assert.equal(await page.locator(".brand-logo").first().evaluate((image) => image.complete && image.naturalWidth > 0), true, "The original shop logo should load");
@@ -155,6 +162,7 @@ try {
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(baseUrl, { waitUntil: "networkidle" });
+  assert.equal(await page.locator(".floating-whatsapp").isVisible(), false, "Mobile opening view must not have an overlay over the announcement strip");
   await assertAllProductImagesLoad();
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: path.join(root, "artifacts/site-mobile.png"), fullPage: true });
