@@ -440,3 +440,20 @@ main [id] { scroll-margin-top: 96px; }
   transform: translateY(-160%);
 }
 .skip-link:focus { transform: translateY(0); }
+
+/* Use the actual shop-supplied logo on both ends of the site */
+.brand-logo {
+  display: block;
+  width: 148px;
+  height: auto;
+  max-height: 64px;
+  object-fit: contain;
+}
+.brand-footer .brand-logo {
+  width: 165px;
+  max-height: 72px;
+}
+@media (max-width: 700px) {
+  .brand-logo { width: 130px; max-height: 56px; }
+  .brand-footer .brand-logo { width: 150px; max-height: 65px; }
+}
