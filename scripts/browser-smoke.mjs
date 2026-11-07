@@ -159,9 +159,9 @@ try {
     };
   }));
   assert.deepEqual(logoUsage.map((logo) => logo.src), [
-    "assets/brand/official-logo.jpg",
-    "assets/brand/official-logo.jpg"
-  ], "Header and footer must use the exact same supplied logo file");
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/215960b4-8e77-47ce-9f73-f0e642259760.jpg",
+    "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/215960b4-8e77-47ce-9f73-f0e642259760.jpg"
+  ], "Header and footer must use the exact crop from the supplied flyer");
   for (const logo of logoUsage) {
     assert.equal(logo.fit, "contain", "The original logo must never be cropped");
     assert.equal(logo.filter, "none", "The original logo must not be recoloured or filtered");
