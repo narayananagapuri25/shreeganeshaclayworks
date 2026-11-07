@@ -423,3 +423,15 @@ main [id] { scroll-margin-top: 96px; }
   .rate-table { min-width: 450px; }
   .rate-table-wrap { -webkit-overflow-scrolling: touch; }
 }
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 8px;
+  left: 8px;
+  padding: 11px 15px;
+  color: #fff8ed;
+  background: #31402d;
+  transform: translateY(-160%);
+}
+.skip-link:focus { transform: translateY(0); }
