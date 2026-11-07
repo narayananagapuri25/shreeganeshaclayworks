@@ -128,14 +128,21 @@ try {
   assert.match(storeAddress, /Govt\. Dispensary/i, "Store address should include the supplied dispensary landmark");
   assert.match(storeAddress, /Naspur/i, "Store address should include Naspur");
   assert.match(storeAddress, /504208/, "Store address should include the supplied PIN code");
+  assert.equal(await page.locator(".store-fact").count(), 4, "Four useful store facts should be available immediately after the hero");
+  assert.match(await page.locator(".store-fact-hours").innerText(), /9:00 AM–7:00 PM/, "Opening hours should be visible near the top");
+  assert.equal(await page.locator('.store-fact[href="tel:+919493404602"]').count(), 1, "Quick store phone action should call the primary number");
+  assert.ok(await page.locator(".store-fact-directions").isVisible(), "Quick directions action should be visible near the top");
+  assert.match(await page.locator(".hours-contact-line").innerText(), /9:00 AM–7:00 PM/, "The visit card should repeat the confirmed opening hours");
   const directionsLink = page.locator('a[href^="https://www.google.com/maps/search/"]');
-  assert.equal(await directionsLink.count(), 1, "Store directions link should be present");
-  const directionsHref = await directionsLink.getAttribute("href");
-  const directionsQuery = new URL(directionsHref).searchParams.get("query");
-  assert.match(directionsQuery, /Near Collectorate/i, "Directions should use the flyer-supplied landmark");
-  assert.match(directionsQuery, /Govt\. Dispensary/i, "Directions should use the flyer-supplied dispensary landmark");
-  assert.match(directionsQuery, /Naspur/i, "Directions should target the supplied Naspur address");
-  assert.match(directionsQuery, /504208/, "Directions should use the supplied PIN code");
+  assert.ok(await directionsLink.count() >= 2, "Quick and visit-section directions links should be present");
+  for (let i = 0; i < await directionsLink.count(); i += 1) {
+    const directionsHref = await directionsLink.nth(i).getAttribute("href");
+    const directionsQuery = new URL(directionsHref).searchParams.get("query");
+    assert.match(directionsQuery, /Near Collectorate/i, "Directions should use the flyer-supplied landmark");
+    assert.match(directionsQuery, /Govt\. Dispensary/i, "Directions should use the flyer-supplied dispensary landmark");
+    assert.match(directionsQuery, /Naspur/i, "Directions should target the supplied Naspur address");
+    assert.match(directionsQuery, /504208/, "Directions should use the supplied PIN code");
+  }
   const generalWhatsAppLinks = page.locator('[data-whatsapp="general"]');
   assert.ok(await generalWhatsAppLinks.count() >= 4, "Header, hero, footer and floating WhatsApp shortcuts should be available");
   for (let i = 0; i < await generalWhatsAppLinks.count(); i += 1) {
