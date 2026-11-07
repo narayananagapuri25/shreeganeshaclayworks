@@ -497,3 +497,131 @@ main [id] { scroll-margin-top: 96px; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
 }
+
+
+/* Final visual refinement: editorial split hero and consistent product tiles. */
+.hero {
+  min-height: clamp(500px, 44vw, 590px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+}
+.hero-photo {
+  position: absolute;
+  top: 36px;
+  right: max(5.2vw, calc((100vw - var(--max)) / 2));
+  bottom: 36px;
+  width: min(47%, 620px);
+  border-radius: 5px;
+  background-image: url("assets/products/cooking-vessels.jpg");
+  background-size: cover;
+  background-position: center 52%;
+  transform: none;
+  box-shadow: 0 24px 58px rgba(52, 37, 23, .12);
+}
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--paper) 0%, var(--paper) 43%, rgba(247,243,235,.92) 51%, rgba(247,243,235,0) 68%);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(var(--max), 89.6%);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 78px 0 84px;
+}
+.hero-eyebrow { color: var(--clay); }
+.hero h1 {
+  max-width: 570px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(46px, 6.4vw, 84px);
+  line-height: 1.02;
+}
+.hero h1 em { color: var(--clay); }
+.hero-lede {
+  max-width: 440px;
+  margin: 23px 0 29px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+.text-link-light { color: var(--leaf); }
+.hero-note, .hero-index { display: none; }
+
+.category-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, 225px);
+  gap: 14px;
+}
+.category-featured { grid-row: auto; grid-column: auto; }
+.category-card img[src*="heart-diya.jpg"] {
+  object-position: 52% 57%;
+  transform: scale(1.42);
+}
+.category-card:hover img[src*="heart-diya.jpg"] { transform: scale(1.48); }
+.product-image-wrap img[src*="heart-diya.jpg"] {
+  object-position: 52% 57%;
+  transform: scale(1.2);
+}
+.product-card:hover .product-image-wrap img[src*="heart-diya.jpg"] { transform: scale(1.25); }
+
+@media (max-width: 980px) {
+  .hero { min-height: 520px; }
+  .hero-photo { right: 5%; width: 44%; top: 32px; bottom: 32px; }
+  .hero h1 { max-width: 440px; font-size: clamp(42px, 6vw, 64px); }
+  .hero-lede { max-width: 380px; }
+  .category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, 205px);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 24px;
+    padding: 44px 5% 30px;
+  }
+  .hero-photo {
+    position: relative;
+    inset: auto;
+    grid-row: 2;
+    width: 100%;
+    height: 245px;
+    border-radius: 4px;
+    background-position: center 50%;
+  }
+  .hero-shade { display: none; }
+  .hero-content {
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  .hero h1 { max-width: 100%; font-size: clamp(40px, 10.5vw, 53px); }
+  .hero-lede { max-width: 470px; margin: 17px 0 22px; font-size: 12px; }
+  .hero-actions { gap: 15px; }
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: 180px;
+    gap: 10px;
+  }
+  .category-featured { grid-row: auto; grid-column: auto; }
+}
+@media (max-width: 360px) {
+  .hero h1 { font-size: 40px; }
+  .hero-photo { height: 215px; }
+  .category-grid { grid-auto-rows: 165px; }
+}
