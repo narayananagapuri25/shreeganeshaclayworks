@@ -625,3 +625,25 @@ main [id] { scroll-margin-top: 96px; }
   .hero-photo { height: 215px; }
   .category-grid { grid-auto-rows: 165px; }
 }
+
+
+/* Keep the desktop hero photograph on the right, clear of the text overlay. */
+.hero-photo { left: auto; }
+
+/* Present the supplied heart diya as a clean heart-shaped product cutout. */
+.category-card[data-category-link="diyas"] {
+  background: #e9ddce;
+}
+.category-card img[src*="heart-diya.jpg"],
+.product-image-wrap img[src*="heart-diya.jpg"] {
+  clip-path: polygon(
+    50% 97%, 42% 90%, 27% 77%, 14% 64%, 5% 50%, 2% 38%,
+    7% 25%, 18% 16%, 31% 15%, 42% 24%, 50% 35%,
+    58% 24%, 69% 15%, 82% 16%, 93% 25%, 98% 38%,
+    95% 50%, 86% 64%, 73% 77%, 58% 90%
+  );
+  filter: drop-shadow(0 8px 10px rgba(67, 42, 25, .2));
+}
+.product-image-wrap:has(img[src*="heart-diya.jpg"]) {
+  background: linear-gradient(145deg, #f0e5d7, #dfcdbb);
+}
