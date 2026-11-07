@@ -10,12 +10,12 @@ const products = [
     category: "diyas",
     name: { en: "Traditional clay diya", te: "సంప్రదాయ మట్టి దీపం" },
     description: {
-      en: "Reference photo of a traditional clay diya from the shop. Actual diya shapes and sizes may vary; see the rate guide and ask us to confirm current designs.",
-      te: "దుకాణం అందించిన సంప్రదాయ మట్టి దీపం ఫోటో. అసలు దీపాల ఆకారాలు, సైజులు మారవచ్చు; ప్రస్తుత నమూనాల కోసం ధరల పట్టిక చూడండి, మమ్మల్ని అడగండి."
+      en: "Representative product image of a traditional terracotta diya. Actual designs and sizes may vary; see the rate guide and ask the shop to confirm current availability.",
+      te: "మట్టి దీపం యొక్క సూచన చిత్రం. అసలు దీపాల ఆకారాలు, సైజులు మారవచ్చు; ప్రస్తుత నమూనాల కోసం ధరల పట్టిక చూడండి, మమ్మల్ని అడగండి."
     },
     categoryLabel: { en: "Clay diya", te: "మట్టి దీపం" },
     price: { en: "See diya sizes & rates below", te: "దీపాల సైజులు, ధరల కోసం క్రింది పట్టిక చూడండి" },
-    image: "assets/products/heart-diya.jpg",
+    image: "assets/products/heart-diya.webp",
     alt: "Traditional clay diya from the shop",
     searchTerms: ["diya", "diyas", "deepam", "deepalu", "clay lamp", "దీపం", "దీపాలు"]
   },
@@ -24,13 +24,13 @@ const products = [
     category: "idols",
     name: { en: "Pooja & other clay items", te: "పూజా & ఇతర మట్టి వస్తువులు" },
     description: {
-      en: "A view of the shop’s clay products. Ask us about actual idols, pooja pieces and designs currently available.",
-      te: "దుకాణంలోని మట్టి వస్తువుల చిత్రం. ప్రస్తుతం అందుబాటులో ఉన్న విగ్రహాలు, పూజా వస్తువులు, నమూనాల గురించి అడగండి."
+      en: "Representative image of terracotta pooja pedestal pieces. Ask the shop about actual items and current availability.",
+      te: "పూజా మట్టి వస్తువుల సూచన చిత్రం. ప్రస్తుతం అందుబాటులో ఉన్న విగ్రహాలు, పూజా వస్తువులు, నమూనాల గురించి అడగండి."
     },
     categoryLabel: { en: "Pooja & more", te: "పూజ & ఇతర వస్తువులు" },
     price: { en: "Ask about current designs & prices", te: "ప్రస్తుత నమూనాలు, ధరల కోసం అడగండి" },
-    image: "assets/products/store-stock.jpg",
-    alt: "Clay products from the shop; ask about pooja pieces and idols",
+    image: "assets/products/store-stock.webp",
+    alt: "Representative image of terracotta pooja pedestal pieces",
     searchTerms: ["clay idol", "idols", "pooja", "puja", "devotional", "విగ్రహాలు", "పూజా వస్తువులు"]
   },
   {
@@ -38,12 +38,12 @@ const products = [
     category: "agul",
     name: { en: "Plain agul", te: "సాదా అగులు" },
     description: {
-      en: "Reference photo of plain clay agul from the shop. The actual shape, finish and sizes may vary; confirm current designs with the shop.",
-      te: "దుకాణం అందించిన సాదా మట్టి అగులు ఫోటో. అసలు ఆకారం, ముగింపు, సైజులు మారవచ్చు; దుకాణంలో ప్రస్తుత నమూనాలను నిర్ధారించుకోండి."
+      en: "Representative product image of plain terracotta agul. The actual shape, finish and sizes may vary; confirm current designs with the shop.",
+      te: "సాదా మట్టి అగులు యొక్క సూచన చిత్రం. అసలు ఆకారం, ముగింపు, సైజులు మారవచ్చు; దుకాణంలో ప్రస్తుత నమూనాలను నిర్ధారించుకోండి."
     },
     categoryLabel: { en: "Traditional clayware", te: "సంప్రదాయ మట్టి వస్తువులు" },
     price: { en: "Ask about sizes & current price", te: "సైజులు, ప్రస్తుత ధర కోసం అడగండి" },
-    image: "assets/products/plain-agul.jpg",
+    image: "assets/products/plain-agul.webp",
     alt: "Plain clay agul products from the shop",
     searchTerms: ["agul", "agal", "traditional agul", "అగులు"]
   },
@@ -52,12 +52,12 @@ const products = [
     category: "stand",
     name: { en: "Stand agul", te: "స్టాండ్ అగులు" },
     description: {
-      en: "Reference photo of raised clay stand agul from the shop. Actual stand shapes and sizes may vary; please confirm before ordering.",
-      te: "దుకాణం అందించిన ఎత్తైన మట్టి స్టాండ్ అగులు ఫోటో. అసలు ఆకారాలు, సైజులు మారవచ్చు; ఆర్డర్‌కు ముందు నిర్ధారించుకోండి."
+      en: "Representative product image of raised terracotta stand agul. Actual stand shapes and sizes may vary; please confirm before ordering.",
+      te: "ఎత్తైన మట్టి స్టాండ్ అగులు యొక్క సూచన చిత్రం. అసలు ఆకారాలు, సైజులు మారవచ్చు; ఆర్డర్‌కు ముందు నిర్ధారించుకోండి."
     },
     categoryLabel: { en: "Stand designs", te: "స్టాండ్ నమూనాలు" },
     price: { en: "₹8–₹40 / piece · sizes vary", te: "ఒక్కొక్కటి ₹8–₹40 · సైజును బట్టి" },
-    image: "assets/products/stand-agul.jpg",
+    image: "assets/products/stand-agul.webp",
     alt: "Raised clay stand agul from the shop",
     searchTerms: ["stand agul", "agul stand", "stand design", "స్టాండ్ అగులు"]
   },
@@ -66,12 +66,12 @@ const products = [
     category: "simini",
     name: { en: "B/Simini & C/Simini lamps", te: "బి / సి సిమిని దీపాలు" },
     description: {
-      en: "Reference photo of a traditional clay simini lamp from the shop. Actual B/Simini and C/Simini bases and glass chimneys may differ; confirm the combination with the shop.",
-      te: "దుకాణం అందించిన సంప్రదాయ మట్టి సిమిని దీపం ఫోటో. అసలు బి/సి సిమిని బేస్‌లు, గాజు చిమ్నీలు భిన్నంగా ఉండవచ్చు; దుకాణంలో నిర్ధారించుకోండి."
+      en: "Representative product image of a traditional clay simini lamp. Actual B/Simini and C/Simini bases and glass chimneys may differ; confirm the combination with the shop.",
+      te: "సంప్రదాయ మట్టి సిమిని దీపం యొక్క సూచన చిత్రం. అసలు బి/సి సిమిని బేస్‌లు, గాజు చిమ్నీలు భిన్నంగా ఉండవచ్చు; దుకాణంలో నిర్ధారించుకోండి."
     },
     categoryLabel: { en: "Clay lamps", te: "మట్టి దీపాలు" },
     price: { en: "C/Simini ₹50 each · B/Simini ₹60 each", te: "సి సిమిని ₹50 · బి సిమిని ₹60 ఒక్కొక్కటి" },
-    image: "assets/products/simini.jpg",
+    image: "assets/products/simini.webp",
     alt: "Traditional clay simini lamp from the shop",
     searchTerms: ["simini", "b/simini", "c/simini", "chimney lamp", "oil lamp", "సిమిని", "సిమిని దీపాలు"]
   },
@@ -80,12 +80,12 @@ const products = [
     category: "pots",
     name: { en: "Clay cooking vessels", te: "మట్టి వంట పాత్రలు" },
     description: {
-      en: "Reference photo of clay cooking vessels from the shop. Actual capacities and shapes are listed in the shop rate guide.",
-      te: "దుకాణం అందించిన మట్టి వంట పాత్రల ఫోటో. అసలు సామర్థ్యాలు, ఆకారాలు దుకాణం ధరల పట్టికలో ఉన్నాయి."
+      en: "Representative product image of traditional clay cooking vessels. Actual capacities and shapes are listed in the shop rate guide.",
+      te: "మట్టి వంట పాత్రల సూచన చిత్రం. అసలు సామర్థ్యాలు, ఆకారాలు దుకాణం ధరల పట్టికలో ఉన్నాయి."
     },
     categoryLabel: { en: "Kitchen collection", te: "వంటగది సేకరణ" },
     price: { en: "₹100–₹300 / vessel · capacity varies", te: "₹100–₹300 / పాత్ర · సామర్థ్యాన్ని బట్టి" },
-    image: "assets/products/cooking-vessels.jpg",
+    image: "assets/products/cooking-vessels.webp",
     alt: "Clay cooking vessels from the shop",
     searchTerms: ["cooking pot", "cookware", "clay pot", "handi", "vessel", "వంట పాత్రలు", "వంట కుండ"]
   },
@@ -94,12 +94,12 @@ const products = [
     category: "pots",
     name: { en: "Clay water pots & Ranjan", te: "మట్టి నీటి కుండలు & రంజన్" },
     description: {
-      en: "Reference photo of a terracotta water pot from the shop. The listed 8, 12, 15 and 20 litre sizes, plus Ranjan, may have different shapes and fittings.",
-      te: "దుకాణం అందించిన మట్టి నీటి కుండ ఫోటో. దుకాణంలో ఉన్న 8, 12, 15, 20 లీటర్ల సైజులు, రంజన్ ఆకారాలు, అమరికలు భిన్నంగా ఉండవచ్చు."
+      en: "Representative product image of a terracotta water pot. The listed 8, 12, 15 and 20 litre sizes, plus Ranjan, may have different shapes and fittings.",
+      te: "మట్టి నీటి కుండ యొక్క సూచన చిత్రం. దుకాణంలో ఉన్న 8, 12, 15, 20 లీటర్ల సైజులు, రంజన్ ఆకారాలు, అమరికలు భిన్నంగా ఉండవచ్చు."
     },
     categoryLabel: { en: "Home essentials", te: "ఇంటి అవసరాలు" },
     price: { en: "₹150–₹300 / pot · Ranjan ₹250–₹300", te: "కుండ ₹150–₹300 · రంజన్ ₹250–₹300" },
-    image: "assets/products/water-pots.jpg",
+    image: "assets/products/water-pots.webp",
     alt: "Reference photo of a terracotta water pot from the shop",
     searchTerms: ["water pot", "matka", "clay water storage", "ranjan", "నీటి కుండ", "నీటి కుండలు", "రంజన్"]
   }
@@ -274,7 +274,7 @@ const translations = {
     emptyState: "సరిపోలే ఉత్పత్తులు లేవు. మరో పదంతో వెతకండి.",
     emptyAsk: "వాట్సాప్‌లో దుకాణాన్ని అడగండి ↗",
     oneResult: "1 ఫలితం", resultsCount: "{count} ఫలితాలు",
-    collectionFootnote: "ఉత్పత్తి చిత్రాలు దుకాణం అందించిన సూచన ఫోటోలు. అసలు డిజైన్లు, సైజులు, ధరలు, లభ్యతను దుకాణంలో నిర్ధారించుకోండి.",
+    collectionFootnote: "ఉత్పత్తి చిత్రాలు ప్రతి వర్గానికి సరిపడే సూచన చిత్రాలు. అసలు డిజైన్లు, సైజులు, ధరలు, లభ్యతను దుకాణంలో నిర్ధారించుకోండి.",
     rateEyebrow: "దుకాణం ధరల గైడ్", rateTitle: "దుకాణం<br><em>ధరల పట్టిక.</em>",
     rateIntro: "దుకాణం అందించిన ధరలను వస్తువు మరియు సైజు వారీగా చూడండి. ప్రస్తుత ధర, లభ్యత కోసం ఏ వరుసనైనా ఎంచుకుని వాట్సాప్‌లో అడగండి.",
     rateDisclaimer: "ఈ ధరలు అందించిన ధరల పట్టిక ఆధారంగా ఉన్నాయి; మారవచ్చు. ఆర్డర్ లేదా దుకాణ సందర్శనకు ముందు ప్రస్తుత ధర, పరిమాణం మరియు లభ్యతను వాట్సాప్‌లో నిర్ధారించుకోండి. డజను ధరలు పట్టికలో ఉన్నట్లుగానే చూపించబడ్డాయి.",

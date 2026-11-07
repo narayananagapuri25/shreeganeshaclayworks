@@ -1458,3 +1458,29 @@ main [id] { scroll-margin-top: 96px; }
   .product-card p { font-size: 9px; }
   .product-card-action { font-size: 8px; }
 }
+
+
+/* Square generated catalogue images — one consistent photo stage across desktop and mobile. */
+.hero-gallery img,
+.category-image-frame > img,
+.product-image-wrap > img,
+.story-image-wrap > img {
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #efe8dd;
+}
+.hero-gallery,
+.category-image-frame,
+.product-image-wrap,
+.story-image-wrap {
+  background: #efe8dd;
+}
+@media (max-width: 700px) {
+  .hero-gallery {
+    aspect-ratio: 1.42 / 1;
+    border-radius: 7px;
+  }
+  .category-grid { grid-auto-rows: 205px; }
+  .product-image-wrap { aspect-ratio: 1 / 1; }
+}
