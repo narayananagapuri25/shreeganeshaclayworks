@@ -15,7 +15,7 @@ const products = [
     },
     categoryLabel: { en: "Clay diya", te: "మట్టి దీపం" },
     price: { en: "See diya sizes & rates below", te: "దీపాల సైజులు, ధరల కోసం క్రింది పట్టిక చూడండి" },
-    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/334d11ca-b32f-4899-99f8-66b1b946bf73.jpg",
+    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/60dc7637-4bee-440d-8a05-72a074bbdba5.jpg",
     alt: "Illustrative group of traditional terracotta diyas",
     searchTerms: ["diya", "diyas", "deepam", "deepalu", "clay lamp", "దీపం", "దీపాలు"]
   },
@@ -29,7 +29,7 @@ const products = [
     },
     categoryLabel: { en: "Pooja & more", te: "పూజ & ఇతర వస్తువులు" },
     price: { en: "Ask about current designs & prices", te: "ప్రస్తుత నమూనాలు, ధరల కోసం అడగండి" },
-    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/7419c4bd-f5da-4120-8b44-d59713d23145.jpg",
+    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/50b0e053-7fc8-485d-87ca-47507b040813.jpg",
     alt: "Illustrative terracotta Ganesha idol for the pooja collection",
     searchTerms: ["clay idol", "idols", "pooja", "puja", "devotional", "విగ్రహాలు", "పూజా వస్తువులు"]
   },
@@ -43,7 +43,7 @@ const products = [
     },
     categoryLabel: { en: "Traditional clayware", te: "సంప్రదాయ మట్టి వస్తువులు" },
     price: { en: "Ask about sizes & current price", te: "సైజులు, ప్రస్తుత ధర కోసం అడగండి" },
-    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/f82022af-6824-4726-b9ec-1fb31c344532.jpg",
+    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/6daa1d27-f77c-4dd9-9bb4-6c3d96082e20.jpg",
     alt: "Illustrative group of plain terracotta agul lamps",
     searchTerms: ["agul", "agal", "traditional agul", "అగులు"]
   },
@@ -57,7 +57,7 @@ const products = [
     },
     categoryLabel: { en: "Stand designs", te: "స్టాండ్ నమూనాలు" },
     price: { en: "₹8–₹40 / piece · sizes vary", te: "ఒక్కొక్కటి ₹8–₹40 · సైజును బట్టి" },
-    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/67bc33cb-4b1b-4865-a316-0ca68e3ad372.jpg",
+    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/056d4476-fd70-4486-8ea9-38df4d853518.jpg",
     alt: "Illustrative raised terracotta stand lamp",
     searchTerms: ["stand agul", "agul stand", "stand design", "స్టాండ్ అగులు"]
   },
@@ -71,7 +71,7 @@ const products = [
     },
     categoryLabel: { en: "Clay lamps", te: "మట్టి దీపాలు" },
     price: { en: "C/Simini ₹50 each · B/Simini ₹60 each", te: "సి సిమిని ₹50 · బి సిమిని ₹60 ఒక్కొక్కటి" },
-    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/610198fe-6c5d-4215-af87-b1c81be5d844.jpg",
+    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/9bbe014c-1df6-4d90-8bc3-5cf73e166c43.jpg",
     alt: "Illustrative terracotta lantern for the simini lamp category",
     searchTerms: ["simini", "b/simini", "c/simini", "chimney lamp", "oil lamp", "సిమిని", "సిమిని దీపాలు"]
   },
@@ -85,7 +85,7 @@ const products = [
     },
     categoryLabel: { en: "Kitchen collection", te: "వంటగది సేకరణ" },
     price: { en: "₹100–₹300 / vessel · capacity varies", te: "₹100–₹300 / పాత్ర · సామర్థ్యాన్ని బట్టి" },
-    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/d8dfcf4b-4e02-4af2-a076-74a183b013bb.jpg",
+    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/be725b00-f545-46e8-96ac-d51db6bffa7b.jpg",
     alt: "Illustrative terracotta cooking vessels",
     searchTerms: ["cooking pot", "cookware", "clay pot", "handi", "vessel", "వంట పాత్రలు", "వంట కుండ"]
   },
@@ -99,7 +99,7 @@ const products = [
     },
     categoryLabel: { en: "Home essentials", te: "ఇంటి అవసరాలు" },
     price: { en: "₹150–₹300 / pot · Ranjan ₹250–₹300", te: "కుండ ₹150–₹300 · రంజన్ ₹250–₹300" },
-    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/be6bd1a0-1674-46aa-ab21-627d98ca3db3.jpg",
+    image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/e970681b-16db-46af-8cb0-8211e6ee1903.jpg",
     alt: "Illustrative terracotta water pot",
     searchTerms: ["water pot", "matka", "clay water storage", "ranjan", "నీటి కుండ", "నీటి కుండలు", "రంజన్"]
   }
