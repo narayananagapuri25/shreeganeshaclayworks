@@ -73,8 +73,10 @@ assert.match(app, /"Diya No\. 1", "₹1\.50", "₹15"/, "The listed No. 1 diya r
 assert.match(app, /"B\/Simini", "₹60\.00", "₹600"/, "The listed B/Simini rate is missing");
 assert.match(app, /"Ranjan", "₹250–₹300", ""/, "The Ranjan rate is missing");
 assert.match(app, /class="rate-enquire"/, "Rate rows must link to item-specific WhatsApp enquiries");
-assert.match(app, /rateEnquire: "Ask on WhatsApp"/, "English rate enquiry action is missing");
-assert.match(app, /rateEnquire: "వాట్సాప్‌లో అడగండి"/, "Telugu rate enquiry action is missing");
+assert.match(app, /rateEnquire: "WhatsApp"/, "English WhatsApp rate column header is missing");
+assert.match(app, /rateEnquireAction: "Ask"/, "English rate enquiry action is missing");
+assert.match(app, /rateEnquire: "WhatsApp"/, "Telugu WhatsApp rate column header is missing");
+assert.match(app, /rateEnquireAction: "అడగండి"/, "Telugu rate enquiry action is missing");
 assert.match(app, /addEventListener\("click"/, "Interactive controls must use event listeners");
 assert.doesNotMatch(app, /onerror\s*=/i, "Avoid inline event handlers");
 
