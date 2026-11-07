@@ -1009,24 +1009,25 @@ main [id] { scroll-margin-top: 96px; }
 /* FULL-PRODUCT FRAMING — never crop or zoom the shop's supplied photographs. */
 .hero-photo { display: none; }
 
+/* All supplied product, category, hero and store photographs stay fully visible. */
 .hero-gallery img,
 .category-card img,
 .product-image-wrap img,
 .story-image-wrap img {
+  box-sizing: border-box;
   object-fit: contain !important;
-  object-position: center !important;
+  object-position: center center !important;
   transform: none !important;
   clip-path: none !important;
   filter: none !important;
   image-rendering: auto;
 }
-
 .hero-gallery img {
   padding: 12px;
   background: #f1eadf;
 }
 
-/* Category cards keep labels below the photograph, never over the product. */
+/* Category photo and title occupy separate areas; no label covers the item. */
 .category-card {
   display: flex;
   flex-direction: column;
@@ -1083,7 +1084,7 @@ main [id] { scroll-margin-top: 96px; }
 }
 .category-arrow { color: var(--clay); }
 
-/* Product cards use a neutral image stage so every pot, lamp and vessel stays whole. */
+/* A neutral image stage gives products breathing room without hiding their edges. */
 .product-image-wrap {
   display: grid;
   place-items: center;
@@ -1098,14 +1099,8 @@ main [id] { scroll-margin-top: 96px; }
   transition: none;
 }
 .product-card:hover .product-image-wrap img { transform: none !important; }
-.product-image-wrap img[src*="store-stock.jpg"] { padding: 8px; }
-.product-image-wrap img[src*="heart-diya.jpg"] { padding: 12px; }
-.product-image-wrap img[src*="simini.jpg"] { padding: 8px; }
-
-/* The story photo is also complete rather than a cropped slice of the shop. */
+.story-image-wrap { background: #eee6da; }
 .story-image-wrap img {
-  object-fit: contain !important;
-  object-position: center !important;
   padding: 12px;
   background: #eee6da;
 }
@@ -1118,204 +1113,4 @@ main [id] { scroll-margin-top: 96px; }
   .category-card > img { padding: 9px; }
   .product-image-wrap img { padding: 8px; }
   .story-image-wrap img { padding: 8px; }
-}
-
-
-/* Whole-product image rule: preserve every supplied photograph edge on every screen. */
-.hero-gallery {
-  background: #e9e0d4;
-}
-.hero-gallery img,
-.category-card img,
-.product-image-wrap img,
-.story-image-wrap img {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center center;
-  transform: none;
-  padding: 14px;
-  background: #eee6da;
-  image-rendering: auto;
-}
-.hero-gallery img {
-  padding: 10px;
-  border-radius: 2px;
-}
-.category-card {
-  background: #e9e0d4;
-}
-.category-card:after {
-  background: linear-gradient(0deg, rgba(24,24,18,.58), rgba(24,24,18,.015) 55%);
-}
-.category-card:hover:after {
-  background: linear-gradient(0deg, rgba(24,24,18,.68), rgba(24,24,18,.035) 58%);
-}
-.category-card img {
-  padding: 18px 16px 48px;
-  transition: none;
-}
-.category-card:hover img {
-  transform: none;
-}
-.product-image-wrap {
-  aspect-ratio: 1.16 / 1;
-  overflow: hidden;
-  background: #eee6da;
-}
-.product-image-wrap img {
-  padding: 15px;
-  transition: none;
-}
-.product-card:hover .product-image-wrap img {
-  transform: none;
-}
-.story-image-wrap {
-  background: #eee6da;
-}
-.story-image-wrap img {
-  aspect-ratio: 1.02 / 1;
-  padding: 18px;
-  background: #eee6da;
-  object-fit: contain;
-}
-@media (max-width: 700px) {
-  .category-card img {
-    padding: 14px 12px 42px;
-  }
-  .product-image-wrap {
-    aspect-ratio: 1.08 / 1;
-  }
-  .product-image-wrap img {
-    padding: 11px;
-  }
-  .story-image-wrap img {
-    padding: 14px;
-  }
-}
-
-
-/* Category tiles: keep the full item in a dedicated photo area; labels live below it. */
-.category-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-  border: 1px solid rgba(62, 57, 44, .12);
-  background: #f6f0e6;
-  color: var(--ink);
-}
-.category-card:after { display: none; }
-.category-image-frame {
-  position: relative;
-  display: flex;
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  background: #eae1d5;
-}
-.category-card img {
-  display: block;
-  flex: 1 1 auto;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  padding: 16px;
-  object-fit: contain;
-  object-position: center;
-  background: transparent;
-  transform: none;
-}
-.category-number {
-  position: absolute;
-  z-index: 1;
-  top: 10px;
-  left: 12px;
-  color: #665a49;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  background: rgba(246,240,230,.88);
-  padding: 5px 7px;
-  border-radius: 2px;
-}
-.category-label {
-  position: relative;
-  z-index: 1;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  display: grid;
-  flex: 0 0 auto;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 5px 8px;
-  min-height: 72px;
-  padding: 12px 15px 13px;
-  color: var(--ink);
-  background: #f8f4ec;
-  border-top: 1px solid rgba(62,57,44,.1);
-}
-.category-label small {
-  grid-column: 1 / -1;
-  color: var(--clay-dark);
-  font-size: 7px;
-  letter-spacing: .13em;
-}
-.category-label strong {
-  color: var(--ink);
-  font-size: clamp(16px, 1.7vw, 21px);
-  line-height: 1.15;
-}
-.category-arrow {
-  color: var(--clay-dark);
-  font-size: 18px;
-}
-.category-card:hover img { transform: none; }
-.category-featured { grid-row: span 2; }
-.category-featured .category-image-frame { min-height: 0; }
-.category-featured .category-label { min-height: 78px; }
-
-/* The story photo caption also sits outside the photograph, never over the item. */
-.story-image-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0 25px 0 0;
-}
-.story-image-wrap:before {
-  z-index: 0;
-  bottom: 40px;
-}
-.story-image-wrap img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  aspect-ratio: 1.02 / 1;
-  object-fit: contain;
-  padding: 18px;
-  background: #eee6da;
-}
-.image-caption {
-  position: relative;
-  z-index: 1;
-  left: auto;
-  bottom: auto;
-  display: inline-block;
-  margin-top: 9px;
-  padding: 9px 13px;
-}
-@media (max-width: 700px) {
-  .category-label { min-height: 66px; padding: 10px 11px; }
-  .category-label strong { font-size: 16px; }
-  .category-card img { padding: 11px; }
-  .category-featured .category-label { min-height: 68px; }
-  .story-image-wrap { padding-right: 17px; }
-  .story-image-wrap:before { bottom: 36px; }
-  .story-image-wrap img { padding: 13px; }
 }
