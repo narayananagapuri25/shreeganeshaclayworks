@@ -106,10 +106,11 @@ try {
   const heroPhotoStyle = await page.locator(".hero-photo").evaluate((element) => {
     const style = getComputedStyle(element);
     const rect = element.getBoundingClientRect();
-    return { image: style.backgroundImage, width: rect.width, height: rect.height };
+    return { image: style.backgroundImage, width: rect.width, height: rect.height, left: rect.left };
   });
   assert.match(heroPhotoStyle.image, /cooking-vessels\.jpg/, "Hero should use the clean original cooking-vessel photograph");
   assert.ok(heroPhotoStyle.width > 250 && heroPhotoStyle.height > 200, "Hero photograph should have a substantial visible area");
+  assert.ok(heroPhotoStyle.left > window.innerWidth * 0.45, "Desktop hero photograph should sit to the right of the copy");
   assert.equal(await page.locator(".hero-note, .hero-index").count(), 0, "Hero should not contain redundant overlay captions");
   const desktopCategoryColumns = await page.locator(".category-grid").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length);
   assert.equal(desktopCategoryColumns, 4, "Desktop categories should use a balanced four-column grid");
@@ -118,6 +119,8 @@ try {
     return match ? Number(match[1]) : 1;
   });
   assert.ok(diyaZoom >= 1.4, "The heart-diya photograph should be tightly cropped around the product");
+  const diyaClip = await page.locator('.category-card[data-category-link="diyas"] img').evaluate((element) => getComputedStyle(element).clipPath);
+  assert.notEqual(diyaClip, "none", "The heart-diya tile should mask the distracting paper background");
   const storeAddress = await page.locator("address").innerText();
   assert.match(storeAddress, /Near Collectorate/i, "Store address should include the supplied landmark");
   assert.match(storeAddress, /Govt\. Dispensary/i, "Store address should include the supplied dispensary landmark");
