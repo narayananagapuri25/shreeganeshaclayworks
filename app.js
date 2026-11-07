@@ -29,7 +29,7 @@ const products = [
     },
     categoryLabel: { en: "Pooja & more", te: "పూజ & ఇతర వస్తువులు" },
     price: { en: "Ask about current designs & prices", te: "ప్రస్తుత నమూనాలు, ధరల కోసం అడగండి" },
-    image: "assets/products/store-stock.webp",
+    image: "assets/products/pooja-items.webp",
     alt: "Representative image of terracotta pooja pedestal pieces",
     searchTerms: ["clay idol", "idols", "pooja", "puja", "devotional", "విగ్రహాలు", "పూజా వస్తువులు"]
   },
