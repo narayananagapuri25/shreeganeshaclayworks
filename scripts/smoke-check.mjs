@@ -23,7 +23,7 @@ const requiredFiles = [
 ];
 for (const file of requiredFiles) await access(path.join(root, file));
 
-const officialLogoUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/215960b4-8e77-47ce-9f73-f0e642259760.jpg";
+const officialLogoUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/1c9eabaa-6eaa-4ea1-b69a-576cf86c3a17.png";
 assert.equal(
   html.split(officialLogoUrl).length - 1,
   2,
