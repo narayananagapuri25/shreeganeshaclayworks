@@ -72,6 +72,15 @@ try {
   assert.match(await page.title(), /Shree Ganesha Clay Works/);
   assert.equal(await page.locator(".brand-logo").count(), 2, "The supplied logo should appear in header and footer");
   assert.equal(await page.locator(".brand-logo").first().evaluate((image) => image.complete && image.naturalWidth > 0), true, "The original shop logo should load");
+  const logoLayout = await page.locator(".site-header .brand-logo").evaluate((image) => {
+    const rect = image.getBoundingClientRect();
+    const style = getComputedStyle(image);
+    return { width: rect.width, height: rect.height, display: style.display, visibility: style.visibility, opacity: Number(style.opacity) };
+  });
+  assert.ok(logoLayout.width >= 130 && logoLayout.height >= 50, "The original shop logo must have a visible header-sized footprint");
+  assert.notEqual(logoLayout.display, "none", "The original shop logo must not be hidden");
+  assert.equal(logoLayout.visibility, "visible", "The original shop logo must be visible");
+  assert.ok(logoLayout.opacity > 0, "The original shop logo must not be transparent");
   assert.equal(await page.locator(".category-card").count(), 7, "All seven shop categories should render");
   assert.equal(await page.locator("#product-grid .product-card").count(), 7, "Seven shop collections should render");
   await assertAllProductImagesLoad();
