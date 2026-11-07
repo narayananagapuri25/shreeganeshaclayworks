@@ -53,11 +53,14 @@ assert.match(html, /504208/, "The flyer PIN code must remain on the page");
 assert.match(html, /class="[^"]*store-facts[^"]*"/, "The quick store information bar must appear after the hero");
 assert.match(html, /href="tel:\+919493404602"/, "The quick store facts must include a working call action");
 assert.match(html, /class="hero-gallery"/, "The hero should show real shop product photographs");
-assert.ok(html.includes("https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/3e9cd8b4-0102-4dbe-acaf-f2877b439d31.png") && html.includes("https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/54cb7e80-4d79-46a8-98b6-96ee1c305eba.png"), "Hero should use both AI-generated pottery image sheets");
-assert.match(html, /sprite-5x3 col-0 row-1/, "Hero should include the plain-agul crop");
-assert.match(html, /sprite-4x2 col-1 row-1/, "Hero should include the stand-agul crop");
-assert.match(html, /sprite-5x3 col-4 row-1/, "Hero should include the simini crop");
-assert.match(html, /sprite-4x2 col-0 row-0/, "Hero should include the cooking-vessel crop");
+assert.equal((html.match(/class="hero-product-photo"/g) || []).length, 4, "Hero must have four standalone product photos");
+assert.equal((html.match(/class="category-photo"/g) || []).length, 7, "Every category must have one standalone product photo");
+assert.doesNotMatch(html, /sprite-window|sprite-sheet/, "HTML must not contain sprite crop windows");
+assert.doesNotMatch(app, /spriteClass|sprite-window|sprite-sheet/, "Catalogue data and renderer must not use sprite crops");
+for (const imageUrl of ["https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/334d11ca-b32f-4899-99f8-66b1b946bf73.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/7419c4bd-f5da-4120-8b44-d59713d23145.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/f82022af-6824-4726-b9ec-1fb31c344532.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/67bc33cb-4b1b-4865-a316-0ca68e3ad372.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/610198fe-6c5d-4215-af87-b1c81be5d844.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/d8dfcf4b-4e02-4af2-a076-74a183b013bb.jpg","https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/be6bd1a0-1674-46aa-ab21-627d98ca3db3.jpg"]) {
+  assert.ok(html.includes(imageUrl), "Missing standalone image in hero/category layout: " + imageUrl);
+  assert.ok(app.includes(imageUrl), "Missing standalone image in product catalogue: " + imageUrl);
+}
 assert.equal((html.match(/class="how-to-step"/g) || []).length, 3, "The page should have three practical shopping steps");
 assert.match(app, /searchTerms: \["diya"/, "Diyas should be discoverable through common search terms");
 assert.match(app, /searchTerms: \["water pot", "matka"/, "Water pots should be discoverable through common search terms");
@@ -107,10 +110,8 @@ assert.match(app, /visible\.length === 1[\s\S]*oneResult/, "Single-result search
 assert.match(app, /oneResult: "Showing 1 result"/, "English singular result translation is missing");
 assert.match(app, /oneResult: "1 ఫలితం"/, "Telugu singular result translation is missing");
 assert.doesNotMatch(app, /Heart-shaped diya/, "The notebook photograph must not be described as a heart-shaped diya");
-assert.ok(app.includes('id: "cooking-vessels"') && app.includes('image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/54cb7e80-4d79-46a8-98b6-96ee1c305eba.png"') && app.includes('sprite-4x2 col-0 row-0'), "Cooking vessels should use their matching illustrative crop");
-assert.ok(app.includes('id: "water-pots"') && app.includes('image: "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/54cb7e80-4d79-46a8-98b6-96ee1c305eba.png"') && app.includes('sprite-4x2 col-1 row-0'), "Water pots should use their matching illustrative crop");
-assert.ok(html.includes("https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/54cb7e80-4d79-46a8-98b6-96ee1c305eba.png"), "Generated category product sheet is missing");
-assert.match(html, /sprite-4x2 col-1 row-0/, "Water pot category crop is missing");
+assert.match(productsBlock[1], /id: "cooking-vessels"[\\s\\S]*?image: "https:\\/\\/d2ol7oe51mr4n9\\.cloudfront\\.net\\//, "Cooking-vessel catalogue item is missing its independent image URL");
+assert.match(productsBlock[1], /id: "water-pots"[\\s\\S]*?image: "https:\\/\\/d2ol7oe51mr4n9\\.cloudfront\\.net\\//, "Water-pot catalogue item is missing its independent image URL");
 
 assert.match(app, /whatsappNumber:\s*"919493404602"/, "Primary WhatsApp number is not configured");
 assert.match(app, /https:\/\/wa\.me\//, "WhatsApp link builder is missing");
