@@ -17,8 +17,9 @@ A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 
 ## Original brand asset
 
-- The supplied file `assets/brand/official-logo.jpg` is the canonical shop logo. It is used unchanged in the header and footer, with `object-fit: contain` so it is never cropped or recoloured.
-- Automated smoke checks pin its Git blob SHA and verify both placements use that exact file. Do not redraw, regenerate, recolour, or substitute the logo.
+- The canonical logo is the exact upper-left branding crop from the shop flyer supplied in this conversation: gold roof line, Ganesha emblem, shop name and purple “Creating Divine Moments” tagline.
+- The artwork is not redrawn, recoloured or reshaped. The flyer logo crop is hosted as a single image asset and the header/footer both use that exact source with `object-fit: contain`.
+- Static and Playwright checks pin the source URL and verify both placements load without CSS filters or masks. Do not substitute or regenerate the logo.
 
 ## Contact numbers
 
