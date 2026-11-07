@@ -15,11 +15,12 @@ A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 - Product and store photographs supplied by the shop.
 - Basic security headers, static smoke checks, and automated Playwright browser checks for desktop and mobile interactions.
 
-## Original brand asset
+## Approved brand artwork
 
-- The canonical logo is the exact upper-left branding crop from the shop flyer supplied in this conversation: gold roof line, Ganesha emblem, shop name and purple “Creating Divine Moments” tagline.
-- The latest owner-supplied logo image (1536 × 693 pixels) is used directly in the header and footer. It is not AI-redrawn, recoloured or reshaped; CSS uses `object-fit: contain` and a matching aspect ratio to avoid cropping or stretching.
-- Static and Playwright checks pin the source URL and verify both placements load without CSS filters or masks. Do not substitute or regenerate the logo.
+- The owner approved the clean high-resolution logo artwork for website use.
+- Source image: 1774 × 887 PNG. The same image is used in the desktop header, mobile header and footer.
+- Layout preserves the artwork's 2:1 aspect ratio with `object-fit: contain`; no stretching or cropping.
+- Automated smoke and browser checks pin this exact image URL and verify both placements load without CSS filters or masks.
 
 ## Contact numbers
 
