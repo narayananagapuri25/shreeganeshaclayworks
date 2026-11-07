@@ -109,6 +109,13 @@ try {
     return { width: rect.width, height: rect.height, left: rect.left, columns: getComputedStyle(element).gridTemplateColumns.split(" ").length };
   });
   assert.equal(await heroGallery.locator("img").count(), 4, "Hero should show four original shop product photographs");
+  const heroSources = await heroGallery.locator("img").evaluateAll((images) => images.map((image) => image.getAttribute("src")));
+  assert.deepEqual(heroSources, [
+    "assets/products/cooking-vessels.jpg",
+    "assets/products/plain-agul.jpg",
+    "assets/products/stand-agul.jpg",
+    "assets/products/simini.jpg"
+  ], "Hero should prioritise the clearest matching real product photographs, not the notebook diya or low-resolution water pot image");
   assert.ok(heroGalleryLayout.width > 250 && heroGalleryLayout.height > 200, "Hero product gallery should have a substantial visible area");
   assert.equal(heroGalleryLayout.columns, 2, "Hero product photographs should use a balanced two-column gallery");
   assert.ok(heroGalleryLayout.left > (await page.evaluate(() => window.innerWidth)) * 0.45, "Desktop product gallery should sit to the right of the copy");
@@ -199,6 +206,8 @@ try {
   assert.ok(logoLayout.opacity > 0, "The original shop logo must not be transparent");
   assert.equal(await page.locator(".category-card").count(), 7, "All seven shop categories should render");
   assert.equal(await page.locator("#product-grid .product-card").count(), 7, "Seven shop collections should render");
+  assert.match(await page.locator("#product-grid h3").nth(0).innerText(), /Traditional clay diya/, "The diya card name should match the actual photograph");
+  assert.match(await page.locator("#product-grid .product-price").nth(0).innerText(), /See diya sizes & rates below/, "Do not apply the separate heart-shape rate to an unverified diya photograph");
   assert.equal(await page.locator(".how-to-step").count(), 3, "The practical three-step shopping guide should render");
   assert.match(await page.locator("#product-result-count").innerText(), /7/, "The catalogue should show the initial result count");
   await assertAllProductImagesLoad();
@@ -210,9 +219,10 @@ try {
   assert.equal(await page.locator('[data-filter="agul"]').getAttribute("aria-pressed"), "true");
 
   await page.locator('[data-filter="all"]').click();
-  await page.locator("#product-search").fill("heart");
-  assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Search should find the heart diya");
-  assert.match(await page.locator("#product-grid h3").first().innerText(), /Heart-shaped diya/);
+  await page.locator("#product-search").fill("diya");
+  assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Search should find the traditional clay diya");
+  assert.match(await page.locator("#product-grid h3").first().innerText(), /Traditional clay diya/);
+  assert.match(await page.locator("#product-result-count").innerText(), /Showing 1 result$/, "A single matching product should use singular result copy");
 
   await page.locator('[data-category-link="agul"]').click();
   assert.equal(await page.locator("#product-search").inputValue(), "", "Category navigation should clear stale search text");
@@ -237,6 +247,8 @@ try {
   assert.match(await page.locator(".store-fact-hours").innerText(), /ఉదయం 9:00–సాయంత్రం 7:00/, "The top opening-hours fact should be translated into Telugu");
   assert.match(await page.locator(".hours-contact-line").innerText(), /ఉదయం 9:00–సాయంత్రం 7:00/, "The visit-card hours should be translated into Telugu");
   assert.match(await page.locator(".how-to-step").first().innerText(), /ఉత్పత్తులను చూడండి/, "The shopping guide should translate into Telugu");
+  assert.match(await page.locator("#product-grid .product-price").first().innerText(), /దీపాల సైజులు/, "Product price guidance should translate into Telugu");
+  assert.match(await page.locator("#product-result-count").innerText(), /7 ఫలితాలు/, "Product result count should translate into Telugu");
   assert.match(await page.locator(".store-fact-hours").innerText(), /ఉదయం 9:00–సాయంత్రం 7:00/, "The top opening-hours fact should be translated into Telugu");
   assert.match(await page.locator(".hours-contact-line").innerText(), /ఉదయం 9:00–సాయంత్రం 7:00/, "The visit-card hours should be translated into Telugu");
   assert.match(await page.locator(".store-fact").nth(1).innerText(), /నాస్పూర్|మంచిర్యాల/, "The location fact should use Telugu when selected");
@@ -320,7 +332,8 @@ try {
 
   await page.locator('[data-filter="idols"]').click();
   assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Clay idol enquiry collection should be filterable");
-  assert.match(await page.locator("#product-grid h3").first().innerText(), /Clay idols/);
+  assert.match(await page.locator("#product-grid h3").first().innerText(), /Pooja & other clay items/);
+  assert.match(await page.locator("#product-grid .product-card p").first().innerText(), /view of the shop's clay stock/i);
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
   console.log("Browser checks passed: desktop, mobile, image detail, search, filters, English/Telugu, rate enquiries, store address/directions, primary and alternate call/WhatsApp links, menu Escape/outside-click and floating WhatsApp.");
