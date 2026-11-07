@@ -168,7 +168,7 @@ try {
   }));
   for (const position of categoryImageAndLabelPositions) {
     assert.ok(position.imageTop >= position.frameTop - 1 && position.imageBottom <= position.frameBottom + 1, "The complete product image must stay inside its photo frame");
-    assert.ok(position.numberTop >= position.frameTop && position.numberBottom <= position.frameBottom, "Category number must stay within the photo frame");
+    assert.ok(position.numberTop >= position.frameTop && position.numberBottom <= position.frameBottom, "Category number must stay within the photo frame: " + JSON.stringify(position));
     assert.ok(position.labelTop >= position.frameBottom - 1, "Category title must sit below the complete product photograph");
     assert.ok(position.labelBottom <= position.cardBottom + 1, "Category title must remain inside its card");
   }
