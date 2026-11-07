@@ -967,3 +967,40 @@ main [id] { scroll-margin-top: 96px; }
 .hero-gallery img, .category-card img, .product-image-wrap img, .story-image-wrap img {
   image-rendering: auto;
 }
+
+
+/* Catalogue cards: one category label, consistent heights, and aligned actions. */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.product-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.product-card-category { margin-bottom: 2px; }
+.product-card p {
+  flex: 1;
+  min-height: 64px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.product-price {
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.product-card-action {
+  margin-top: 13px;
+  font-size: 10px;
+}
+@media (max-width: 700px) {
+  .product-card p {
+    min-height: 58px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  .product-card-action { font-size: 9px; }
+}
