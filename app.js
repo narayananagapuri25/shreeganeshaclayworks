@@ -221,7 +221,7 @@ function renderProducts() {
     const image = product.image;
     return '<article class="product-card">' +
       '<div class="product-image-wrap">' +
-      '<img src="' + image + '" alt="' + product.alt + '" loading="lazy" onerror="this.style.opacity=0">' +
+      '<img src="' + image + '" alt="' + product.alt + '" loading="lazy">' +
       '<span class="product-tag">' + tag + '</span>' +
       '</div>' +
       '<div class="product-card-body">' +
@@ -233,6 +233,11 @@ function renderProducts() {
       '</div></article>';
   }).join("");
 
+  productGrid.querySelectorAll("img").forEach(function (imageElement) {
+    imageElement.addEventListener("error", function () {
+      imageElement.closest(".product-image-wrap").classList.add("image-failed");
+    }, { once: true });
+  });
   emptyState.hidden = visible.length !== 0;
 }
 
