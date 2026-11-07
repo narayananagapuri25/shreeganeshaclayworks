@@ -13,7 +13,7 @@ A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 - Product-specific WhatsApp enquiries; no checkout, customer accounts or payment collection.
 - Store address, directions, two printed contact numbers, responsive navigation and custom 404 page.
 - Product and store photographs supplied by the shop.
-- Basic security headers and automated static-site checks.
+- Basic security headers, static smoke checks, and automated Playwright browser checks for desktop and mobile interactions.
 
 ## Contact numbers
 
@@ -34,6 +34,10 @@ Some product photographs show bag or box quantities (for example 500-piece bags 
 4. Confirm the alternate mobile number before making it clickable.
 5. Add verified opening hours, social links and any confirmed delivery/pickup information.
 6. Complete Android and desktop visual review, then test every WhatsApp and map link.
+
+## Automated review
+
+GitHub Actions runs syntax checks, static content checks, and Playwright interaction tests in Chromium. The workflow also saves desktop and mobile full-page screenshots as a downloadable workflow artifact for visual review.
 
 ## Local preview
 
