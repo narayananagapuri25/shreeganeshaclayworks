@@ -16,7 +16,8 @@ const products = [
     categoryLabel: { en: "Clay diya", te: "మట్టి దీపం" },
     price: "₹3.00 / piece · ₹30 / dozen",
     image: "assets/products/heart-diya.jpg",
-    alt: "Heart-shaped terracotta diya supplied by the shop"
+    alt: "Heart-shaped terracotta diya supplied by the shop",
+    searchTerms: ["diya", "diyas", "deepam", "deepalu", "clay lamp", "దీపం", "దీపాలు"]
   },
   {
     id: "clay-idols",
@@ -29,7 +30,8 @@ const products = [
     categoryLabel: { en: "Pooja & devotion", te: "పూజ & భక్తి" },
     price: "Enquire for current designs and price",
     image: "assets/products/store-stock.jpg",
-    alt: "Shop stock at Shree Ganesha Clay Works; ask about clay idol designs"
+    alt: "Shop stock at Shree Ganesha Clay Works; ask about clay idol designs",
+    searchTerms: ["clay idol", "idols", "pooja", "puja", "devotional", "విగ్రహాలు", "పూజా వస్తువులు"]
   },
   {
     id: "plain-agul",
@@ -42,7 +44,8 @@ const products = [
     categoryLabel: { en: "Traditional clayware", te: "సంప్రదాయ మట్టి వస్తువులు" },
     price: "Enquire for current price",
     image: "assets/products/plain-agul.jpg",
-    alt: "Plain agul clay pieces"
+    alt: "Plain agul clay pieces",
+    searchTerms: ["agul", "agal", "traditional agul", "అగులు"]
   },
   {
     id: "stand-agul",
@@ -55,7 +58,8 @@ const products = [
     categoryLabel: { en: "Stand designs", te: "స్టాండ్ నమూనాలు" },
     price: "₹8–₹40 / piece · variants differ",
     image: "assets/products/stand-agul.jpg",
-    alt: "Terracotta stand agul from the shop"
+    alt: "Terracotta stand agul from the shop",
+    searchTerms: ["stand agul", "agul stand", "stand design", "స్టాండ్ అగులు"]
   },
   {
     id: "simini",
@@ -68,7 +72,8 @@ const products = [
     categoryLabel: { en: "Clay lamps", te: "మట్టి దీపాలు" },
     price: "C/Simini ₹50 · B/Simini ₹60",
     image: "assets/products/simini.jpg",
-    alt: "Traditional clay simini lamp base"
+    alt: "Traditional clay simini lamp base",
+    searchTerms: ["simini", "b/simini", "c/simini", "chimney lamp", "oil lamp", "సిమిని", "సిమిని దీపాలు"]
   },
   {
     id: "cooking-vessels",
@@ -81,7 +86,8 @@ const products = [
     categoryLabel: { en: "Kitchen collection", te: "వంటగది సేకరణ" },
     price: "₹100–₹300 / piece · capacity varies",
     image: "assets/products/cooking-vessels.jpg",
-    alt: "Clay cooking vessel shown in the shop rate chart"
+    alt: "Clay cooking vessel shown in the shop rate chart",
+    searchTerms: ["cooking pot", "cookware", "clay pot", "handi", "vessel", "వంట పాత్రలు", "వంట కుండ"]
   },
   {
     id: "water-pots",
@@ -94,7 +100,8 @@ const products = [
     categoryLabel: { en: "Home essentials", te: "ఇంటి అవసరాలు" },
     price: "₹150–₹300 / pot · Ranjan ₹250–₹300",
     image: "assets/products/water-pots.jpg",
-    alt: "Traditional clay water pot shown in the shop rate chart"
+    alt: "Traditional clay water pot shown in the shop rate chart",
+    searchTerms: ["water pot", "matka", "clay water storage", "ranjan", "నీటి కుండ", "నీటి కుండలు", "రంజన్"]
   }
 ];
 
@@ -171,27 +178,41 @@ const translations = {
     announcementLink: "Get directions ↗",
     navHome: "Home", navProducts: "Collections", navRates: "Rate chart", navStory: "Our story", navVisit: "Visit us",
     navEnquire: "Enquire on WhatsApp", heroEyebrow: "THE BEAUTY OF EARTHEN CRAFT",
-    heroTitle: "Made of earth.<br><em>Rooted in tradition.</em>",
-    heroText: "Explore traditional diyas, agul, simini lamps, cooking vessels and water pots from our Mancherial store.",
+    heroTitle: "Clay for everyday.<br><em>Rooted in tradition.</em>",
+    heroText: "Explore traditional diyas, agul, simini lamps, cooking vessels and water pots. Browse the shop rate guide or ask us about current availability.",
     exploreButton: "Explore collections", visitButton: "Find our store",
     heroNote: "A celebration of clay, culture & everyday living",
     hoursLabel: "STORE HOURS", hoursValue: "9:00 AM–7:00 PM",
     locationLabel: "FIND US", locationValue: "Naspur, Mancherial",
     callLabel: "CALL THE STORE", callValue: "+91 94934 04602",
     directionsLabel: "VISIT THE STORE", directionsValue: "Get directions",
-    categoryEyebrow: "EXPLORE THE STORE", categoryTitle: "Find your kind<br><em>of clay.</em>",
-    categoryText: "Browse real product photographs from our store, then contact us directly for current designs and availability.",
+    howToEyebrow: "HOW TO SHOP",
+    howToTitle: "From browsing to<br><em>your shop visit.</em>",
+    howToBrowseTitle: "Browse products",
+    howToBrowseText: "Explore the collections and check the printed rate guide.",
+    howToBrowseLink: "Browse the catalogue ↗",
+    howToAskTitle: "Confirm on WhatsApp",
+    howToAskText: "Ask about today's price, sizes, designs and availability.",
+    howToAskLink: "Message the shop ↗",
+    howToVisitTitle: "Visit the store",
+    howToVisitText: "Use the address and directions, or call before you travel.",
+    howToVisitLink: "See store details ↗",
+
+    categoryEyebrow: "EXPLORE THE STORE", categoryTitle: "Shop by<br><em>category.</em>",
+    categoryText: "Choose a product type to jump straight to its collection and send a direct enquiry to the shop.",
     category01: "POOJA & FESTIVAL", category02: "TRADITIONAL DESIGNS", category03: "STAND DESIGNS",
     category04: "LAMPS & SIMINI", category05: "KITCHEN & HOME", category06: "HOME ESSENTIALS", category07: "POOJA & DEVOTION",
     catDiyas: "Clay diyas", catAgul: "Agul", catStand: "Stand agul", catSimini: "Simini lamps",
     catCookware: "Cooking ware", catWater: "Water pots", catIdols: "Clay idols & pooja",
-    collectionEyebrow: "A CLOSER LOOK", collectionTitle: "A collection for<br><em>every occasion.</em>",
-    collectionText: "A selection of product types from Shree Ganesha Clay Works. Message us to confirm designs, sizes and availability.",
-    filterAll: "All collections", searchPlaceholder: "Search collections",
-    emptyState: "No matching collections. Try another search.",
+    collectionEyebrow: "A CLOSER LOOK", collectionTitle: "Browse products<br><em>& prices.</em>",
+    collectionText: "Search by product name or category. Each product links to WhatsApp so you can confirm today’s price, size and availability.",
+    filterAll: "All collections", searchPlaceholder: "Search diyas, pots, lamps…",
+    emptyState: "No matching products. Try another search.",
+    emptyAsk: "Ask the shop on WhatsApp ↗",
+    resultsCount: "Showing {count} results",,
     collectionFootnote: "Pack quantities appearing in some shared product photos are reference pack sizes only, not a live stock count.",
-    rateEyebrow: "SHOP PRICE GUIDE", rateTitle: "A clear price for<br><em>every little light.</em>",
-    rateIntro: "Prices below are transcribed from the rate chart supplied by the shop. Choose a design, then message us to confirm today's rate and availability.",
+    rateEyebrow: "SHOP PRICE GUIDE", rateTitle: "Shop price<br><em>guide.</em>",
+    rateIntro: "Browse the rates supplied by the shop by product and size. Tap any row to ask about the current price and availability on WhatsApp.",
     rateDisclaimer: "Prices are from the supplied rate chart and may change. Please confirm the current price, quantity and availability on WhatsApp before visiting or placing an order. Dozen prices are shown exactly as printed in the chart.",
     rateItem: "Product / size", rateSingle: "Single piece", rateDozen: "Dozen",
     rateAsk: "Ask about this item", rateEnquire: "WhatsApp", rateEnquireAction: "Ask",
@@ -221,27 +242,41 @@ const translations = {
     announcementLink: "దారి తెలుసుకోండి ↗",
     navHome: "హోమ్", navProducts: "సేకరణలు", navRates: "ధరల పట్టిక", navStory: "మా గురించి", navVisit: "మా దుకాణం",
     navEnquire: "వాట్సాప్‌లో అడగండి", heroEyebrow: "మట్టి కళలోని అందం",
-    heroTitle: "మట్టితో రూపం.<br><em>సంప్రదాయమే మా బలం.</em>",
-    heroText: "మంచిర్యాలలోని మా దుకాణంలో సంప్రదాయ దీపాలు, అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలను చూడండి.",
+    heroTitle: "రోజువారీ అవసరాలకు మట్టి.<br><em>సంప్రదాయంతో.</em>",
+    heroText: "సంప్రదాయ దీపాలు, అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలను చూడండి. ప్రస్తుత ధరలు, లభ్యత కోసం అడగండి.",
     exploreButton: "సేకరణలను చూడండి", visitButton: "మా దుకాణం",
     heroNote: "మట్టి, సంస్కృతి మరియు రోజువారీ జీవనానికి ఒక వేడుక",
     hoursLabel: "దుకాణ సమయాలు", hoursValue: "ఉదయం 9:00–సాయంత్రం 7:00",
     locationLabel: "మా చిరునామా", locationValue: "నాస్పూర్, మంచిర్యాల",
     callLabel: "దుకాణానికి ఫోన్ చేయండి", callValue: "+91 94934 04602",
     directionsLabel: "మా దుకాణానికి రండి", directionsValue: "దారి తెలుసుకోండి",
-    categoryEyebrow: "మా దుకాణాన్ని చూడండి", categoryTitle: "మీకు నచ్చిన<br><em>మట్టి వస్తువులు.</em>",
-    categoryText: "మా దుకాణంలోని నిజమైన ఉత్పత్తుల ఫోటోలను చూడండి. ప్రస్తుత నమూనాలు, సైజులు మరియు లభ్యత కోసం నేరుగా మమ్మల్ని సంప్రదించండి.",
+    howToEyebrow: "ఎలా కొనుగోలు చేయాలి",
+    howToTitle: "వెతకడం నుంచి<br><em>దుకాణ సందర్శన వరకు.</em>",
+    howToBrowseTitle: "ఉత్పత్తులను చూడండి",
+    howToBrowseText: "సేకరణలను పరిశీలించి ధరల పట్టికను చూడండి.",
+    howToBrowseLink: "కేటలాగ్ చూడండి ↗",
+    howToAskTitle: "వాట్సాప్‌లో నిర్ధారించండి",
+    howToAskText: "ప్రస్తుత ధర, సైజులు, నమూనాలు మరియు లభ్యత గురించి అడగండి.",
+    howToAskLink: "దుకాణానికి సందేశం పంపండి ↗",
+    howToVisitTitle: "దుకాణానికి రండి",
+    howToVisitText: "చిరునామా, దారి తెలుసుకోండి లేదా బయలుదేరే ముందు ఫోన్ చేయండి.",
+    howToVisitLink: "దుకాణ వివరాలు చూడండి ↗",
+
+    categoryEyebrow: "మా దుకాణాన్ని చూడండి", categoryTitle: "వస్తువుల<br><em>రకాన్ని ఎంచుకోండి.</em>",
+    categoryText: "ఒక వస్తువు రకాన్ని ఎంచుకుంటే సంబంధిత సేకరణకు వెళ్లి నేరుగా దుకాణాన్ని సంప్రదించవచ్చు.",
     category01: "పూజ & పండుగలు", category02: "సంప్రదాయ నమూనాలు", category03: "స్టాండ్ నమూనాలు",
     category04: "దీపాలు & సిమిని", category05: "వంటగది & ఇల్లు", category06: "ఇంటి అవసరాలు", category07: "పూజ & భక్తి",
     catDiyas: "మట్టి దీపాలు", catAgul: "అగులు", catStand: "స్టాండ్ అగులు", catSimini: "సిమిని దీపాలు",
     catCookware: "వంట పాత్రలు", catWater: "నీటి కుండలు", catIdols: "మట్టి విగ్రహాలు & పూజా వస్తువులు",
-    collectionEyebrow: "మరింత దగ్గరగా చూడండి", collectionTitle: "ప్రతి సందర్భానికి<br><em>ఒక సేకరణ.</em>",
-    collectionText: "ష్రీ గణేశ క్లే వర్క్స్‌లో లభించే కొన్ని ఉత్పత్తుల రకాలు. నమూనాలు, సైజులు మరియు లభ్యత నిర్ధారించుకోవడానికి మాకు సందేశం పంపండి.",
-    filterAll: "అన్ని సేకరణలు", searchPlaceholder: "సేకరణలను వెతకండి",
-    emptyState: "సరిపోలే సేకరణలు లేవు. మరో పదంతో వెతకండి.",
+    collectionEyebrow: "మరింత దగ్గరగా చూడండి", collectionTitle: "ఉత్పత్తులు<br><em>& ధరలు.</em>",
+    collectionText: "వస్తువు పేరు లేదా రకం ద్వారా వెతకండి. ప్రస్తుత ధర, సైజు మరియు లభ్యతను వాట్సాప్‌లో నిర్ధారించుకోండి.",
+    filterAll: "అన్ని సేకరణలు", searchPlaceholder: "దీపాలు, కుండలు, పాత్రలు వెతకండి",
+    emptyState: "సరిపోలే ఉత్పత్తులు లేవు. మరో పదంతో వెతకండి.",
+    emptyAsk: "వాట్సాప్‌లో దుకాణాన్ని అడగండి ↗",
+    resultsCount: "{count} ఫలితాలు",,
     collectionFootnote: "కొన్ని ఉత్పత్తుల ఫోటోలలో కనిపించే బ్యాగ్ లేదా బాక్స్ పరిమాణాలు సూచన మాత్రమే; అవి ప్రస్తుత స్టాక్ సంఖ్యలు కావు.",
-    rateEyebrow: "దుకాణం ధరల గైడ్", rateTitle: "ప్రతి దీపానికి<br><em>స్పష్టమైన ధర.</em>",
-    rateIntro: "దుకాణం అందించిన ధరల పట్టిక నుంచి క్రింది ధరలను నమోదు చేశాము. ప్రస్తుత ధర మరియు లభ్యత కోసం వాట్సాప్‌లో నిర్ధారించుకోండి.",
+    rateEyebrow: "దుకాణం ధరల గైడ్", rateTitle: "దుకాణం<br><em>ధరల పట్టిక.</em>",
+    rateIntro: "దుకాణం అందించిన ధరలను వస్తువు మరియు సైజు వారీగా చూడండి. ప్రస్తుత ధర, లభ్యత కోసం ఏ వరుసనైనా ఎంచుకుని వాట్సాప్‌లో అడగండి.",
     rateDisclaimer: "ఈ ధరలు అందించిన ధరల పట్టిక ఆధారంగా ఉన్నాయి; మారవచ్చు. ఆర్డర్ లేదా దుకాణ సందర్శనకు ముందు ప్రస్తుత ధర, పరిమాణం మరియు లభ్యతను వాట్సాప్‌లో నిర్ధారించుకోండి. డజను ధరలు పట్టికలో ఉన్నట్లుగానే చూపించబడ్డాయి.",
     rateItem: "వస్తువు / సైజు", rateSingle: "ఒక్కటి", rateDozen: "డజను",
     rateAsk: "ఈ వస్తువు గురించి అడగండి", rateEnquire: "WhatsApp", rateEnquireAction: "అడగండి",
@@ -274,6 +309,7 @@ let searchTerm = "";
 
 const productGrid = document.getElementById("product-grid");
 const emptyState = document.getElementById("empty-state");
+const productResultCount = document.getElementById("product-result-count");
 const searchInput = document.getElementById("product-search");
 const rateGroupsElement = document.getElementById("rate-groups");
 
@@ -299,7 +335,8 @@ function renderProducts() {
     const matchesFilter = activeFilter === "all" || product.category === activeFilter;
     const searchable = [
       product.name.en, product.name.te, product.description.en, product.description.te,
-      product.categoryLabel.en, product.categoryLabel.te, product.price
+      product.categoryLabel.en, product.categoryLabel.te, product.price,
+      ...(product.searchTerms || [])
     ].join(" ").toLowerCase();
     return matchesFilter && searchable.includes(searchTerm);
   });
@@ -326,6 +363,7 @@ function renderProducts() {
       imageElement.closest(".product-image-wrap").classList.add("image-failed");
     }, { once: true });
   });
+  productResultCount.textContent = translations[language].resultsCount.replace("{count}", String(visible.length));
   emptyState.hidden = visible.length !== 0;
 }
 
