@@ -283,7 +283,25 @@ try {
   assert.match(await page.locator(".store-fact-hours").innerText(), /ఉదయం 9:00–సాయంత్రం 7:00/, "The top opening-hours fact should be translated into Telugu");
   assert.match(await page.locator(".hours-contact-line").innerText(), /ఉదయం 9:00–సాయంత్రం 7:00/, "The visit-card hours should be translated into Telugu");
   assert.match(await page.locator(".store-fact").nth(1).innerText(), /నాస్పూర్|మంచిర్యాల/, "The location fact should use Telugu when selected");
+  assert.equal(await page.locator('[data-lang="te"]').getAttribute("aria-pressed"), "true", "Telugu must be marked as the selected language");
+  assert.equal(await page.evaluate(() => localStorage.getItem("sgcw-language")), "te", "Telugu selection must be saved");
+
+  // Refresh must restore Telugu across static copy, dynamic product cards and the rate guide.
+  await page.reload({ waitUntil: "networkidle" });
+  assert.equal(await page.locator("html").getAttribute("lang"), "te", "Refresh must retain Telugu");
+  assert.equal(await page.locator('[data-lang="te"]').getAttribute("aria-pressed"), "true", "The Telugu button must remain selected after refresh");
+  assert.match(await page.locator(".hero h1").innerText(), /మట్టి|సంప్రదాయం/, "Hero heading must remain in Telugu after refresh");
+  assert.match(await page.locator("#product-grid h3").first().innerText(), /మట్టి|దీపం/, "Dynamic product cards must remain in Telugu after refresh");
+  assert.match(await page.locator(".rate-enquire").first().innerText(), /అడగండి/, "Rate actions must remain in Telugu after refresh");
+
+  // Same-page section navigation must not reset the chosen language.
+  await page.locator('.primary-nav a[href="#collections"]').click();
+  assert.equal(await page.locator("html").getAttribute("lang"), "te", "Internal navigation must keep Telugu selected");
   await page.locator('[data-lang="en"]').click();
+  assert.equal(await page.evaluate(() => localStorage.getItem("sgcw-language")), "en", "English selection must also be saved");
+  await page.reload({ waitUntil: "networkidle" });
+  assert.equal(await page.locator("html").getAttribute("lang"), "en", "Switching back to English must persist after refresh");
+  assert.equal(await page.locator('[data-lang="en"]').getAttribute("aria-pressed"), "true", "English button must be selected after refresh");
 
   assert.ok(await page.locator('a[href="tel:+919493404602"]').count() >= 2, "Primary number should have quick-action and visit-card call links");
   assert.equal(await page.locator('a[href="https://wa.me/919493404602"]').count(), 1, "Primary number should have a direct WhatsApp link");
