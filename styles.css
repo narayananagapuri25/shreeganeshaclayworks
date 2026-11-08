@@ -1484,3 +1484,14 @@ main [id] { scroll-margin-top: 96px; }
   .category-grid { grid-auto-rows: 205px; }
   .product-image-wrap { aspect-ratio: 1 / 1; }
 }
+
+
+/* Prevent stale theme overrides from zooming, clipping or masking product photos. */
+.hero-gallery > img,
+.category-image-frame > img,
+.product-image-wrap > img,
+.story-image-wrap > img {
+  transform: none !important;
+  clip-path: none !important;
+  filter: none !important;
+}
