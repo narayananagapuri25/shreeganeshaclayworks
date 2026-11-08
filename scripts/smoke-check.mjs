@@ -26,8 +26,9 @@ const requiredFiles = [
 for (const file of requiredFiles) await access(path.join(root, file));
 
 const officialLogoUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/aad0e2a4-b1b1-4aaa-b859-bee5aded603d.png";
+const officialLogoImagePrefix = '<img class="brand-logo" src="' + officialLogoUrl;
 assert.equal(
-  html.split(officialLogoUrl).length - 1,
+  html.split(officialLogoImagePrefix).length - 1,
   2,
   "Header and footer must use the exact logo crop from the supplied flyer"
 );
@@ -45,6 +46,25 @@ assert.ok(app.includes('Naspur, Mancherial shop') && app.includes('clay diyas, a
 assert.ok(app.includes('నాస్పూర్, మంచిర్యాలలోని మా దుకాణంలో') && app.includes('మట్టి దీపాలు, అగులు, స్టాండ్ అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలను'), "Telugu introduction should cover real products and location");
 assert.ok(robots.includes("Sitemap: https://shreeganeshaclayworks.pages.dev/sitemap.xml"), "robots.txt should advertise the published sitemap");
 assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/</loc>"), "The sitemap should point to the official homepage");
+
+
+const localBusinessJsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+assert.ok(localBusinessJsonLd, "Homepage should include JSON-LD for the physical store");
+const localBusiness = JSON.parse(localBusinessJsonLd[1]);
+assert.equal(localBusiness["@context"], "https://schema.org", "Local business markup should use Schema.org");
+assert.equal(localBusiness["@type"], "Store", "The business should use the most relevant generic physical-store type");
+assert.equal(localBusiness.name, "Shree Ganesha Clay Works", "Structured data must use the exact shop name");
+assert.equal(localBusiness.url, "https://shreeganeshaclayworks.pages.dev/", "Structured data must point to the official canonical website");
+assert.equal(localBusiness.telephone, "+919493404602", "Structured data should use the primary phone number");
+assert.equal(localBusiness.address.streetAddress, "Near Collectorate, Opp. Govt. Dispensary, Mancherial–Chennur Highway", "Structured address must match the shop-confirmed flyer address");
+assert.equal(localBusiness.address.addressLocality, "Naspur", "Structured address must identify Naspur");
+assert.equal(localBusiness.address.addressRegion, "Telangana", "Structured address must identify Telangana");
+assert.equal(localBusiness.address.postalCode, "504208", "Structured address must retain the shop's PIN code");
+assert.equal(localBusiness.address.addressCountry, "IN", "Structured address must use India's country code");
+assert.ok(localBusiness.contactPoint.some((entry) => entry.telephone === "+918555896577"), "Structured data should include the confirmed alternate contact number");
+assert.equal(localBusiness.openingHoursSpecification, undefined, "Do not invent weekday schedules when only the daily time range is confirmed");
+assert.equal(localBusiness.aggregateRating, undefined, "Do not fabricate review or rating markup");
+assert.equal(localBusiness.priceRange, undefined, "Do not invent a business-wide price range");
 
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(ids).size, ids.length, "HTML must not contain duplicate IDs");
@@ -94,7 +114,7 @@ for (const asset of ["styles.css", "app.js", "favicon.svg"]) {
   assert.ok(html.includes(asset), "HTML must link local asset " + asset);
 }
 assert.doesNotMatch(html, /images\.unsplash\.com/, "Product pages should use the shop's real photos");
-assert.equal(html.split(officialLogoUrl).length - 1, 2, "The supplied flyer logo must be used in header and footer");
+assert.equal(html.split(officialLogoImagePrefix).length - 1, 2, "The supplied flyer logo must be used in header and footer");
 
 const categoryLinks = new Set([...html.matchAll(/data-category-link="([^"]+)"/g)].map((m) => m[1]));
 const filters = new Set([...html.matchAll(/data-filter="([^"]+)"/g)].map((m) => m[1]));
