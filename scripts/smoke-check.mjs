@@ -26,8 +26,9 @@ const requiredFiles = [
 for (const file of requiredFiles) await access(path.join(root, file));
 
 const officialLogoUrl = "https://d2ol7oe51mr4n9.cloudfront.net/user_3JhHYSnxjWx3r7xsCRdqAg9xlbY/aad0e2a4-b1b1-4aaa-b859-bee5aded603d.png";
+const officialLogoImagePrefix = '<img class="brand-logo" src="' + officialLogoUrl;
 assert.equal(
-  html.split(officialLogoUrl).length - 1,
+  html.split(officialLogoImagePrefix).length - 1,
   2,
   "Header and footer must use the exact logo crop from the supplied flyer"
 );
@@ -113,7 +114,7 @@ for (const asset of ["styles.css", "app.js", "favicon.svg"]) {
   assert.ok(html.includes(asset), "HTML must link local asset " + asset);
 }
 assert.doesNotMatch(html, /images\.unsplash\.com/, "Product pages should use the shop's real photos");
-assert.equal(html.split(officialLogoUrl).length - 1, 2, "The supplied flyer logo must be used in header and footer");
+assert.equal(html.split(officialLogoImagePrefix).length - 1, 2, "The supplied flyer logo must be used in header and footer");
 
 const categoryLinks = new Set([...html.matchAll(/data-category-link="([^"]+)"/g)].map((m) => m[1]));
 const filters = new Set([...html.matchAll(/data-filter="([^"]+)"/g)].map((m) => m[1]));
