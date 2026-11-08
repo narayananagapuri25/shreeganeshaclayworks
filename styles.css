@@ -1495,3 +1495,18 @@ main [id] { scroll-margin-top: 96px; }
   clip-path: none !important;
   filter: none !important;
 }
+
+
+/* Tighter rhythm between the story signature and the practical shopping steps on phones. */
+@media (max-width: 700px) {
+  .story-section {
+    gap: 28px;
+    padding-top: 58px;
+    padding-bottom: 34px;
+  }
+  .how-to-shop {
+    gap: 24px;
+    padding-top: 38px;
+    padding-bottom: 58px;
+  }
+}
