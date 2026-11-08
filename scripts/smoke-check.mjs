@@ -46,6 +46,25 @@ assert.ok(app.includes('నాస్పూర్, మంచిర్యాలల
 assert.ok(robots.includes("Sitemap: https://shreeganeshaclayworks.pages.dev/sitemap.xml"), "robots.txt should advertise the published sitemap");
 assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/</loc>"), "The sitemap should point to the official homepage");
 
+
+const localBusinessJsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+assert.ok(localBusinessJsonLd, "Homepage should include JSON-LD for the physical store");
+const localBusiness = JSON.parse(localBusinessJsonLd[1]);
+assert.equal(localBusiness["@context"], "https://schema.org", "Local business markup should use Schema.org");
+assert.equal(localBusiness["@type"], "Store", "The business should use the most relevant generic physical-store type");
+assert.equal(localBusiness.name, "Shree Ganesha Clay Works", "Structured data must use the exact shop name");
+assert.equal(localBusiness.url, "https://shreeganeshaclayworks.pages.dev/", "Structured data must point to the official canonical website");
+assert.equal(localBusiness.telephone, "+919493404602", "Structured data should use the primary phone number");
+assert.equal(localBusiness.address.streetAddress, "Near Collectorate, Opp. Govt. Dispensary, Mancherial–Chennur Highway", "Structured address must match the shop-confirmed flyer address");
+assert.equal(localBusiness.address.addressLocality, "Naspur", "Structured address must identify Naspur");
+assert.equal(localBusiness.address.addressRegion, "Telangana", "Structured address must identify Telangana");
+assert.equal(localBusiness.address.postalCode, "504208", "Structured address must retain the shop's PIN code");
+assert.equal(localBusiness.address.addressCountry, "IN", "Structured address must use India's country code");
+assert.ok(localBusiness.contactPoint.some((entry) => entry.telephone === "+918555896577"), "Structured data should include the confirmed alternate contact number");
+assert.equal(localBusiness.openingHoursSpecification, undefined, "Do not invent weekday schedules when only the daily time range is confirmed");
+assert.equal(localBusiness.aggregateRating, undefined, "Do not fabricate review or rating markup");
+assert.equal(localBusiness.priceRange, undefined, "Do not invent a business-wide price range");
+
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(ids).size, ids.length, "HTML must not contain duplicate IDs");
 
