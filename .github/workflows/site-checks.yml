@@ -22,6 +22,8 @@ jobs:
           node-version: 22
       - name: Check JavaScript syntax
         run: node --check app.js
+      - name: Check Google Search visibility script syntax
+        run: node --check scripts/google-search-visibility.mjs
       - name: Run site smoke checks
         run: node scripts/smoke-check.mjs
       - name: Install Playwright
