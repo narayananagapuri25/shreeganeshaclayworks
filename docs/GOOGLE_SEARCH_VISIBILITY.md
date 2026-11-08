@@ -32,7 +32,7 @@ To run with a visible browser and complete Google consent/CAPTCHA manually when 
 HEADED=1 node scripts/google-search-visibility.mjs
 ```
 
-The headed mode is for a local desktop with a graphical browser. It pauses for a human to complete Google\u2019s prompt; it does not automate or bypass CAPTCHA.
+The headed mode is for a local desktop with a graphical browser. It pauses for a human to complete Google's prompt; it does not automate or bypass CAPTCHA.
 
 ## Interpreting the report
 
@@ -40,7 +40,9 @@ The headed mode is for a local desktop with a graphical browser. It pauses for a
 - `not_found_in_scanned_results`: no organic link to the domain appeared in the results the browser could read.
 - `consent_required`, `blocked`, `http_error`, or `error`: the run is inconclusive and must not be interpreted as a ranking of zero.
 
-The first GitHub-hosted run encountered Google\u2019s \u201cUnusual traffic\u201d reCAPTCHA challenge for all five queries, so it produced no ranking observations. Run the headed mode locally for a human-assisted check, or use Search Console Performance data for dependable ongoing visibility measurement.\n\nThis is a lightweight diagnostic, not a guaranteed rank tracker. Google varies results by location, device, language, time and personalization; Google may also present consent pages or block automated traffic. The report records the observed response rather than failing the storefront's main CI checks. It does not replace Search Console's impressions, clicks, queries, indexing or canonical reports.
+The first GitHub-hosted run encountered Google's "Unusual traffic" reCAPTCHA challenge for all five queries, so it produced no ranking observations. Run the headed mode locally for a human-assisted check, or use Search Console Performance data for dependable ongoing visibility measurement.
+
+This is a lightweight diagnostic, not a guaranteed rank tracker. Google varies results by location, device, language, time and personalization; Google may also present consent pages or block automated traffic. The report records the observed response rather than failing the storefront's main CI checks. It does not replace Search Console's impressions, clicks, queries, indexing or canonical reports.
 
 ## SEO improvement loop
 
