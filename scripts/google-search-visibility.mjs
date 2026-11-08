@@ -2,12 +2,15 @@ import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createInterface } from "node:readline/promises";
+import { stdin as input, stdout as output } from "node:process";
 import { chromium } from "playwright";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const artifactDir = path.join(root, "artifacts");
 const siteHost = "shreeganeshaclayworks.pages.dev";
 const requestedResultLimit = 100;
+const headedMode = process.env.HEADED === "1";
 const searchQueries = [
   '"Shree Ganesha Clay Works"',
   '"Shree Ganesha Clay Works" Mancherial',
@@ -63,7 +66,7 @@ const report = {
 
 let browser;
 try {
-  browser = await chromium.launch({ headless: true, args: ["--no-sandbox"] });
+  browser = await chromium.launch({ headless: !headedMode, args: ["--no-sandbox"] });
   const context = await browser.newContext({
     locale: "en-IN",
     timezoneId: "Asia/Kolkata",
@@ -104,11 +107,27 @@ try {
       const currentUrl = page.url();
       const bodyText = await page.locator("body").innerText().catch(() => "");
       entry.businessNameMentioned = bodyText.toLowerCase().includes("shree ganesha clay works");
-      const pageState = classifyGooglePage(currentUrl, bodyText, entry.httpStatus);
+      let pageState = classifyGooglePage(currentUrl, bodyText, entry.httpStatus);
+
+      if (headedMode && ["blocked", "consent_required"].includes(pageState)) {
+        const prompt = createInterface({ input, output });
+        console.log("Google is requesting human verification. Complete the CAPTCHA or consent prompt in the open browser window; do not use automated CAPTCHA solving.");
+        await prompt.question("After the Google results page is visible, press Enter here to continue...");
+        prompt.close();
+        const resumedText = await page.locator("body").innerText().catch(() => "");
+        entry.businessNameMentioned = resumedText.toLowerCase().includes("shree ganesha clay works");
+        pageState = classifyGooglePage(page.url(), resumedText, null);
+      }
 
       if (pageState !== "search_results") {
         entry.outcome = pageState;
-        entry.diagnostic = "Google did not return a normal search-results page. Inspect the screenshot or retry from a normal browser.";
+        if (pageState === "blocked") {
+          entry.diagnostic = "Google presented an anti-automation/CAPTCHA challenge. This run is inconclusive; no ranking is inferred.";
+        } else if (pageState === "consent_required") {
+          entry.diagnostic = "Google requires a consent choice. This run is inconclusive until the consent screen is completed.";
+        } else {
+          entry.diagnostic = "Google did not return a normal search-results page. Inspect the screenshot or retry from a normal browser.";
+        }
       } else {
         const organic = await page.locator("a:has(h3)").evaluateAll((anchors) =>
           anchors.map((anchor) => ({
