@@ -5,14 +5,16 @@ import path from "node:path";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFile(path.join(root, file), "utf8");
-const [html, app, css] = await Promise.all([
+const [html, app, css, robots, sitemap] = await Promise.all([
   read("index.html"),
   read("app.js"),
-  read("styles.css")
+  read("styles.css"),
+  read("robots.txt"),
+  read("sitemap.xml")
 ]);
 
 const requiredFiles = [
-  "favicon.svg", "404.html", "_headers", "robots.txt",
+  "favicon.svg", "404.html", "_headers", "robots.txt", "sitemap.xml",
   "assets/products/heart-diya.webp",
   "assets/products/plain-agul.webp",
   "assets/products/stand-agul.webp",
@@ -30,6 +32,19 @@ assert.equal(
   "Header and footer must use the exact logo crop from the supplied flyer"
 );
 
+
+
+assert.ok(html.includes("<title>Clay Diyas and Pottery in Mancherial | Shree Ganesha Clay Works</title>"), "Homepage title should describe its products, location and business");
+assert.ok(html.includes('name="description" content="Shree Ganesha Clay Works in Naspur, Mancherial offers clay diyas, agul, simini lamps, cooking vessels and water pots.'), "Homepage description should accurately cover the shop's products and location");
+assert.ok(html.includes('property="og:title" content="Clay Diyas and Pottery in Mancherial | Shree Ganesha Clay Works"'), "Open Graph title should match the search title");
+assert.ok(html.includes('name="twitter:title" content="Clay Diyas and Pottery in Mancherial | Shree Ganesha Clay Works"'), "Social preview title should match the search title");
+assert.ok(html.includes('<h1 data-i18n="heroTitle">Clay products in Mancherial.'), "The visible homepage heading should describe the business and its location");
+assert.ok(app.includes('heroTitle: "Clay products in Mancherial.'), "English hero title should include the core local search topic");
+assert.ok(app.includes('heroTitle: "మంచిర్యాలలో సంప్రదాయ మట్టి వస్తువులు.'), "Telugu hero title should retain a natural localized description");
+assert.ok(app.includes('Naspur, Mancherial shop') && app.includes('clay diyas, agul, stand agul, simini lamps, cooking vessels and water pots'), "English introduction should cover real products and location");
+assert.ok(app.includes('నాస్పూర్, మంచిర్యాలలోని మా దుకాణంలో') && app.includes('మట్టి దీపాలు, అగులు, స్టాండ్ అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలు'), "Telugu introduction should cover real products and location");
+assert.ok(robots.includes("Sitemap: https://shreeganeshaclayworks.pages.dev/sitemap.xml"), "robots.txt should advertise the published sitemap");
+assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/</loc>"), "The sitemap should point to the official homepage");
 
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(ids).size, ids.length, "HTML must not contain duplicate IDs");
