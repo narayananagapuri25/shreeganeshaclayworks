@@ -35,10 +35,14 @@ assert.equal(
 
 
 
-assert.ok(html.includes("<title>Clay Diyas and Pottery in Mancherial | Shree Ganesha Clay Works</title>"), "Homepage title should describe its products, location and business");
+assert.ok(html.includes("<title>Clay Diyas, Clay Pots and Pottery in Mancherial | Shree Ganesha Clay Works</title>"), "Homepage title should describe clay diyas, clay pots, pottery, location and business");
 assert.ok(html.includes('name="description" content="Shree Ganesha Clay Works in Naspur, Mancherial offers clay diyas, agul, simini lamps, cooking vessels and water pots.'), "Homepage description should accurately cover the shop's products and location");
-assert.ok(html.includes('property="og:title" content="Clay Diyas and Pottery in Mancherial | Shree Ganesha Clay Works"'), "Open Graph title should match the search title");
-assert.ok(html.includes('name="twitter:title" content="Clay Diyas and Pottery in Mancherial | Shree Ganesha Clay Works"'), "Social preview title should match the search title");
+assert.ok(html.includes('property="og:title" content="Clay Diyas, Clay Pots and Pottery in Mancherial | Shree Ganesha Clay Works"'), "Open Graph title should match the search title");
+assert.ok(html.includes('name="twitter:title" content="Clay Diyas, Clay Pots and Pottery in Mancherial | Shree Ganesha Clay Works"'), "Social preview title should match the search title");
+assert.ok(html.includes('id="local-search-content"'), "The page should include crawlable local product information");
+assert.ok(app.includes('localSeoPotsTitle: "Clay pots and cooking vessels"'), "Local search content should describe actual clay pot collections");
+assert.ok(app.includes("water pots in 8, 12, 15 and 20 litre sizes"), "Local search content should use the confirmed water-pot sizes");
+assert.ok(app.includes("cooking vessels from ½ litre to 5 litres"), "Local search content should use the confirmed cooking-vessel sizes");
 assert.ok(html.includes('<h1 data-i18n="heroTitle">Clay products in Mancherial.'), "The visible homepage heading should describe the business and its location");
 assert.ok(app.includes('heroTitle: "Clay products in Mancherial.'), "English hero title should include the core local search topic");
 assert.ok(app.includes('heroTitle: "మంచిర్యాలలో సంప్రదాయ మట్టి వస్తువులు.'), "Telugu hero title should retain a natural localized description");
