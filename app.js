@@ -303,7 +303,19 @@ const translations = {
   }
 };
 
-let activeLanguage = "en";
+const LANGUAGE_STORAGE_KEY = "sgcw-language";
+
+function getSavedLanguage() {
+  try {
+    const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    return translations[savedLanguage] ? savedLanguage : "en";
+  } catch (error) {
+    // Storage may be unavailable in private browsing or restricted webviews.
+    return "en";
+  }
+}
+
+let activeLanguage = getSavedLanguage();
 let activeFilter = "all";
 let searchTerm = "";
 
@@ -396,6 +408,11 @@ function renderRateGroups() {
 function setLanguage(language) {
   if (!translations[language]) return;
   activeLanguage = language;
+  try {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+  } catch (error) {
+    // The page should still switch languages when persistent storage is blocked.
+  }
   document.documentElement.lang = language === "te" ? "te" : "en";
 
   document.querySelectorAll("[data-i18n]").forEach(function (element) {
@@ -489,5 +506,4 @@ updateFloatingWhatsapp();
 
 document.getElementById("current-year").textContent = new Date().getFullYear();
 applyWhatsAppLinks();
-renderProducts();
-renderRateGroups();
+setLanguage(activeLanguage);
