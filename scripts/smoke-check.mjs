@@ -42,7 +42,7 @@ assert.ok(html.includes('<h1 data-i18n="heroTitle">Clay products in Mancherial.'
 assert.ok(app.includes('heroTitle: "Clay products in Mancherial.'), "English hero title should include the core local search topic");
 assert.ok(app.includes('heroTitle: "మంచిర్యాలలో సంప్రదాయ మట్టి వస్తువులు.'), "Telugu hero title should retain a natural localized description");
 assert.ok(app.includes('Naspur, Mancherial shop') && app.includes('clay diyas, agul, stand agul, simini lamps, cooking vessels and water pots'), "English introduction should cover real products and location");
-assert.ok(app.includes('నాస్పూర్, మంచిర్యాలలోని మా దుకాణంలో') && app.includes('మట్టి దీపాలు, అగులు, స్టాండ్ అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలు'), "Telugu introduction should cover real products and location");
+assert.ok(app.includes('నాస్పూర్, మంచిర్యాలలోని మా దుకాణంలో') && app.includes('మట్టి దీపాలు, అగులు, స్టాండ్ అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలను'), "Telugu introduction should cover real products and location");
 assert.ok(robots.includes("Sitemap: https://shreeganeshaclayworks.pages.dev/sitemap.xml"), "robots.txt should advertise the published sitemap");
 assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/</loc>"), "The sitemap should point to the official homepage");
 
