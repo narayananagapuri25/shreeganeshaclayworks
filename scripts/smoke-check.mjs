@@ -96,7 +96,7 @@ assert.equal(localBusiness.openingHoursSpecification, undefined, "Do not invent 
 assert.equal(localBusiness.aggregateRating, undefined, "Do not fabricate review or rating markup");
 assert.equal(localBusiness.priceRange, undefined, "Do not invent a business-wide price range");
 
-const allStructuredData = [...html.matchAll(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/g)].map((match) => JSON.parse(match[1]));
+const allStructuredData = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
 const websiteData = allStructuredData.find((entry) => entry["@type"] === "WebSite");
 assert.ok(websiteData, "Homepage should declare its official WebSite name");
 assert.equal(websiteData.name, "Shree Ganesha Clay Works", "WebSite schema should use the exact business name");
