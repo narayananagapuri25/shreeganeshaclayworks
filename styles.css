@@ -1575,3 +1575,231 @@ main [id] { scroll-margin-top: 96px; }
   .local-seo-grid { grid-template-columns: 1fr; gap: 10px; }
   .local-seo-card { grid-column: auto !important; padding: 21px 18px; }
 }
+
+
+/* Focused, useful category landing pages for local product searches. */
+.seo-site-header {
+  min-height: 82px;
+  height: auto;
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.seo-site-header .brand-logo { width: 235px; height: auto; object-fit: contain; }
+.seo-page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.seo-page-nav > a:not(.nav-whatsapp) {
+  color: #555246;
+  font-size: 12px;
+  font-weight: 600;
+}
+.seo-landing { padding-top: 34px; padding-bottom: 88px; }
+.seo-breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 28px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.seo-breadcrumbs a { color: var(--clay-dark); font-weight: 700; }
+.seo-landing-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(280px, .88fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 68px);
+  padding: 22px 0 70px;
+}
+.seo-landing-copy h1 {
+  max-width: 760px;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(42px, 5.7vw, 70px);
+  font-weight: 500;
+  letter-spacing: -.045em;
+  line-height: 1.04;
+}
+.seo-landing-copy h1 em { color: var(--clay); font-weight: 500; }
+.seo-landing-lede {
+  max-width: 640px;
+  margin: 23px 0 26px;
+  color: #655f53;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.seo-landing-copy .hero-actions { gap: 12px; }
+.seo-local-note {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+.seo-landing-visual { min-width: 0; margin: 0; }
+.seo-landing-visual img {
+  width: 100%;
+  max-height: 430px;
+  aspect-ratio: 1.1 / 1;
+  object-fit: contain;
+  background: var(--paper-deep);
+}
+.seo-landing-visual figcaption {
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.seo-copy-section {
+  padding: 55px 0 62px;
+  border-top: 1px solid var(--line);
+}
+.seo-copy-section > h2,
+.seo-rates-section > h2,
+.seo-contact-panel h2 {
+  max-width: 780px;
+  margin: 0 0 25px;
+  font-family: var(--serif);
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1.1;
+}
+.seo-copy-section > h2 em,
+.seo-rates-section > h2 em,
+.seo-contact-panel h2 em { color: var(--clay); font-weight: 500; }
+.seo-copy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+}
+.seo-copy-grid article {
+  padding: 24px 22px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+.seo-copy-grid h3,
+.seo-rates-section > h3 {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 600;
+}
+.seo-copy-grid p {
+  margin: 0;
+  color: #655f53;
+  font-size: 12px;
+  line-height: 1.85;
+}
+.seo-rates-section {
+  padding: 58px 28px 64px;
+  background: #eee7db;
+}
+.seo-rates-intro {
+  max-width: 820px;
+  margin: 0 0 24px;
+  color: #655f53;
+  font-size: 12px;
+  line-height: 1.85;
+}
+.seo-rates-intro a { color: var(--clay-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.seo-rates-section > h3 { margin-top: 29px; }
+.seo-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0 0 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+.seo-rate-table {
+  width: 100%;
+  min-width: 440px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+.seo-rate-table caption {
+  padding: 12px 15px;
+  color: var(--muted);
+  font-size: 10px;
+  text-align: left;
+}
+.seo-rate-table th,
+.seo-rate-table td {
+  padding: 11px 15px;
+  border-top: 1px solid var(--line);
+}
+.seo-rate-table thead th {
+  color: #4f4a3f;
+  background: #f7f3eb;
+  font-size: 10px;
+  font-weight: 700;
+}
+.seo-rate-table tbody th { font-weight: 600; }
+.seo-rate-table tbody td { color: #514b40; font-variant-numeric: tabular-nums; }
+.seo-contact-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(245px, .7fr);
+  align-items: center;
+  gap: 32px;
+  margin-top: 65px;
+  padding: clamp(24px, 4vw, 42px);
+  background: #2d3027;
+  color: #f8f2e8;
+}
+.seo-contact-panel h2 {
+  margin-bottom: 18px;
+  color: #fff9ee;
+  font-size: clamp(30px, 4vw, 44px);
+}
+.seo-contact-panel h2 em { color: #d6a27a; }
+.seo-contact-panel address { color: rgba(248,242,232,.84); font-size: 12px; font-style: normal; line-height: 1.9; }
+.seo-hours { margin: 12px 0 0; color: #d6a27a; font-size: 11px; font-weight: 700; }
+.seo-contact-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.seo-contact-actions .button { min-height: 44px; }
+.seo-phone { color: rgba(248,242,232,.84); font-size: 12px; }
+.seo-phone:hover { color: #fff; text-decoration: underline; }
+.seo-page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: 22px 5.2vw;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+}
+.seo-page-footer a { color: var(--clay-dark); font-weight: 700; }
+@media (max-width: 860px) {
+  .seo-site-header { align-items: center; gap: 12px; padding-left: 5.2vw; padding-right: 5.2vw; }
+  .seo-site-header .brand-logo { width: 185px; }
+  .seo-page-nav { gap: 10px 14px; }
+  .seo-page-nav > a:not(.nav-whatsapp) { font-size: 11px; }
+  .seo-page-nav .nav-whatsapp { padding: 10px 12px; }
+  .seo-landing-hero { grid-template-columns: 1fr; }
+  .seo-landing-visual { max-width: 620px; }
+  .seo-copy-grid { grid-template-columns: 1fr 1fr; }
+  .seo-copy-grid article:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .seo-site-header { flex-direction: column; justify-content: center; padding-top: 14px; padding-bottom: 14px; }
+  .seo-site-header .brand-logo { width: 205px; }
+  .seo-page-nav { justify-content: center; gap: 9px 13px; }
+  .seo-page-nav > a:not(.nav-whatsapp) { font-size: 10px; }
+  .seo-page-nav .nav-whatsapp { font-size: 10px; }
+  .seo-landing { padding-top: 25px; padding-bottom: 58px; }
+  .seo-landing-hero { gap: 28px; padding-top: 12px; padding-bottom: 48px; }
+  .seo-landing-lede { font-size: 13px; }
+  .seo-copy-section { padding: 42px 0 46px; }
+  .seo-copy-grid { grid-template-columns: 1fr; gap: 9px; }
+  .seo-copy-grid article:last-child { grid-column: auto; }
+  .seo-rates-section { padding: 42px 5.2vw 46px; }
+  .seo-contact-panel { grid-template-columns: 1fr; gap: 25px; margin-top: 45px; padding: 25px 20px; }
+  .seo-page-footer { justify-content: flex-start; }
+}

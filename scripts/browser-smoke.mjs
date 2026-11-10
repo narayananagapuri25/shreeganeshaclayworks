@@ -20,7 +20,7 @@ const mime = {
 const server = createServer(async (request, response) => {
   try {
     const pathname = decodeURIComponent(new URL(request.url, "http://127.0.0.1").pathname);
-    const requested = pathname === "/" ? "/index.html" : pathname;
+    const requested = pathname === "/" ? "/index.html" : pathname.endsWith("/") ? pathname + "index.html" : pathname;
     const filename = path.resolve(root, "." + requested);
     if (!filename.startsWith(root + path.sep) && filename !== root) {
       response.writeHead(403).end("Forbidden");
@@ -387,6 +387,34 @@ try {
   assert.equal(await page.locator("#product-grid .product-card").count(), 1, "Clay idol enquiry collection should be filterable");
   assert.match(await page.locator("#product-grid h3").first().innerText(), /Pooja & other clay items/);
   assert.match(await page.locator("#product-grid .product-card p").first().innerText(), /Representative image of terracotta pooja pedestal pieces/i);
+
+  for (const landing of [
+    { path: "/clay-diyas-mancherial/", title: "Clay Diyas in Mancherial | Shree Ganesha Clay Works", heading: /Clay diyas in Mancherial/i, rows: 32 },
+    { path: "/clay-pots-mancherial/", title: "Clay Pots in Mancherial | Shree Ganesha Clay Works", heading: /Clay pots and cooking vessels in Mancherial/i, rows: 10 }
+  ]) {
+    const landingResponse = await page.goto(baseUrl + landing.path, { waitUntil: "networkidle" });
+    assert.equal(landingResponse.status(), 200, "Category landing page should load: " + landing.path);
+    assert.equal(await page.title(), landing.title, "Category landing page title should be specific: " + landing.path);
+    assert.match(await page.locator("h1").innerText(), landing.heading, "Category landing page H1 should describe the page topic and location");
+    const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+    assert.equal(canonical, "https://shreeganeshaclayworks.pages.dev" + landing.path, "Category landing page should use the official pages.dev canonical URL");
+    const description = await page.locator('meta[name="description"]').getAttribute("content");
+    assert.ok(description && description.length >= 80 && description.length <= 170, "Category landing page should have a concise search description");
+    assert.ok(await page.locator('meta[property="og:image"]').getAttribute("content"), "Category landing page should include a social preview image");
+    assert.equal(await page.locator(".seo-rate-table tbody tr").count(), landing.rows, "Category rate table should reproduce all relevant shop rate rows");
+    const image = page.locator(".seo-landing-visual img");
+    await image.evaluate((element) => element.decode());
+    assert.ok(await image.evaluate((element) => element.naturalWidth >= 120), "Category page reference image should load");
+    assert.ok(await page.locator('a[href^="https://wa.me/919493404602"]').count() >= 1, "Category page should provide a direct enquiry link");
+    assert.ok(await page.locator('a[href="../#rate-chart"]').count() >= 1, "Category page should link back to the complete rate chart");
+    const structuredText = await page.locator('script[type="application/ld+json"]').textContent();
+    const structured = JSON.parse(structuredText);
+    assert.ok(structured["@graph"].some((entry) => entry["@type"] === "CollectionPage"), "Category page should declare CollectionPage structured data");
+    assert.ok(structured["@graph"].some((entry) => entry["@type"] === "BreadcrumbList"), "Category page should declare breadcrumb structured data");
+    await page.setViewportSize({ width: 390, height: 844 });
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth), false, "Category landing page must not overflow on mobile");
+    await page.setViewportSize({ width: 1440, height: 1000 });
+  }
 
   assert.deepEqual(pageErrors, [], "Page should not produce uncaught JavaScript errors");
   console.log("Browser checks passed: desktop, mobile, image detail, search, filters, English/Telugu, rate enquiries, store address/directions, primary and alternate call/WhatsApp links, menu Escape/outside-click and floating WhatsApp.");

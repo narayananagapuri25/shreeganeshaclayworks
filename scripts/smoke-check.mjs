@@ -22,6 +22,8 @@ const requiredFiles = [
   "assets/products/simini.webp",
   "assets/products/cooking-vessels.webp",
   "assets/products/water-pots.webp",
+  "clay-diyas-mancherial/index.html",
+  "clay-pots-mancherial/index.html",
 ];
 for (const file of requiredFiles) await access(path.join(root, file));
 
@@ -35,10 +37,14 @@ assert.equal(
 
 
 
-assert.ok(html.includes("<title>Clay Diyas, Clay Pots and Pottery in Mancherial | Shree Ganesha Clay Works</title>"), "Homepage title should describe clay diyas, clay pots, pottery, location and business");
-assert.ok(html.includes('name="description" content="Shree Ganesha Clay Works in Naspur, Mancherial offers clay diyas, agul, simini lamps, cooking vessels and water pots.'), "Homepage description should accurately cover the shop's products and location");
-assert.ok(html.includes('property="og:title" content="Clay Diyas, Clay Pots and Pottery in Mancherial | Shree Ganesha Clay Works"'), "Open Graph title should match the search title");
-assert.ok(html.includes('name="twitter:title" content="Clay Diyas, Clay Pots and Pottery in Mancherial | Shree Ganesha Clay Works"'), "Social preview title should match the search title");
+assert.ok(html.includes("<title>Clay Diyas &amp; Pots in Mancherial | Shree Ganesha Clay Works</title>"), "Homepage title should describe the core local products, location and business");
+assert.ok(html.includes('name="description" content="Shop clay diyas, agul, simini lamps, cooking vessels and water pots at Shree Ganesha Clay Works in Naspur, Mancherial. Call to confirm current rates."'), "Homepage description should accurately cover products, location and next action");
+assert.ok(html.includes('property="og:image" content="https://shreeganeshaclayworks.pages.dev/assets/products/heart-diya.webp"'), "Homepage should publish a relevant social preview image");
+assert.ok(html.includes('name="twitter:image" content="https://shreeganeshaclayworks.pages.dev/assets/products/heart-diya.webp"'), "Twitter preview should use the relevant product image");
+assert.ok(html.includes('property="og:title" content="Clay Diyas &amp; Pots in Mancherial | Shree Ganesha Clay Works"'), "Open Graph title should match the search title");
+assert.ok(html.includes('name="twitter:title" content="Clay Diyas &amp; Pots in Mancherial | Shree Ganesha Clay Works"'), "Social preview title should match the search title");
+assert.ok(html.includes('href="/clay-diyas-mancherial/"'), "Homepage should link to its dedicated clay-diya landing page");
+assert.ok(html.includes('href="/clay-pots-mancherial/"'), "Homepage should link to its dedicated clay-pot landing page");
 assert.ok(html.includes('id="local-search-content"'), "The page should include crawlable local product information");
 assert.ok(app.includes('localSeoPotsTitle: "Clay pots and cooking vessels"'), "Local search content should describe actual clay pot collections");
 assert.ok(app.includes("water pots in 8, 12, 15 and 20 litre sizes"), "Local search content should use the confirmed water-pot sizes");
@@ -50,6 +56,24 @@ assert.ok(app.includes('Naspur, Mancherial shop') && app.includes('clay diyas, a
 assert.ok(app.includes('నాస్పూర్, మంచిర్యాలలోని మా దుకాణంలో') && app.includes('మట్టి దీపాలు, అగులు, స్టాండ్ అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలను'), "Telugu introduction should cover real products and location");
 assert.ok(robots.includes("Sitemap: https://shreeganeshaclayworks.pages.dev/sitemap.xml"), "robots.txt should advertise the published sitemap");
 assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/</loc>"), "The sitemap should point to the official homepage");
+assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/clay-diyas-mancherial/</loc>"), "The sitemap should include the clay-diya landing page");
+assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/clay-pots-mancherial/</loc>"), "The sitemap should include the clay-pot landing page");
+for (const [file, title, canonical, requiredPhrase] of [
+  ["clay-diyas-mancherial/index.html", "Clay Diyas in Mancherial | Shree Ganesha Clay Works", "https://shreeganeshaclayworks.pages.dev/clay-diyas-mancherial/", "Numbered diyas"],
+  ["clay-pots-mancherial/index.html", "Clay Pots in Mancherial | Shree Ganesha Clay Works", "https://shreeganeshaclayworks.pages.dev/clay-pots-mancherial/", "Clay water pots"]
+]) {
+  const landing = await read(file);
+  assert.ok(landing.includes("<title>" + title + "</title>"), "Landing page title is missing: " + file);
+  assert.ok(landing.includes('<link rel="canonical" href="' + canonical + '">'), "Landing page canonical is incorrect: " + file);
+  assert.ok(landing.includes('name="description"'), "Landing page description is missing: " + file);
+  assert.ok(landing.includes('property="og:image"'), "Landing page social image is missing: " + file);
+  assert.ok(landing.includes(requiredPhrase), "Landing page should contain useful category-specific content: " + file);
+  const structured = landing.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(structured, "Landing page structured data is missing: " + file);
+  const graph = JSON.parse(structured[1]);
+  assert.ok(graph["@graph"].some((entry) => entry["@type"] === "CollectionPage"), "Landing page must be identified as a CollectionPage: " + file);
+  assert.ok(graph["@graph"].some((entry) => entry["@type"] === "BreadcrumbList"), "Landing page must have breadcrumb structured data: " + file);
+}
 
 
 const localBusinessJsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
@@ -65,6 +89,8 @@ assert.equal(localBusiness.address.addressLocality, "Naspur", "Structured addres
 assert.equal(localBusiness.address.addressRegion, "Telangana", "Structured address must identify Telangana");
 assert.equal(localBusiness.address.postalCode, "504208", "Structured address must retain the shop's PIN code");
 assert.equal(localBusiness.address.addressCountry, "IN", "Structured address must use India's country code");
+assert.match(localBusiness.hasMap, /^https:\/\/www\.google\.com\/maps\/search\//, "Store structured data should expose the existing directions URL");
+assert.ok(localBusiness.image.includes("https://shreeganeshaclayworks.pages.dev/assets/products/heart-diya.webp"), "Store structured data should include a real shop product image");
 assert.ok(localBusiness.contactPoint.some((entry) => entry.telephone === "+918555896577"), "Structured data should include the confirmed alternate contact number");
 assert.equal(localBusiness.openingHoursSpecification, undefined, "Do not invent weekday schedules when only the daily time range is confirmed");
 assert.equal(localBusiness.aggregateRating, undefined, "Do not fabricate review or rating markup");
