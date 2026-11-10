@@ -14,6 +14,7 @@ A dependency-free static website built with HTML, CSS and vanilla JavaScript.
 - The original shop/store photograph remains in the story section. The supplied logo remains unchanged.
 - English / Telugu language toggle.
 - Shop-supplied diya and pottery rate chart, with item-specific WhatsApp enquiry links.
+- Dedicated local search pages for clay diyas and lamps, and for clay pots and cooking vessels, each with the shop's published rates and location details.
 - Product-specific WhatsApp enquiries; no checkout, customer accounts or payment collection.
 - Store address, directions, two printed contact numbers, responsive navigation and custom 404 page.
 - Original store photograph supplied by the shop; product photos use local files checked into the repository and are displayed with full-image framing.
@@ -82,11 +83,11 @@ Recommended Git-connected Pages settings:
 5. Keep `main` as the production branch. Enable preview deployments for non-production branches so the open `feat/first-showcase` pull request can be inspected without publishing it to the production branch.
 6. Save and start the deployment. Cloudflare will provide a `*.pages.dev` address.
 
-Do not attach the custom domain until the pull request has been reviewed, the final code has been merged into `main`, and the Pages preview has passed the final desktop/mobile and contact-link review. With Git integration, new commits to the configured production branch trigger deployments automatically.
+Keep the Cloudflare Pages `pages.dev` address as the public and canonical website URL. With Git integration, new commits to the configured production branch trigger deployments automatically.
 
-### Add the custom domain
+### Public website address
 
-After the production deployment is verified, open **Workers & Pages → your Pages project → Custom domains → Set up a domain**, enter the exact domain you own, and follow Cloudflare's activation instructions. An apex/root domain requires the domain to be added to Cloudflare and its nameservers pointed to Cloudflare; a subdomain can use the DNS record Cloudflare provides. Do not change existing DNS records until the exact domain and current email/DNS requirements have been checked.
+The public website remains on the Cloudflare Pages `pages.dev` address. Do not configure a custom domain or change DNS records.
 
 ### Post-deployment checks
 
@@ -94,4 +95,4 @@ After the production deployment is verified, open **Workers & Pages → your Pag
 - Confirm the logo and every local product photo load.
 - Test English/Telugu switching, catalogue search, rates, both phone numbers, WhatsApp links, directions, and the 9 AM–7 PM opening hours.
 - Check that the flyer address appears exactly as supplied and that there is no horizontal overflow or missing image.
-- Add the custom domain only after those checks pass.
+- Keep the `pages.dev` URL as the canonical and public address.
