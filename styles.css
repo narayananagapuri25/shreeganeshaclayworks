@@ -1833,3 +1833,14 @@ h2 em { color: #dfb28b; font-weight: 500; }
     transition-duration: .01ms !important;
   }
 }
+
+/* Explicit guardrails for full-frame shop photography and anchor navigation. */
+.hero-gallery img,
+.category-image-frame > img,
+.product-image-wrap > img {
+  object-fit: contain !important;
+}
+.category-label { position: static; }
+.category-card::after,
+.category-card:hover::after { display: none; }
+section[id] { scroll-margin-top: 110px; }
