@@ -37,23 +37,23 @@ assert.equal(
 
 
 
-assert.ok(html.includes("<title>Clay Diyas &amp; Pots in Mancherial | Shree Ganesha Clay Works</title>"), "Homepage title should describe the core local products, location and business");
-assert.ok(html.includes('name="description" content="Shop clay diyas, agul, simini lamps, cooking vessels and water pots at Shree Ganesha Clay Works in Naspur, Mancherial. Call to confirm current rates."'), "Homepage description should accurately cover products, location and next action");
+assert.ok(html.includes("<title>Shree Ganesha Clay Works, Mancherial | Clay Idols &amp; Pottery</title>"), "Homepage title should describe the core local products, location and business");
+assert.ok(html.includes('name="description" content="Shree Ganesha Clay Works is an idol maker and clay-products shop in Naspur, Mancherial. Explore clay Ganesh idols, diyas, lamps and pottery; confirm current designs with the shop."'), "Homepage description should accurately cover products, location and next action");
 assert.ok(html.includes('property="og:image" content="https://shreeganeshaclayworks.pages.dev/assets/products/heart-diya.webp"'), "Homepage should publish a relevant social preview image");
 assert.ok(html.includes('name="twitter:image" content="https://shreeganeshaclayworks.pages.dev/assets/products/heart-diya.webp"'), "Twitter preview should use the relevant product image");
-assert.ok(html.includes('property="og:title" content="Clay Diyas &amp; Pots in Mancherial | Shree Ganesha Clay Works"'), "Open Graph title should match the search title");
-assert.ok(html.includes('name="twitter:title" content="Clay Diyas &amp; Pots in Mancherial | Shree Ganesha Clay Works"'), "Social preview title should match the search title");
+assert.ok(html.includes('property="og:title" content="Shree Ganesha Clay Works, Mancherial | Clay Idols &amp; Pottery"'), "Open Graph title should match the search title");
+assert.ok(html.includes('name="twitter:title" content="Shree Ganesha Clay Works, Mancherial | Clay Idols &amp; Pottery"'), "Social preview title should match the search title");
 assert.ok(html.includes('href="/clay-diyas-mancherial/"'), "Homepage should link to its dedicated clay-diya landing page");
 assert.ok(html.includes('href="/clay-pots-mancherial/"'), "Homepage should link to its dedicated clay-pot landing page");
 assert.ok(html.includes('id="local-search-content"'), "The page should include crawlable local product information");
 assert.ok(app.includes('localSeoPotsTitle: "Clay pots and cooking vessels"'), "Local search content should describe actual clay pot collections");
 assert.ok(app.includes("water pots in 8, 12, 15 and 20 litre sizes"), "Local search content should use the confirmed water-pot sizes");
 assert.ok(app.includes("cooking vessels from ½ litre to 5 litres"), "Local search content should use the confirmed cooking-vessel sizes");
-assert.ok(html.includes('<h1 data-i18n="heroTitle">Clay products in Mancherial.'), "The visible homepage heading should describe the business and its location");
-assert.ok(app.includes('heroTitle: "Clay products in Mancherial.'), "English hero title should include the core local search topic");
-assert.ok(app.includes('heroTitle: "మంచిర్యాలలో సంప్రదాయ మట్టి వస్తువులు.'), "Telugu hero title should retain a natural localized description");
+assert.ok(html.includes('<h1 data-i18n="heroTitle">Shree Ganesha Clay Works'), "The visible homepage heading should describe the business and its location");
+assert.ok(app.includes('heroTitle: "Shree Ganesha Clay Works'), "English hero title should include the core local search topic");
+assert.ok(app.includes('heroTitle: "ష్రీ గణేశ క్లే వర్క్స్'), "Telugu hero title should retain a natural localized description");
 assert.ok(app.includes('Naspur, Mancherial shop') && app.includes('clay diyas, agul, stand agul, simini lamps, cooking vessels and water pots'), "English introduction should cover real products and location");
-assert.ok(app.includes('నాస్పూర్, మంచిర్యాలలోని మా దుకాణంలో') && app.includes('మట్టి దీపాలు, అగులు, స్టాండ్ అగులు, సిమిని దీపాలు, వంట పాత్రలు మరియు నీటి కుండలను'), "Telugu introduction should cover real products and location");
+assert.ok(app.includes('నాస్పూర్, మంచిర్యాలలోని మా దుకాణంలో మట్టి గణేశ విగ్రహాలు, పూజా వస్తువులతో పాటు') && app.includes('వంట పాత్రలు మరియు నీటి కుండలను'), "Telugu introduction should cover idol, clayware and location terms");
 assert.ok(robots.includes("Sitemap: https://shreeganeshaclayworks.pages.dev/sitemap.xml"), "robots.txt should advertise the published sitemap");
 assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/</loc>"), "The sitemap should point to the official homepage");
 assert.ok(sitemap.includes("<loc>https://shreeganeshaclayworks.pages.dev/clay-diyas-mancherial/</loc>"), "The sitemap should include the clay-diya landing page");
@@ -95,6 +95,13 @@ assert.ok(localBusiness.contactPoint.some((entry) => entry.telephone === "+91855
 assert.equal(localBusiness.openingHoursSpecification, undefined, "Do not invent weekday schedules when only the daily time range is confirmed");
 assert.equal(localBusiness.aggregateRating, undefined, "Do not fabricate review or rating markup");
 assert.equal(localBusiness.priceRange, undefined, "Do not invent a business-wide price range");
+
+const allStructuredData = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
+const websiteData = allStructuredData.find((entry) => entry["@type"] === "WebSite");
+assert.ok(websiteData, "Homepage should declare its official WebSite name");
+assert.equal(websiteData.name, "Shree Ganesha Clay Works", "WebSite schema should use the exact business name");
+assert.equal(websiteData.url, "https://shreeganeshaclayworks.pages.dev/", "WebSite schema should use the canonical homepage");
+assert.ok(html.includes("Looking for clay Ganesh idols") && html.includes("Mancherial"), "Homepage should include natural clay-idol local search content");
 
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(ids).size, ids.length, "HTML must not contain duplicate IDs");
