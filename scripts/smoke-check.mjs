@@ -101,7 +101,7 @@ const websiteData = allStructuredData.find((entry) => entry["@type"] === "WebSit
 assert.ok(websiteData, "Homepage should declare its official WebSite name");
 assert.equal(websiteData.name, "Shree Ganesha Clay Works", "WebSite schema should use the exact business name");
 assert.equal(websiteData.url, "https://shreeganeshaclayworks.pages.dev/", "WebSite schema should use the canonical homepage");
-assert.ok(html.includes("Clay Ganesh idols in Mancherial"), "Homepage should include factual clay-idol local search content");
+assert.ok(html.includes("Looking for clay Ganesh idols") && html.includes("Mancherial"), "Homepage should include natural clay-idol local search content");
 
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(ids).size, ids.length, "HTML must not contain duplicate IDs");
