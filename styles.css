@@ -957,7 +957,10 @@ h2 em { color: #dfb28b; font-weight: 500; }
 }
 .story-image-wrap {
   position: relative;
-  padding: 0 23px 23px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 23px 0 0;
 }
 .story-image-wrap::before {
   content: "";
@@ -979,15 +982,14 @@ h2 em { color: #dfb28b; font-weight: 500; }
   background: #eee5d8;
 }
 .image-caption {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  padding: 12px 17px;
-  border-radius: 0 12px 0 12px;
-  background: var(--clay);
-  color: white;
+  position: static;
+  margin-top: 10px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: var(--clay-pale);
+  color: var(--clay-dark);
   font-family: var(--serif);
-  font-size: 12px;
+  font-size: 11px;
   font-style: italic;
 }
 .story-copy { padding: 14px 0; }
