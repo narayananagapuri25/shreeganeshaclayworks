@@ -68,7 +68,7 @@ for (const [file, title, canonical, requiredPhrase] of [
   assert.ok(landing.includes('name="description"'), "Landing page description is missing: " + file);
   assert.ok(landing.includes('property="og:image"'), "Landing page social image is missing: " + file);
   assert.ok(landing.includes(requiredPhrase), "Landing page should contain useful category-specific content: " + file);
-  const structured = landing.match(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/);
+  const structured = landing.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   assert.ok(structured, "Landing page structured data is missing: " + file);
   const graph = JSON.parse(structured[1]);
   assert.ok(graph["@graph"].some((entry) => entry["@type"] === "CollectionPage"), "Landing page must be identified as a CollectionPage: " + file);
